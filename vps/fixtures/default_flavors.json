@@ -1,42 +1,126 @@
 [
 {
-  "pk": 1, 
-  "model": "vps.flavor", 
-  "fields": {
-    "name_en": "Bronze", 
-    "ram_mb": 1024, 
-    "name_ar": "", 
-    "disk_gb": 20
-  }
+ "pk": 1, 
+ "model": "vps.flavor", 
+ "fields": {
+  "flavor_uuid": null, 
+  "name_en": "Bronze", 
+  "ram_mb": 1024, 
+  "name_ar": "", 
+  "disk_gb": 20
+ }
 },
 {
-  "pk": 2, 
-  "model": "vps.flavor", 
-  "fields": {
-    "name_en": "Silver", 
-    "ram_mb": 2048, 
-    "name_ar": "", 
-    "disk_gb": 50
-  }
+ "pk": 2, 
+ "model": "vps.flavor", 
+ "fields": {
+  "flavor_uuid": null, 
+  "name_en": "Silver", 
+  "ram_mb": 2048, 
+  "name_ar": "", 
+  "disk_gb": 50
+ }
 },
 {
-  "pk": 3, 
-  "model": "vps.flavor", 
-  "fields": {
-    "name_en": "Gold", 
-    "ram_mb": 4096, 
-    "name_ar": "", 
-    "disk_gb": 100
-  }
+ "pk": 3, 
+ "model": "vps.flavor", 
+ "fields": {
+  "flavor_uuid": null, 
+  "name_en": "Gold", 
+  "ram_mb": 4096, 
+  "name_ar": "", 
+  "disk_gb": 100
+ }
 },
 {
-  "pk": 4, 
-  "model": "vps.flavor", 
-  "fields": {
-    "name_en": "Platinum", 
-    "ram_mb": 8192, 
-    "name_ar": "", 
-    "disk_gb": 200
-  }
+ "pk": 4, 
+ "model": "vps.flavor", 
+ "fields": {
+  "flavor_uuid": null, 
+  "name_en": "Platinum", 
+  "ram_mb": 8192, 
+  "name_ar": "", 
+  "disk_gb": 200
+ }
+},
+{
+ "pk": 1, 
+ "model": "vps.plan", 
+ "fields": {
+  "amount_currency": "EGP", 
+  "flavor": 1, 
+  "months": 1, 
+  "amount": "85"
+ }
+},
+{
+ "pk": 2, 
+ "model": "vps.plan", 
+ "fields": {
+  "amount_currency": "EGP", 
+  "flavor": 2, 
+  "months": 1, 
+  "amount": "125"
+ }
+},
+{
+ "pk": 3, 
+ "model": "vps.plan", 
+ "fields": {
+  "amount_currency": "EGP", 
+  "flavor": 3, 
+  "months": 1, 
+  "amount": "230"
+ }
+},
+{
+ "pk": 4, 
+ "model": "vps.plan", 
+ "fields": {
+  "amount_currency": "EGP", 
+  "flavor": 3, 
+  "months": 1, 
+  "amount": "370"
+ }
+},
+{
+ "pk": 5, 
+ "model": "vps.plan", 
+ "fields": {
+  "amount_currency": "EGP", 
+  "flavor": 1, 
+  "months": 3, 
+  "amount": "222"
+ }
+},
+{
+ "pk": 6, 
+ "model": "vps.plan", 
+ "fields": {
+  "amount_currency": "EGP", 
+  "flavor": 2, 
+  "months": 3, 
+  "amount": "310"
+ }
+},
+{
+ "pk": 7, 
+ "model": "vps.plan", 
+ "fields": {
+  "amount_currency": "EGP", 
+  "flavor": 3, 
+  "months": 3, 
+  "amount": "555"
+ }
+},
+{
+ "pk": 8, 
+ "model": "vps.plan", 
+ "fields": {
+  "amount_currency": "EGP", 
+  "flavor": 4, 
+  "months": 3, 
+  "amount": "888"
+ }
 }
 ]
