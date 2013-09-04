@@ -1,0 +1,42 @@
+[
+{
+  "pk": 1, 
+  "model": "vps.flavor", 
+  "fields": {
+    "name_en": "Bronze", 
+    "ram_mb": 1024, 
+    "name_ar": "", 
+    "disk_gb": 20
+  }
+},
+{
+  "pk": 2, 
+  "model": "vps.flavor", 
+  "fields": {
+    "name_en": "Silver", 
+    "ram_mb": 2048, 
+    "name_ar": "", 
+    "disk_gb": 50
+  }
+},
+{
+  "pk": 3, 
+  "model": "vps.flavor", 
+  "fields": {
+    "name_en": "Gold", 
+    "ram_mb": 4096, 
+    "name_ar": "", 
+    "disk_gb": 100
+  }
+},
+{
+  "pk": 4, 
+  "model": "vps.flavor", 
+  "fields": {
+    "name_en": "Platinum", 
+    "ram_mb": 8192, 
+    "name_ar": "", 
+    "disk_gb": 200
+  }
+}
+]
