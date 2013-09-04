@@ -1,0 +1,7 @@
+Django==1.5.2
+django-money==0.3.3
+py==1.4.15
+py-moneyed==0.4.1
+pytest==2.3.5
+six==1.4.1
+wsgiref==0.1.2
