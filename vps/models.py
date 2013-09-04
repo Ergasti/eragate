@@ -9,13 +9,22 @@ class Flavor(models.Model):
     ram_mb = models.IntegerField()
     disk_gb = models.IntegerField()
 
+    def __unicode__(self):
+        return "%s: %s MB, %s GB" % (self.name_en or self.name_ar, self.ram_mb, self.disk_gb)
+
 class Plan(models.Model):
     months = models.IntegerField()
     flavor = models.ForeignKey(Flavor)
     amount = MoneyField(max_digits=10, decimal_places=2, default_currency='EGP')
+
+    def __unicode__(self):
+        return "%s months, %s" % (self.months, self.flavor)
 
 class VPS(models.Model):
     owner = models.ForeignKey(User)
     plan = models.ForeignKey(Plan)
     instance_id = models.CharField(max_length=32)
     ip = models.CharField(max_length=15)
+
+    def __unicode__(self):
+        return "%s: %s, %s" % (self.owner, self.ip, self.instance_id)
