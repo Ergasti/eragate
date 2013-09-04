@@ -28,4 +28,4 @@ class VPS(models.Model):
     ip = models.CharField(max_length=15, null=True, blank=True)
 
     def __unicode__(self):
-        return "%s: %s, %s" % (self.owner, self.ip, self.instance_id)
+        return "%s: %s, %s" % (self.owner, self.ip, self.instance_uuid)
