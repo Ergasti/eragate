@@ -8,6 +8,7 @@ class Flavor(models.Model):
     name_ar = models.CharField(max_length=100, null=True, blank=True)
     ram_mb = models.IntegerField()
     disk_gb = models.IntegerField()
+    flavor_uuid = models.CharField(max_length=32)
 
     def __unicode__(self):
         return "%s: %s MB, %s GB" % (self.name_en or self.name_ar, self.ram_mb, self.disk_gb)
@@ -23,7 +24,7 @@ class Plan(models.Model):
 class VPS(models.Model):
     owner = models.ForeignKey(User)
     plan = models.ForeignKey(Plan)
-    instance_id = models.CharField(max_length=32)
+    instance_uuid = models.CharField(max_length=32)
     ip = models.CharField(max_length=15)
 
     def __unicode__(self):
