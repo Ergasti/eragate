@@ -1,0 +1,270 @@
+ {% extends "base.html" %}
+
+ {% load cms_tags %}
+
+
+       <!--      {% block mahmoud %}
+                
+
+            {% endblock %} -->
+
+
+{% block content %}
+<div class="container">
+<link class="cssdeck" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" class="cssdeck">
+
+<div class="" id="loginModal">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3>Have an Account?</h3>
+    </div>
+    <div class="modal-body" style="overflow-y: visible;">
+        <div class="well">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#create" data-toggle="tab" style="font-size: 15px;">Create Account</a></li>
+                <li ><a href="#login" data-toggle="tab" style="font-size: 15px;">Login</a></li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade" id="login">
+                    <form class="form-horizontal" action='' method="POST">
+                        <fieldset>
+                            <div id="legend">
+                                <legend class="">Login</legend>
+                            </div>    
+                            <div class="control-group">
+                                <!-- Username -->
+                                <label class="control-label"  for="username">Username</label>
+                                <div class="controls">
+                                    <input type="text" id="username" name="username" placeholder="" class="input-xlarge">
+                                </div>
+                            </div>
+                            
+                            <div class="control-group">
+                                <!-- Password-->
+                                <label class="control-label" for="password">Password</label>
+                                <div class="controls">
+                                    <input type="password" id="password" name="password" placeholder="" class="input-xlarge">
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="control-group">
+                                <!-- Button -->
+                                <div class="controls">
+                                    <button class="btn btn-success">Login</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>                
+                </div>
+                <div class="tab-pane active in " id="create">
+                    <form id="tab" class = "myform form-horizontal" action="" method="post">
+                        {% csrf_token %}
+
+                        {% if form.errors %}<p>Please correct the following fields:</p>{% endif %}
+                        <div class="control-group">
+                            <!-- Username -->
+                            <div class="register_div">
+                                <label class="control-label" >Full Name</label>
+                                <div class="controls">
+                                    {% if form.name.errors %}<p class="error">{{ form.name.errors }}</p>{% endif %}
+                                    <p>{{ form.name }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                        <label class="control-label">Email</label>
+                        <div class="register_div">
+                            <div class="controls">
+                                {% if form.email.errors %}<p class="error">{{ form.email.errors }}</p>{% endif %}
+                                <p>{{ form.email }}</p>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="control-group">
+                            <!-- Username -->
+                            <div class="register_div">
+                                <label class="control-label" >Mobile</label>
+                                <div class="controls">
+                                    {% if form.phone_number.errors %}<p class="error">{{ form.phone_number.errors }}</p>{% endif %}
+                                    <p>{{ form.phone_number }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <!-- Username -->
+                            <div class="register_div">
+                                <label class="control-label" >Gender</label>
+                                <div class="controls">
+                                    {% if form.gender.errors %}<p class="error">{{ form.gender.errors }}</p>{% endif %}
+                                    <p>{{ form.gender }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <!-- Username -->
+                            <div class="register_div">
+                                <label class="control-label" >date_Of_birth</label>
+                                <div class="controls">
+                                    {% if form.date_Of_birth.errors %}<p class="error">{{ form.date_Of_birth.errors }}</p>{% endif %}
+                                    <p>{{ form.date_Of_birth }}</p>
+                                </div>
+                            </div>
+                        </div>
+<!--                         <label>Address</label>
+                        <textarea value="Smith"  rows="3" class="input-xlarge control-label">
+                        </textarea> -->
+                        
+                        
+                        <!-- <input type="password" name="pass" id="pass" onkeyup="passwordStrength(this.value)" /></p> -->
+                        <div class="control-group">
+                            <label class="control-label">Password</label>
+                            <div class="controls">
+                                {% if form.password1.errors %}<p class="error">{{ form.password1.errors }}</p>{% endif %}
+                                <p>{{ form.password1 }}</p>
+                            </div>    
+                        </div>                       
+                        <label class ="hide " for="passwordStrength">Password strength </label>
+                        <div class = "hide" id="passwordDescription">Password not entered</div>
+                        <div class = "hide" id="passwordStrength" class="strength"></div>
+
+                        <div class="control-group">
+                            <label class="control-label">Password Confirmation</label>
+                            <div class="controls">
+                        <div class="register_div">
+                            {% if form.password2.errors %}
+                            <p class="error">{{ form.password2.errors }}</p>
+                            {% endif %}
+                            <p>{{ form.password2 }}</p>
+                            </div> 
+                        </div >
+                        <div class="control-group">
+                            <label class="control-label"></label>
+                            <div class="controls">
+                                <script type="text/javascript" src="http://api.recaptcha.net/challenge?k=6LdSucISAAAAADc_huFvVv0fCCEfcVJNvbqeY-TN">
+                                </script> 
+                                   {% if form.captcha.errors %}<p class="error">{{ form.captcha.errors }}</p>{% endif %}
+                                    <p>{{ form.captcha }}</p>
+                            </div>    
+                        </div> 
+                        <div class="control-group">
+                            <label class="control-label"></label>
+                            <div class="controls">
+                                <button class="btn btn-primary" type="submit" alt="register">Create Account</button>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+
+<form action="" method="post">
+
+<div class = "header" >
+
+
+<style type="text/css">
+      .header {
+        color: #333;
+        font-family: 'Georgia';
+        font-size: 35px;
+        text-align: center;
+}
+      
+    </style>
+</div>
+<center>
+<div >
+
+
+
+
+<div class = "registerationForm">
+
+
+<script>
+
+function passwordStrength(password)
+
+{
+    
+     
+
+        var desc = new Array();
+
+        desc[0] = "Very Weak";
+
+        desc[1] = "Weak";
+
+        desc[2] = "Better";
+
+        desc[3] = "Medium";
+
+        desc[4] = "Strong";
+
+        desc[5] = "Strongest";
+
+    
+
+        var score   = 0;
+       
+    
+        if (password.length <=1) 
+           $("password").click(function(){
+            $(".hide").hide();
+            });
+        else 
+            $(".hide").show();
+
+        //if password bigger than 6 give 1 point
+         
+
+
+        if (password.length >= 6) score++;
+
+        if (password.length > 6) score++;
+
+
+
+        //if password has both lower and uppercase characters give 1 point      
+
+        if ( ( password.match(/[a-z]/) ) && ( password.match(/[A-Z]/) ) ) score++;
+
+
+
+        //if password has at least one number give 1 point
+
+        if (password.match(/\d+/)) score++;
+
+
+
+        //if password has at least one special caracther give 1 point
+
+        if ( password.match(/.[!,@,#,$,%,^,&,*,?,_,~,-,(,)]/) ) score++;
+
+
+
+        //if password bigger than 12 give another 1 point
+
+        if (password.length > 12) score++;
+        
+        
+         
+
+         document.getElementById("passwordDescription").innerHTML = desc[score];
+
+         document.getElementById("passwordStrength").className = "strength" + score; 
+
+}
+</script>
+<div id = "pass" class="register_div">
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

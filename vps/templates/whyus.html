@@ -1,0 +1,155 @@
+      {% load i18n sekizai_tags %}
+
+      {% addtoblock "css" %}
+      <link rel="stylesheet" href="{{ STATIC_URL }}css/nivo-slider.css" type="text/css" />
+      {% endaddtoblock %}
+      <style type="text/css" media="screen">
+      .content-wrap section {
+      position: relative;
+      padding: 125px 0 25px 0;
+      background: url(../images/section-sep.png) repeat-x left 25px;
+      }
+      .content-wrap section .no-bottom-margin {
+      margin-bottom: 0;
+      }
+      index.htmlmedia="screen"
+      .content-wrap section .row {
+      clear: both;
+      overflow: hidden;
+      margin-bottom: 25px;
+      }
+      .content-wrap section .row .col {
+      float: left;
+      margin: 0;
+      padding: 0;
+      width: 290px;
+      }
+      .content-wrap section section {
+      background: none;
+      margin: 0;
+      }
+      .content-wrap section {
+      position: relative;
+      padding: 125px 0 25px 0;
+      background: url(../images/section-sep.png) repeat-x left 25px;
+      }
+      .content-wrap section .row .col {
+      float: left;
+      margin: 0;
+      padding: 0;
+      width: 290px;
+      }
+      .h2{
+      	font-size: 22px;
+      	line-height: 25px;
+      	margin-top: 10px;
+      	margin-bottom: 15px;
+      }
+      p {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+      margin-bottom: 25px;
+      }
+      .content-wrap section .row .mid {
+      margin-left: 35px;
+      margin-right: 35px;
+      }
+      .row .col {
+      float: left;
+      margin: 0;
+      padding: 0;
+      width: 300px;
+      }
+      section#services .row .col img.align-left {
+      margin-top: 13px;
+      margin-right: 12px;
+      float: left;
+      }
+      index.htmlmedia="screen"
+      .align-left {
+      float: left;
+      }
+      body{
+        font-family: Georgia, Serif;
+        font-size: 16px;
+        line-height: 25px;
+        color: #3B3B3B;
+        background: /* url(../images/25-pixel-baseline.png) left top repeat, */ url(http://www.styleshout.com/templates/preview/PageOne10/images/bg.png) left top repeat;
+        
+      }
+
+      </style>
+      <div class="container">
+      <!-- services -->
+      <section id="services" >
+
+             <h1 style="
+font-size: 40px;
+line-height: 50px;
+letter-spacing: -0.9px;
+color: #046416;
+">Our services.</h1>
+
+
+             <div class="row no-bottom-margin">
+                <section class="col">
+                    <h2 class="h2">Web Design</h2>
+
+                    <p><img class="align-left" alt="" src="{{ STATIC_URL }}images/services/webdesign.png" />Pellentesque magna mi, iaculis pharetra eu, fermentum ullamcorper nisi.
+                    Integer fringilla magna ut quam vulputate erat. Pulvinar cum, ac eu augue ut sit amet
+                    gravida lacinia, eros massa condimentum sem, a fermentum ligula lorem non.
+                    Phasellus vulputate.</p>
+                </section>
+                <section class="col mid">
+                    <h2 class="h2">Web Development</h2>
+
+                    <p><img class="align-left" alt="" src="{{ STATIC_URL }}images/services/webdevelopment.png" />In hac habitasse platea risus dictumst. Suspendisse sit amet enim arcu. Aliquam erat volutpat.
+                    Phasellus a dui nisi. Nunc nec quam vitae nisl vehicula euismod. Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit. Sed commodo ligula blandit risus</p>
+                </section>
+
+                <section class="col">
+                    <h2 class="h2">SEO Services</h2>
+
+                    <p><img class="align-left" alt="" src="{{ STATIC_URL }}images/services/seo-services.png" />Nascetur augue hac platea enim, egestas pulvinar vut. Pulvinar cum, ac eu, tristie
+                    acus duis in dictumst non integer! Elit, sed scelerisque odio tortor, sed platea dis? Quis
+                    cursus parturient ac amet odio in? Nunc Amet urna scelerisque eu lectus placerat.</p>
+
+                </section>
+            </div>
+
+            <div class="row">
+                <section class="col">
+                    <h2 class="h2">Print Design</h2>
+
+                    <p><img class="align-left" alt="" src="{{ STATIC_URL }}images/services/print-design.png" />In hac habitasse platea risus dictumst. Suspendisse sit amet enim arcu. Aliquam erat volutpat.
+                    Phasellus a dui nisi. Nunc nec quam vitae nisl vehicula euismod. Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit. Sed commodo ligula blandit risus</p>
+                </section>
+                <section class="col mid">
+                    <h2 class="h2">Logo Design &amp; Branding</h2>
+
+                    <p><img class="align-left" alt="" src="{{ STATIC_URL }}images/services/logo-design-and-branding.png" />Nascetur augue hac platea enim, egestas pulvinar vut. Pulvinar cum, ac eu, tristie
+                    acus duis in dictumst non integer! Elit, sed scelerisque odio tortor, sed platea dis? Quis
+                    cursus parturient ac amet odio in? Nunc Amet urna scelerisque eu lectus placerat.</p>
+                </section>
+
+                <section class="col">
+                    <h2 class="h2">Newsletter</h2>
+
+                    <p><img class="align-left" alt="" src="{{ STATIC_URL }}images/services/newsletter.png" />Pellentesque magna mi, iaculis pharetra eu, fermentum ullamcorper nisi.
+                    Integer fringilla magna ut quam vulputate erat. Pulvinar cum, ac eu augue ut sit amet
+                    gravida lacinia, eros massa condimentum sem, a fermentum ligula lorem non.
+                    Phasellus vulputate.</p>
+
+                </section>
+            </div>
+
+            <a class="back-to-top" href="#main">Back to Top</a>
+
+      </section>
+  </div>

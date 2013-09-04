@@ -1,0 +1,43 @@
+{% load sekizai_tags staticfiles %}
+
+<html>
+  <head>
+    <link rel="stylesheet" href="{% static "css/reset.css" %}" type="text/css" media="all">
+    <link rel="stylesheet" href="{% static "css/layout.css" %}" type="text/css" media="all">
+    <link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css" media="all">
+    {% render_block "css" %}
+  </head>
+  <body>
+      {% block base_nav %}
+          {% include "navbar.html" %}
+      {% endblock %}
+
+      {% block content %}
+      {% endblock %}
+
+      <script type="text/javascript" src="{% static "js/maxheight.js" %}"></script>
+      <script type="text/javascript" src="{% static "js/jquery-1.4.2.min.js" %}"></script>
+      <script type="text/javascript" src="{% static "js/cufon-yui.js" %}"></script>
+      <!-- <script type="text/javascript" src="js/cufon-replace.js"></script> -->
+      <script type="text/javascript" src="{% static "js/Myriad_Pro_300.font.js" %}"></script>
+      <script type="text/javascript" src="{% static "js/Myriad_Pro_400.font.js" %}"></script>
+      <script type="text/javascript" src="{% static "js/jquery.faded.js" %}"></script>
+      <script type="text/javascript" src="{% static "js/jquery.jqtransform.js" %}"></script>
+
+      <script type="text/javascript">
+        $(function () {
+            $("#faded").faded({
+                speed: 500,
+                crossfade: true,
+                autoplay: 10000,
+                autopagination: false
+            });
+            $('#domain-form').jqTransform({
+                imgPath: 'images/'
+            });
+        });
+      </script>
+
+      {% render_block "js" %}
+  </body>
+</html>

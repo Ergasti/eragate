@@ -1,0 +1,35 @@
+{% block base_content %}
+  <header>
+    <div class="container">
+      <div class="header-box">
+        <div class="left">
+          <div class="right">
+            <nav>
+              <ul>
+                <li class="current"><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="hosting.html">Hosting</a></li>
+                <li><a href="solutions.html">Solutions</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="contacts.html">Contacts</a></li>
+              </ul>
+            </nav>
+            <h1><a href="#"><span>Smart</span>Net</a></h1>
+          </div>
+        </div>
+      </div>
+      <span class="top-info">24/7 Sales &amp; Support + 1 800 234 5678 &nbsp; l &nbsp; <a href="#">Hot Deals</a> &nbsp; l &nbsp; <a href="#">Search</a></span>
+      <form action="/loggingin" id="login-form" method="post">
+         {% csrf_token %}
+        <fieldset>
+          <span class="text">
+          <input type="text" value="Username" name="email" onFocus="if(this.value=='Username'){this.value=''}" onBlur="if(this.value==''){this.value='Username'}">
+          </span> <span class="text">
+          <input type="password" value="Password" name="password" onFocus="if(this.value=='Password'){this.value=''}" onBlur="if(this.value==''){this.value='Password'}">
+          </span> <button class="btn btn-primary" type="submit" >login</button> <span class="links"><a href="#">Forgot Password?</a><br/>
+          <a href="/register">Register</a></span>
+        </fieldset>
+      </form>
+    </div>
+  </header>
+{% endblock %}

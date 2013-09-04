@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% load sekizai_tags %}
+
+
+{% block content %}
+	<section id="content">
+	  <div class="container">
+		{% block main_slider %}
+	       	{% include "slider.html" %}
+		{% endblock %}
+		<div class="inside">
+	      {% include "plans.html" %}
+	    </div>
+	   	{% include "whyus.html" %}
+	  </div>
+	</section>
+{% endblock %}

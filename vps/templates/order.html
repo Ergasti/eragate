@@ -1,0 +1,78 @@
+ {% extends "base.html" %}
+
+ {% load cms_tags %}
+
+ {% block content %}
+ <link class="cssdeck" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css">
+ <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" class="cssdeck">
+	<div class="container">
+		<form class="form-horizontal" action='' method="POST">
+		    <fieldset>
+		        <div id="legend">
+		            <legend class="">Order</legend>
+		        </div>    
+		        <div class="control-group">
+		            <!-- Username -->
+		            <label class="control-label"  for="username">Name</label>
+		            <div class="controls">
+		                <input type="text" id="username" value="{{request.user}}" name="username" placeholder="" class="input-xlarge" disabled>
+		            </div>
+		        </div>
+		        <div class="control-group">
+		            <!-- Password-->
+		            <label class="control-label" >Model</label>
+		            <div class="controls">
+		                <!-- <input type="password" id="password" name="password" placeholder="" class="input-xlarge"> -->
+		                <select id="model" onchange="price_Changer();">
+		                  <option value="0">VPS Ram Size</option>
+		                  <option value="1" >1 GB</option>
+		                  <option value="2">2 GB</option>
+		                  <option value="4">4 GB</option>
+		                  <option value="8">8 GB</option>
+		                </select>
+		            </div>
+		        </div>
+		        <div class="control-group">
+		            <!-- Password-->
+		            <label class="control-label" >Period</label>
+		            <div class="controls">
+		                <!-- <input type="password" id="password" name="password" placeholder="" class="input-xlarge"> -->
+		                <select id="period" onchange="price_Changer();">
+		                  <option value="0">Payment Duration</option>
+		                  <option value="1">1 Month</option>
+		                  <option value="2">2 Month</option>
+		                  <option value="3">3 Month</option>
+		                  <!-- <option value="6">6 Month</option> -->
+		                  <!-- <option value="6">12 Month</option> -->
+		                </select>
+		            </div>
+		        </div>
+		        <div class="control-group">
+		            <label class="control-label" ><h4 >Price</h4></label>
+		            <div class="controls">
+		                <div id="price_tag"><h4>0</h4></div>
+		            </div>
+		        </div>
+		        <div class="control-group">
+		            <!-- Button -->
+		            <div class="controls">
+		                <button class="btn btn-success">Send Order</button>
+		            </div>
+		        </div>
+		    </fieldset>
+		</form> 
+	</div>
+	<script type="text/javascript">
+	function price_Changer(){
+		var cal_price = 0;
+		var in_model=$('#model').val();
+		var in_period=$('#period').val();
+		if(in_model=="1"&&in_period=="1"){
+			document.getElementById("price_tag").innerHTML="<h4> 85 EGP </h4>";
+		}
+			else if(in_model=="1"&&in_period=="2"){
+				document.getElementById("price_tag").innerHTML="<h4>170 EGP + Free 50%(512MB)RAM</h4>";
+			}
+	}
+	</script>
+{% endblock %}
