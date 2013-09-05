@@ -78,7 +78,7 @@
  "model": "vps.plan", 
  "fields": {
   "amount_currency": "EGP", 
-  "flavor": 3, 
+  "flavor": 4, 
   "months": 1, 
   "amount": "370"
  }
