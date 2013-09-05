@@ -21,6 +21,13 @@ class Plan(models.Model):
     def __unicode__(self):
         return "%s months, %s" % (self.months, self.flavor)
 
+class OSImage(models.Model):
+    uuid = models.CharField(max_length=32, primary_key=True)
+    name = models.CharField(max_length=200)
+
+    def __unicode__(self):
+        return self.name
+
 class Order(models.Model):
     placed_at = models.DateTimeField(auto_now_add=True)
     fulfilled_at = models.DateTimeField(editable=False, default=None, null=True)
@@ -28,6 +35,7 @@ class Order(models.Model):
 
     user = models.ForeignKey(User)
     plan = models.ForeignKey(Plan)
+    os_image = models.ForeignKey(OSImage)
 
     def __unicode__(self):
       return "Order: %s ordering %s" % (self.user, self.plan)
