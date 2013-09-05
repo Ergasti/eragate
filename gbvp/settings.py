@@ -112,6 +112,10 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 )
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'sekizai.context_processors.sekizai',
+)
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -124,7 +128,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     #'django.contrib.admindocs',
-
+    'sekizai',
     'vps',
 )
 
