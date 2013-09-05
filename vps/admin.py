@@ -9,7 +9,6 @@ from openstack import is_nova_exception
 admin.site.register(Flavor)
 admin.site.register(Plan)
 admin.site.register(OSImage)
-admin.site.register(VPS)
 
 class OrderAdmin(admin.ModelAdmin):
     list_display = ('placed_at', 'user', 'plan', 'fulfilled')
@@ -38,5 +37,8 @@ class OrderAdmin(admin.ModelAdmin):
                 else:
                     raise
     fulfill_orders.short_description = "Launch instances to fulfill selected orders"
-
 admin.site.register(Order, OrderAdmin)
+
+class VPSAdmin(admin.ModelAdmin):
+    readonly_fields = ['instance_uuid', 'ip', 'order']
+admin.site.register(VPS, VPSAdmin)
