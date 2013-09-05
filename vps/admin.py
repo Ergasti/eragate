@@ -42,5 +42,15 @@ class OrderAdmin(admin.ModelAdmin):
 admin.site.register(Order, OrderAdmin)
 
 class VPSAdmin(admin.ModelAdmin):
-    readonly_fields = ['instance_uuid', 'ip', 'order']
+    list_display = ('ip', 'owner', 'plan')
+    readonly_fields = ['instance_uuid', 'ip', 'order', 'vnc_link']
+
+    def vnc_link(self, obj):
+      try:
+        url = obj.generate_vnc_console_link()
+        return mark_safe('<a href="%s">Open VNC Console</a>' % (url))
+      except:
+        return "VNC Not Available"
+    vnc_link.short_description = "VNC Console"
+
 admin.site.register(VPS, VPSAdmin)
