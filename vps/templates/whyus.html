@@ -1,4 +1,4 @@
-      {% load i18n sekizai_tags %}
+      {% load i18n sekizai_tags staticfiles %}
 
       {% addtoblock "css" %}
       <link rel="stylesheet" href="{{ STATIC_URL }}css/nivo-slider.css" type="text/css" />
@@ -45,20 +45,13 @@
       	margin-top: 10px;
       	margin-bottom: 15px;
       }
-      p {
-        margin: 0;
-        padding: 0;
-        border: 0;
-        font-size: 100%;
-        font: inherit;
-        vertical-align: baseline;
-      margin-bottom: 25px;
-      }
+
       .content-wrap section .row .mid {
       margin-left: 35px;
       margin-right: 35px;
       }
       .row .col {
+        margin-left: 20px;
       float: left;
       margin: 0;
       padding: 0;
@@ -81,6 +74,9 @@
         background: /* url(../images/25-pixel-baseline.png) left top repeat, */ url(http://www.styleshout.com/templates/preview/PageOne10/images/bg.png) left top repeat;
         
       }
+      .col p{
+        font-size: 14px;
+      }
 
       </style>
       <div class="container">
@@ -97,25 +93,25 @@ color: #046416;
 
              <div class="row no-bottom-margin">
                 <section class="col">
-                    <h2 class="h2">Web Design</h2>
+                    <h2 class="h2">Location</h2>
 
-                    <p><img class="align-left" alt="" src="{{ STATIC_URL }}images/services/webdesign.png" />Pellentesque magna mi, iaculis pharetra eu, fermentum ullamcorper nisi.
+                    <p><img class="align-left" alt="" src="{% static "images/services/webdesign.png" %}"/>Pellentesque magna mi, iaculis pharetra eu, fermentum ullamcorper nisi.
                     Integer fringilla magna ut quam vulputate erat. Pulvinar cum, ac eu augue ut sit amet
                     gravida lacinia, eros massa condimentum sem, a fermentum ligula lorem non.
                     Phasellus vulputate.</p>
                 </section>
                 <section class="col mid">
-                    <h2 class="h2">Web Development</h2>
+                    <h2 class="h2">Bandwidth</h2>
 
-                    <p><img class="align-left" alt="" src="{{ STATIC_URL }}images/services/webdevelopment.png" />In hac habitasse platea risus dictumst. Suspendisse sit amet enim arcu. Aliquam erat volutpat.
+                    <p><img class="align-left" alt="" src="{% static "images/services/webdevelopment.png" %}" />In hac habitasse platea risus dictumst. Suspendisse sit amet enim arcu. Aliquam erat volutpat.
                     Phasellus a dui nisi. Nunc nec quam vitae nisl vehicula euismod. Lorem ipsum dolor sit amet,
                     consectetur adipiscing elit. Sed commodo ligula blandit risus</p>
                 </section>
 
                 <section class="col">
-                    <h2 class="h2">SEO Services</h2>
+                    <h2 class="h2">Network Speed</h2>
 
-                    <p><img class="align-left" alt="" src="{{ STATIC_URL }}images/services/seo-services.png" />Nascetur augue hac platea enim, egestas pulvinar vut. Pulvinar cum, ac eu, tristie
+                    <p><img class="align-left" alt="" src="{% static "images/services/seo-services.png" %}"/>Nascetur augue hac platea enim, egestas pulvinar vut. Pulvinar cum, ac eu, tristie
                     acus duis in dictumst non integer! Elit, sed scelerisque odio tortor, sed platea dis? Quis
                     cursus parturient ac amet odio in? Nunc Amet urna scelerisque eu lectus placerat.</p>
 
@@ -124,24 +120,24 @@ color: #046416;
 
             <div class="row">
                 <section class="col">
-                    <h2 class="h2">Print Design</h2>
+                    <h2 class="h2">Hardware</h2>
 
-                    <p><img class="align-left" alt="" src="{{ STATIC_URL }}images/services/print-design.png" />In hac habitasse platea risus dictumst. Suspendisse sit amet enim arcu. Aliquam erat volutpat.
+                    <p><img class="align-left" alt="" src="{% static "images/services/print-design.png" %}" />In hac habitasse platea risus dictumst. Suspendisse sit amet enim arcu. Aliquam erat volutpat.
                     Phasellus a dui nisi. Nunc nec quam vitae nisl vehicula euismod. Lorem ipsum dolor sit amet,
                     consectetur adipiscing elit. Sed commodo ligula blandit risus</p>
                 </section>
                 <section class="col mid">
-                    <h2 class="h2">Logo Design &amp; Branding</h2>
+                    <h2 class="h2">Support</h2>
 
-                    <p><img class="align-left" alt="" src="{{ STATIC_URL }}images/services/logo-design-and-branding.png" />Nascetur augue hac platea enim, egestas pulvinar vut. Pulvinar cum, ac eu, tristie
+                    <p><img class="align-left" alt="" src="{% static "images/services/logo-design-and-branding.png" %}" />Nascetur augue hac platea enim, egestas pulvinar vut. Pulvinar cum, ac eu, tristie
                     acus duis in dictumst non integer! Elit, sed scelerisque odio tortor, sed platea dis? Quis
                     cursus parturient ac amet odio in? Nunc Amet urna scelerisque eu lectus placerat.</p>
                 </section>
 
                 <section class="col">
-                    <h2 class="h2">Newsletter</h2>
+                    <h2 class="h2">Happy Customers</h2>
 
-                    <p><img class="align-left" alt="" src="{{ STATIC_URL }}images/services/newsletter.png" />Pellentesque magna mi, iaculis pharetra eu, fermentum ullamcorper nisi.
+                    <p><img class="align-left" alt="" src="{% static "images/services/newsletter.png" %}" />Pellentesque magna mi, iaculis pharetra eu, fermentum ullamcorper nisi.
                     Integer fringilla magna ut quam vulputate erat. Pulvinar cum, ac eu augue ut sit amet
                     gravida lacinia, eros massa condimentum sem, a fermentum ligula lorem non.
                     Phasellus vulputate.</p>
