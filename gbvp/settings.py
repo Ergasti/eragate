@@ -114,6 +114,7 @@ TEMPLATE_DIRS = (
 )
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
+    'django.contrib.messages.context_processors.messages',
     'sekizai.context_processors.sekizai',
 )
 
@@ -161,9 +162,22 @@ LOGGING = {
     }
 }
 
+# Openstack
+
 # Openstack Authentication Info
 
 OS_USERNAME = ""
 OS_TENANT_NAME = ""
 OS_PASSWORD = ""
 OS_AUTH_URL = ""
+
+# Openstack Server Creation Settings
+
+OS_VM_CREATION_SETTINGS = {
+    'key_name': None,
+    'availability_zone': None,
+    'nics': [],
+    'security_groups': ['default'],
+    'floating_ip_pool': None
+}
+
