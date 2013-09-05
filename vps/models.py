@@ -58,7 +58,7 @@ class Order(models.Model):
                 name="%s_%s" % (self.user.username, self.placed_at),
                 image=self.os_image_id,
                 flavor=self.plan.flavor.flavor_uuid,
-                meta={'owner': self.user.username, 'plan': self.plan_id, 'order': self.id},
+                meta={'owner': self.user.username, 'plan': str(self.plan_id), 'order': str(self.id)},
                 key_name=params['key_name'],
                 availability_zone=params['availability_zone'],
                 nics=params['nics'],
