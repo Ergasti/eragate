@@ -1,4 +1,4 @@
-import datetime
+import datetime, time
 
 from django.conf import settings
 from django.utils.timezone import utc
@@ -55,7 +55,7 @@ class Order(models.Model):
                                         order=self)[0]
         if not vps.instance_uuid:
             server = nova_api().servers.create(
-                name="%s_%s" % (self.user.username, self.placed_at),
+                name="%s_%s" % (self.user.username, int(time.mktime(self.placed_at.utctimetuple()))),
                 image=self.os_image_id,
                 flavor=self.plan.flavor.flavor_uuid,
                 meta={'owner': self.user.username, 'plan': str(self.plan_id), 'order': str(self.id)},
@@ -72,7 +72,7 @@ class Order(models.Model):
                 floating_ip = floating_ip[0]
             else:
                 floating_ip = nova_api().floating_ips.create(params['floating_ip_pool'])
-            nova_api().add_floating_ip(vps.instance_uuid, floating_ip)
+            nova_api().servers.add_floating_ip(vps.instance_uuid, floating_ip)
             vps.ip = floating_ip.ip
             vps.save()
 
