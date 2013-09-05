@@ -89,3 +89,31 @@ class VPS(models.Model):
 
     def __unicode__(self):
         return "%s: %s, %s" % (self.owner, self.ip, self.instance_uuid)
+
+    def get_instance_status(self):
+        server = nova_api().servers.get(self.instance_uuid)
+        return [server.__getattr__("OS-EXT-STS:vm_state"),
+                server.__getattr__("OS-EXT-STS:task_state")]
+
+    def generate_vnc_console_link(self):
+        try: vnc_type = settings.OS_VNC_TYPE
+        except: vnc_type = "novnc"
+        return nova_api().servers.get_vnc_console(self.instance_uuid, vnc_type)['console']['url']
+
+    def suspend_instance(self):
+        return nova_api().servers.suspend(self.instance_uuid)
+
+    def resume_instance(self):
+        return nova_api().servers.resume(self.instance_uuid)
+
+    def start_instance(self):
+        return nova_api().servers.start(self.instance_uuid)
+
+    def stop_instance(self):
+        return nova_api().servers.stop(self.instance_uuid)
+
+    def reboot_instance(self):
+        return nova_api().servers.reboot(self.instance_uuid, 'SOFT')
+
+    def force_reboot_instance(self):
+        return nova_api().servers.reboot(self.instance_uuid, 'HARD')

@@ -171,6 +171,8 @@ OS_TENANT_NAME = ""
 OS_PASSWORD = ""
 OS_AUTH_URL = ""
 
+OS_VNC_TYPE = "novnc"
+
 # Openstack Server Creation Settings
 
 OS_VM_CREATION_SETTINGS = {
