@@ -21,11 +21,23 @@ class Plan(models.Model):
     def __unicode__(self):
         return "%s months, %s" % (self.months, self.flavor)
 
+class Order(models.Model):
+    placed_at = models.DateTimeField(auto_now_add=True)
+    fulfilled_at = models.DateTimeField(editable=False, default=None, null=True)
+    fulfilled = models.BooleanField(editable=False, default=False)
+
+    user = models.ForeignKey(User)
+    plan = models.ForeignKey(Plan)
+
+    def __unicode__(self):
+      return "Order: %s ordering %s" % (self.user, self.plan)
+
 class VPS(models.Model):
     owner = models.ForeignKey(User)
     plan = models.ForeignKey(Plan)
     instance_uuid = models.CharField(max_length=32)
     ip = models.CharField(max_length=15, null=True, blank=True)
+    order = models.ForeignKey(Order, null=True, blank=True)
 
     def __unicode__(self):
         return "%s: %s, %s" % (self.owner, self.ip, self.instance_uuid)
