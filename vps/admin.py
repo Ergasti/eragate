@@ -1,8 +1,4 @@
-import datetime
-
 from django.contrib import admin
-from django.conf import settings
-from django.utils.timezone import utc
 from django.contrib import messages
 
 from vps.models import *
@@ -16,6 +12,12 @@ admin.site.register(VPS)
 class OrderAdmin(admin.ModelAdmin):
     list_display = ('placed_at', 'user', 'plan', 'fulfilled')
     actions = ['fulfill_orders']
+
+    def get_readonly_fields(self, request, obj=None):
+        if obj and obj.fulfilled: # obj is not None, so this is an edit
+            return ['user', 'plan', 'os_image'] # Return a list or tuple of readonly fields' names
+        else: # This is an addition
+            return []
 
     def fulfill_orders(self, request, queryset):
         for order in queryset:
