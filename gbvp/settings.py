@@ -160,3 +160,10 @@ LOGGING = {
         },
     }
 }
+
+# Openstack Authentication Info
+
+OS_USERNAME = ""
+OS_TENANT_NAME = ""
+OS_PASSWORD = ""
+OS_AUTH_URL = ""
