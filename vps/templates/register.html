@@ -1,6 +1,5 @@
  {% extends "base.html" %}
 
- {% load cms_tags %}
 
 
        <!--      {% block mahmoud %}
@@ -11,9 +10,7 @@
 
 {% block content %}
 <div class="container">
-<link class="cssdeck" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" class="cssdeck">
-
+<link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.css">
 <div class="" id="loginModal">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -62,14 +59,20 @@
                     <form id="tab" class = "myform form-horizontal" action="" method="post">
                         {% csrf_token %}
 
-                        {% if form.errors %}<p>Please correct the following fields:</p>{% endif %}
+                        {% if form1.errors or form2.errors %}<p>Please correct the following fields:</p>{% endif %}
                         <div class="control-group">
                             <!-- Username -->
                             <div class="register_div">
-                                <label class="control-label" >Full Name</label>
+                                <label class="control-label" >First Name</label>
                                 <div class="controls">
-                                    {% if form.name.errors %}<p class="error">{{ form.name.errors }}</p>{% endif %}
-                                    <p>{{ form.name }}</p>
+                                    {% if form1.first_name.errors %}<p class="error">{{ form1.first_name.errors }}</p>{% endif %}
+                                    <p>{{ form1.first_name}}</p>
+                                <label class="control-label" >Last Name</label>
+                                </div>
+                                    <div class="controls">
+                                    {% if form1.last_name.errors %}<p class="error">{{ form1.last_name.errors }}</p>{% endif %}
+                                    <p>{{ form1.last_name}}</p>
+
                                 </div>
                             </div>
                         </div>
@@ -77,8 +80,8 @@
                         <label class="control-label">Email</label>
                         <div class="register_div">
                             <div class="controls">
-                                {% if form.email.errors %}<p class="error">{{ form.email.errors }}</p>{% endif %}
-                                <p>{{ form.email }}</p>
+                                {% if form1.email.errors %}<p class="error">{{ form1.email.errors }}</p>{% endif %}
+                                <p>{{ form1.email }}</p>
                             </div>
                         </div>
                         </div>
@@ -87,8 +90,8 @@
                             <div class="register_div">
                                 <label class="control-label" >Mobile</label>
                                 <div class="controls">
-                                    {% if form.phone_number.errors %}<p class="error">{{ form.phone_number.errors }}</p>{% endif %}
-                                    <p>{{ form.phone_number }}</p>
+                                    {% if form2.phone_number.errors %}<p class="error">{{ form2.phone_number.errors }}</p>{% endif %}
+                                    <p>{{ form2.phone_number }}</p>
                                 </div>
                             </div>
                         </div>
@@ -97,8 +100,8 @@
                             <div class="register_div">
                                 <label class="control-label" >Gender</label>
                                 <div class="controls">
-                                    {% if form.gender.errors %}<p class="error">{{ form.gender.errors }}</p>{% endif %}
-                                    <p>{{ form.gender }}</p>
+                                    {% if form2.gender.errors %}<p class="error">{{ form2.gender.errors }}</p>{% endif %}
+                                    <p>{{ form2.gender }}</p>
                                 </div>
                             </div>
                         </div>
@@ -107,8 +110,8 @@
                             <div class="register_div">
                                 <label class="control-label" >date_Of_birth</label>
                                 <div class="controls">
-                                    {% if form.date_Of_birth.errors %}<p class="error">{{ form.date_Of_birth.errors }}</p>{% endif %}
-                                    <p>{{ form.date_Of_birth }}</p>
+                                    {% if form2.date_Of_birth.errors %}<p class="error">{{ form2.date_Of_birth.errors }}</p>{% endif %}
+                                    <p>{{ form2.date_Of_birth }}</p>
                                 </div>
                             </div>
                         </div>
@@ -121,8 +124,8 @@
                         <div class="control-group">
                             <label class="control-label">Password</label>
                             <div class="controls">
-                                {% if form.password1.errors %}<p class="error">{{ form.password1.errors }}</p>{% endif %}
-                                <p>{{ form.password1 }}</p>
+                                {% if form1.password1.errors %}<p class="error">{{ form1.password1.errors }}</p>{% endif %}
+                                <p>{{ form1.password1 }}</p>
                             </div>    
                         </div>                       
                         <label class ="hide " for="passwordStrength">Password strength </label>
@@ -133,10 +136,10 @@
                             <label class="control-label">Password Confirmation</label>
                             <div class="controls">
                         <div class="register_div">
-                            {% if form.password2.errors %}
-                            <p class="error">{{ form.password2.errors }}</p>
+                            {% if form1.password2.errors %}
+                            <p class="error">{{ form1.password1.errors }}</p>
                             {% endif %}
-                            <p>{{ form.password2 }}</p>
+                            <p>{{ form1.password2 }}</p>
                             </div> 
                         </div >
                         <div class="control-group">
@@ -144,8 +147,8 @@
                             <div class="controls">
                                 <script type="text/javascript" src="http://api.recaptcha.net/challenge?k=6LdSucISAAAAADc_huFvVv0fCCEfcVJNvbqeY-TN">
                                 </script> 
-                                   {% if form.captcha.errors %}<p class="error">{{ form.captcha.errors }}</p>{% endif %}
-                                    <p>{{ form.captcha }}</p>
+                                   {% if form2.captcha.errors %}<p class="error">{{ form2.captcha.errors }}</p>{% endif %}
+                                    <p>{{ form2.captcha }}</p>
                             </div>    
                         </div> 
                         <div class="control-group">
