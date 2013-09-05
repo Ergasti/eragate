@@ -1,5 +1,7 @@
 from django.contrib import admin
 from django.contrib import messages
+from django.utils.safestring import mark_safe
+from django.core import urlresolvers
 
 from vps.models import *
 from openstack import is_nova_exception
@@ -15,9 +17,14 @@ class OrderAdmin(admin.ModelAdmin):
 
     def get_readonly_fields(self, request, obj=None):
         if obj and obj.fulfilled: # obj is not None, so this is an edit
-            return ['user', 'plan', 'os_image'] # Return a list or tuple of readonly fields' names
-        else: # This is an addition
+            return ['fulfillment_vps', 'user', 'plan', 'os_image']
+        else:
             return []
+
+    def fulfillment_vps(self, obj):
+        change_url = urlresolvers.reverse('admin:vps_vps_change', args=(obj.vps.id,))
+        return mark_safe('<a href="%s">%s</a>' % (change_url, obj.vps))
+    fulfillment_vps.short_description = "VPS"
 
     def fulfill_orders(self, request, queryset):
         for order in queryset:

@@ -85,7 +85,7 @@ class VPS(models.Model):
     plan = models.ForeignKey(Plan)
     instance_uuid = models.CharField(max_length=36)
     ip = models.CharField(max_length=15, null=True, blank=True)
-    order = models.ForeignKey(Order, null=True, blank=True)
+    order = models.OneToOneField(Order, null=True, blank=True)
 
     def __unicode__(self):
         return "%s: %s, %s" % (self.owner, self.ip, self.instance_uuid)
