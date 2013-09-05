@@ -14,7 +14,7 @@ class Flavor(models.Model):
     name_ar = models.CharField(max_length=100, null=True, blank=True)
     ram_mb = models.IntegerField()
     disk_gb = models.IntegerField()
-    flavor_uuid = models.CharField(max_length=32, null=True, blank=True)
+    flavor_uuid = models.CharField(max_length=36, null=True, blank=True)
 
     def __unicode__(self):
         return "%s: %s MB, %s GB" % (self.name_en or self.name_ar, self.ram_mb, self.disk_gb)
@@ -28,7 +28,7 @@ class Plan(models.Model):
         return "%s months, %s" % (self.months, self.flavor)
 
 class OSImage(models.Model):
-    uuid = models.CharField(max_length=32, primary_key=True)
+    uuid = models.CharField(max_length=36, primary_key=True)
     name = models.CharField(max_length=200)
 
     def __unicode__(self):
@@ -83,7 +83,7 @@ class Order(models.Model):
 class VPS(models.Model):
     owner = models.ForeignKey(User)
     plan = models.ForeignKey(Plan)
-    instance_uuid = models.CharField(max_length=32)
+    instance_uuid = models.CharField(max_length=36)
     ip = models.CharField(max_length=15, null=True, blank=True)
     order = models.ForeignKey(Order, null=True, blank=True)
 
