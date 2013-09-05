@@ -6,6 +6,8 @@ from django.core import urlresolvers
 from vps.models import *
 from openstack import is_nova_exception
 
+admin.site.disable_action('delete_selected')
+
 admin.site.register(Flavor)
 admin.site.register(Plan)
 admin.site.register(OSImage)
