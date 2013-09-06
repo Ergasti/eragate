@@ -85,7 +85,7 @@ if(typeof jQuery != "undefined") {
 							$("."+o.pagination+" li a",$t).click(function(){
 								current = $("."+o.pagination+" li.current a",$t).attr("rel");									
 								clicked = $(this).attr("rel");
-								if (current != clicked) {animate("pagination",clicked,current);}
+								if (current != clicked) {animate("pagination1",clicked,current);}
 								if(o.autoplay){pause();}
 								return false;
 							});
@@ -159,14 +159,14 @@ if(typeof jQuery != "undefined") {
 										next = currentitem*1-1;
 										if (next === -1) { next = total-1; }
 									break;
-									case "pagination":
+									case "pagination1":
 										next = clicked;
 										prev = current;
 									break;
 								}
 								if (o.pagination) {
-									$(".pagination li.current",$t).removeClass("current");
-									$(".pagination li a:eq("+next+")",$t).parent().addClass("current");
+									$(".pagination1 li.current",$t).removeClass("current");
+									$(".pagination1 li a:eq("+next+")",$t).parent().addClass("current");
 								}
 								if (o.crossfade) {
 									$c.children(":eq("+next+")").css({zIndex:10}).fadeIn(o.speed,function(){
@@ -201,7 +201,7 @@ if(typeof jQuery != "undefined") {
 			bigtarget: false,
 			loading: false,
 			autoheight: false,
-			pagination: "pagination",
+			pagination: "pagination1",
 			autopagination: true,
 			nextbtn: "next",
 			prevbtn: "prev",
