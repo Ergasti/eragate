@@ -9,6 +9,7 @@
 
 <div class="container">
   <form class="form-horizontal" action='' method="POST">
+  	{% csrf_token %}
     <fieldset>
       <div id="legend">
         <legend class="">
@@ -21,7 +22,7 @@
         </label>
         <div class="controls">
           <input class="form-control input-lg" type="text" 
-          placeholder="{{request.user}}" id="username" value="{{request.user}}" disabled>
+          placeholder="{{user}}" id="username" name="username" value="{{user}}" disabled>
         </div>
       </div>
       <div class="control-group">
@@ -34,7 +35,7 @@
           <div class="btn-group btn-group-lg btn-group-justified" data-toggle="buttons" style="width:100%;margin-bottom: 15px;">
             {% for flavor in flavors %}
             <label class="btn btn-success" style="#76c759;">
-              <input type="radio" class="flavor_radio" name="flavor" id="option{{flavor.id}}" value="{{flavor.id}}" onchange="flavor_Changer()" >
+              <input type="radio" class="flavor_radio" name="flavor" id="flavor{{flavor.id}}" value="{{flavor.id}}" onchange="flavor_Changer()" >
               <span style="font-weight: bold;font-size: 14px">
                 {{flavor.name_en}}
               </span>
@@ -53,7 +54,7 @@
             <div class="btn-group btn-group-lg btn-group-justified flavor_plans " data-toggle="buttons" style="width:100%;display:none" id="flavor_plans{{flavor.id}}">
               {% for plan in flavor.plan_set.all %}
               <label class="btn btn-primary" >
-                <input type="radio" name="plans" id="plan{{flavor.id}}_{{plan.id}}" data-flavor="{{flavor.id}}" data-flavorname="{{flavor.name_en}}" 
+                <input type="radio" name="plans" id="plan{{flavor.id}}_{{plan.id}}" class="plan_radio" data-flavor="{{flavor.id}}" data-flavorname="{{flavor.name_en}}" 
                 data-amount="{{plan.amount.amount}}" 
                 data-months="{{plan.months}}" data-ram="{{plan.flavor.ram_mb}}"
                 value="{{plan.id}}" onchange="plan_Changer()">
@@ -204,6 +205,8 @@
 {% addtoblock "js" %}
 <script type="text/javascript">
   $("input:radio[name=flavor]").click(function() {
+  	$('.flavor_radio').parent().removeClass(" active");
+  	$(this).parent().addClass(" active");
 	$('#main_offer_div').show();
     $('.flavor_plans').hide();
     $('#flavor_plans'+$(this).val()).fadeIn();
@@ -211,26 +214,37 @@
                                      )
     
     $("input:radio[name=plans]").click(function() {
+      $('.plan_radio').parent().removeClass(" active");
+   	  $(this).parent().addClass(" active");
       $("#ex_amount").text($(this).attr('data-amount') +"");
       $("#ex_duartion").text($(this).attr('data-months') +"mo");
       $("#ex_month").text($(this).attr('data-months') +"");
       $("#ex_flavor_name").text($(this).attr('data-flavorname') +"");
       $("#ex_ram").text($(this).attr('data-ram') +"");
       $("#send").removeAttr("disabled");
-      
-      
-      
-      
-      
-      
-      
       $('#subDomain_div').fadeIn()
-        $('#example_plan').fadeIn();
+      $('#example_plan').fadeIn();
       $('.plan').fadeIn();
       $('#price_div').fadeIn();
       $('#price_input').val($(this).attr('data-amount'));
-    }
-                                      )
+    })
+
+{% if choosen %}
+$(function() {
+	$('#flavor{{choosen.flavor.id}}').click();
+	});
+	setTimeout(function() {$('#plan{{choosen.flavor.id}}_{{choosen.id}}').click();},1000)
+
+function choosen_flavor(){
+	$('#flavor1').click();
+}
+function choosen_plan(){
+	$('#plan1_1').click();
+}
+{% endif %}
+
+
 </script>
+
 {% endaddtoblock %}
 {% endblock %}

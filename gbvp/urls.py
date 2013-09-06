@@ -18,5 +18,16 @@ urlpatterns = patterns('',
     url(r'^register/*', 'vps.views.UserRegistration'),
     url(r'^login/*', 'vps.views.login'),
     url(r'^order/*', 'vps.views.order'),
+    url(r'^plan_order/(?P<plan>\w+)', 'vps.views.order_withplan'),
+    url(r'^dashboard/*', 'vps.views.dashboard'),
+
+    url(r'^suspend_instance/*', 'vps.views.suspend_instance'),
+    url(r'^resume_instance/*', 'vps.views.resume_instance'),
+    url(r'^start_instance/*', 'vps.views.start_instance'),
+    url(r'^reboot_instance/*', 'vps.views.reboot_instance'),
+    url(r'^force_reboot_instance/*', 'vps.views.force_reboot_instance'),
+    
+
+
 
 )
