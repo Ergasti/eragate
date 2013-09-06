@@ -107,8 +107,6 @@ ROOT_URLCONF = 'gbvp.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'gbvp.wsgi.application'
 
-AUTH_PROFILE_MODULE = 'vps.UserProfile'
-
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
@@ -116,6 +114,7 @@ TEMPLATE_DIRS = (
 )
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
+    'django.contrib.messages.context_processors.messages',
     'sekizai.context_processors.sekizai',
 )
 
@@ -164,6 +163,8 @@ LOGGING = {
     }
 }
 
+# Openstack
+
 # Openstack Authentication Info
 
 OS_USERNAME = ""
@@ -171,7 +172,18 @@ OS_TENANT_NAME = ""
 OS_PASSWORD = ""
 OS_AUTH_URL = ""
 
+# Openstack Server Creation Settings
+
+OS_VM_CREATION_SETTINGS = {
+    'key_name': None,
+    'availability_zone': None,
+    'nics': [],
+    'security_groups': ['default'],
+    'floating_ip_pool': None
+}
+
 # Recaptcha Info
 RECAPTCHA_PUBLIC_KEY = '6Ld8ct8SAAAAAJTUMgacSavqcnzqRVPT2M7Ht5i6'
 RECAPTCHA_PRIVATE_KEY = '6Ld8ct8SAAAAAH6kJ8dcBhqG438D9IwCcAP1whEM'
 RECAPTCHA_USE_SSL = True
+
