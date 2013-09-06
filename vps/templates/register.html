@@ -72,8 +72,14 @@
                                     <div class="controls">
                                     {% if form1.last_name.errors %}<p class="error">{{ form1.last_name.errors }}</p>{% endif %}
                                     <p>{{ form1.last_name}}</p>
-
                                 </div>
+                                <label class="control-label" >UserName</label>
+                                    <div class="controls">
+                                    {% if form1.username.errors %}<p class="error">
+                                    {{ form1.username.errors }}</p>{% endif %}
+                                    <p>{{ form1.username}}</p>
+                                </div>
+
                             </div>
                         </div>
                         <div class="control-group">
