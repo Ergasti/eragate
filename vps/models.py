@@ -47,7 +47,7 @@ class Order(models.Model):
     subdomain =models.CharField(max_length=20, unique=True)
     user = models.ForeignKey(User)
     plan = models.ForeignKey(Plan)
-    os_image = models.ForeignKey(OSImage)
+    os_image = models.ForeignKey(OSImage, null=True, blank=True)
 
     def __unicode__(self):
         return "Order: %s ordering %s" % (self.user, self.plan)
