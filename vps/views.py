@@ -78,7 +78,7 @@ def UserRegistration(request):
 
 def order(request):
     if request.method == 'GET':
-        print request.GET['plan']
+        # print request.GET['plan']
         flavors = Flavor.objects.all()
         plans = Plan.objects.all()
         return render_to_response ('order.html',{'plans': plans,'flavors':flavors},context_instance=RequestContext(request))
