@@ -16,5 +16,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'vps.views.index'),
     url(r'^register/*', 'vps.views.UserRegistration'),
+    url(r'^login/*', 'vps.views.login'),
+    url(r'^order/*', 'vps.views.order'),
 
 )

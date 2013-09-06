@@ -13,32 +13,32 @@ import datetime
 from datetime import datetime, timedelta
 
 def index(request):
-	plans = Plan.objects.all()
-	return render(request, 'main.html', {'plans': plans})
+    plans = Plan.objects.all()
+    return render(request, 'main.html', {'plans': plans})
 
 
 def login(request):
-	print request.method 
-	if request.method == 'GET':
-	    return render_to_response ('login.html',context_instance=RequestContext(request))
-	if request.method == 'POST':
-		mail = request.POST['username']
-		password = request.POST['password']
-		user = authenticate(username='username', password='password')
-		if user is not None:
-		    # the password verified for the user
-		    if user.is_active:
-		        print("User is valid, active and authenticated")
-		    else:
-		        print("The password is valid, but the account has been disabled!")
-		else:
-		    # the authentication system was unable to verify the username and password
-		    print("The username and password were incorrect.")
+    
+    if request.method == 'GET':
+        return render_to_response ('login.html',context_instance=RequestContext(request))
+    if request.method == 'POST':
+        print request.POST  
+        user = authenticate(username=request.POST['username'], password=request.POST['password'])
+        print user
+        if user is not None:
+            # the password verified for the user
+            if user.is_active:
+                print("User is valid, active and authenticated")
+            else:
+                print("The password is valid, but the account has been disabled!")
+        else:
+            # the authentication system was unable to verify the username and password
+            print("The username and password were incorrect.")
+
 
 def UserRegistration(request):    
     if request.method == 'POST':
         data =  request.POST.copy()
-        data['form1-username']=data['form1-email']
         print request.POST
         form1 = UserCreateForm(data, prefix="form1") 
         form2 = RegistrationForm(data, prefix="form2") 
@@ -67,6 +67,7 @@ def UserRegistration(request):
                 return HttpResponseRedirect('/thankyou/')
         else:
             print form1.errors
+            print form2.errors
             form1 = UserCreateForm(prefix="form1")
             form2 = RegistrationForm(prefix="form2")
             return render_to_response('register.html', {'form1': form1,'form2':form2}, context_instance=RequestContext(request))
@@ -74,3 +75,10 @@ def UserRegistration(request):
         form1 = UserCreateForm(prefix="form1")
         form2 = RegistrationForm(prefix="form2")
         return render_to_response('register.html', {'form1': form1,'form2':form2}, context_instance=RequestContext(request))
+
+def order(request):
+    if request.method == 'GET':
+        print request.GET['plan']
+        flavors = Flavor.objects.all()
+        plans = Plan.objects.all()
+        return render_to_response ('order.html',{'plans': plans,'flavors':flavors},context_instance=RequestContext(request))

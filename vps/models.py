@@ -29,6 +29,10 @@ class Plan(models.Model):
     def __unicode__(self):
         return "%s months, %s" % (self.months, self.flavor)
 
+    def getinfo(self):
+       return "%s , %s months" % (self.flavor.name_en , self.months)
+
+
 class OSImage(models.Model):
     uuid = models.CharField(max_length=36, primary_key=True)
     name = models.CharField(max_length=200)
@@ -40,7 +44,7 @@ class Order(models.Model):
     placed_at = models.DateTimeField(auto_now_add=True)
     fulfilled_at = models.DateTimeField(editable=False, default=None, null=True)
     fulfilled = models.BooleanField(editable=False, default=False)
-
+    subdomain =models.CharField(max_length=20, unique=True)
     user = models.ForeignKey(User)
     plan = models.ForeignKey(Plan)
     os_image = models.ForeignKey(OSImage)
