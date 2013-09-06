@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="{% static "css/reset.css" %}" type="text/css" media="all">
     <link rel="stylesheet" href="{% static "css/layout.css" %}" type="text/css" media="all">
     <link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css" media="all">
+
     {% render_block "css" %}
   </head>
   <body>
@@ -24,9 +25,12 @@
       <script type="text/javascript" src="{% static "js/jquery.faded.js" %}"></script>
       <script type="text/javascript" src="{% static "js/jquery.jqtransform.js" %}"></script>
 
+      <script src="{% static "js/bootstrap.min.js"%}" ></script>
+
+
       <script type="text/javascript">
         $(function () {
-            $("#faded").faded({
+            $("#faded1").faded({
                 speed: 500,
                 crossfade: true,
                 autoplay: 10000,
@@ -37,6 +41,7 @@
             });
         });
       </script>
+      
 
       {% render_block "js" %}
   </body>

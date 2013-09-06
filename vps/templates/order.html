@@ -1,78 +1,248 @@
- {% extends "base.html" %}
+{% extends "base.html" %}
+{% load i18n  sekizai_tags staticfiles %}
 
- {% load cms_tags %}
 
- {% block content %}
- <link class="cssdeck" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css">
- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" class="cssdeck">
-	<div class="container">
-		<form class="form-horizontal" action='' method="POST">
-		    <fieldset>
-		        <div id="legend">
-		            <legend class="">Order</legend>
-		        </div>    
-		        <div class="control-group">
-		            <!-- Username -->
-		            <label class="control-label"  for="username">Name</label>
-		            <div class="controls">
-		                <input type="text" id="username" value="{{request.user}}" name="username" placeholder="" class="input-xlarge" disabled>
-		            </div>
-		        </div>
-		        <div class="control-group">
-		            <!-- Password-->
-		            <label class="control-label" >Model</label>
-		            <div class="controls">
-		                <!-- <input type="password" id="password" name="password" placeholder="" class="input-xlarge"> -->
-		                <select id="model" onchange="price_Changer();">
-		                  <option value="0">VPS Ram Size</option>
-		                  <option value="1" >1 GB</option>
-		                  <option value="2">2 GB</option>
-		                  <option value="4">4 GB</option>
-		                  <option value="8">8 GB</option>
-		                </select>
-		            </div>
-		        </div>
-		        <div class="control-group">
-		            <!-- Password-->
-		            <label class="control-label" >Period</label>
-		            <div class="controls">
-		                <!-- <input type="password" id="password" name="password" placeholder="" class="input-xlarge"> -->
-		                <select id="period" onchange="price_Changer();">
-		                  <option value="0">Payment Duration</option>
-		                  <option value="1">1 Month</option>
-		                  <option value="2">2 Month</option>
-		                  <option value="3">3 Month</option>
-		                  <!-- <option value="6">6 Month</option> -->
-		                  <!-- <option value="6">12 Month</option> -->
-		                </select>
-		            </div>
-		        </div>
-		        <div class="control-group">
-		            <label class="control-label" ><h4 >Price</h4></label>
-		            <div class="controls">
-		                <div id="price_tag"><h4>0</h4></div>
-		            </div>
-		        </div>
-		        <div class="control-group">
-		            <!-- Button -->
-		            <div class="controls">
-		                <button class="btn btn-success">Send Order</button>
-		            </div>
-		        </div>
-		    </fieldset>
-		</form> 
-	</div>
-	<script type="text/javascript">
-	function price_Changer(){
-		var cal_price = 0;
-		var in_model=$('#model').val();
-		var in_period=$('#period').val();
-		if(in_model=="1"&&in_period=="1"){
-			document.getElementById("price_tag").innerHTML="<h4> 85 EGP </h4>";
-		}
-			else if(in_model=="1"&&in_period=="2"){
-				document.getElementById("price_tag").innerHTML="<h4>170 EGP + Free 50%(512MB)RAM</h4>";
-			}
-	}
-	</script>
+{% block content %}
+
+<link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}" type="text/css" media="all">
+<script src="{% static "js/libs/modernizr-2.6.2.min.js"%}" ></script>
+
+<div class="container">
+  <form class="form-horizontal" action='/order/' method="POST">
+  	{% csrf_token %}
+    <fieldset>
+      <div id="legend">
+        <legend class="">
+          Order
+        </legend>
+      </div>
+      <div class="control-group">
+        <label class="control-label"  for="username">
+          Name
+        </label>
+        <div class="controls">
+          <input class="form-control input-lg" type="text" 
+          placeholder="{{user}}" id="username" name="username" value="{{user}}" disabled>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" >
+          <h4>
+            The Plans
+          </h4>
+        </label>
+        <div class="controls">
+          <div class="btn-group btn-group-lg btn-group-justified" data-toggle="buttons" style="width:100%;margin-bottom: 15px;">
+            {% for flavor in flavors %}
+            <label class="btn btn-success" style="#76c759;">
+              <input type="radio" class="flavor_radio" name="flavor" id="flavor{{flavor.id}}" value="{{flavor.id}}" onchange="flavor_Changer()" >
+              <span style="font-weight: bold;font-size: 14px">
+                {{flavor.name_en}}
+              </span>
+            </label>
+            {% endfor %}
+          </div>
+        </div>
+        <div id="main_offer_div" style="margin-bottom: 15px;display: none;">
+          <label class="control-label" >
+            <h4>
+              Offer
+            </h4>
+          </label>
+          <div class="controls">
+            {% for flavor in flavors %}
+            <div class="btn-group btn-group-lg btn-group-justified flavor_plans " data-toggle="buttons" style="width:100%;display:none" id="flavor_plans{{flavor.id}}">
+              {% for plan in flavor.plan_set.all %}
+              <label class="btn btn-primary" >
+                <input type="radio" name="plans" id="plan{{flavor.id}}_{{plan.id}}" class="plan_radio" data-flavor="{{flavor.id}}" data-flavorname="{{flavor.name_en}}" 
+                data-amount="{{plan.amount.amount}}" 
+                data-months="{{plan.months}}" data-ram="{{plan.flavor.ram_mb}}"
+                value="{{plan.id}}" onchange="plan_Changer()">
+                <span style="font-weight: bold;font-size: 14px">
+                  {{plan.getinfo}}
+                </span>
+              </label>
+              {% endfor %}
+            </div>
+            {% endfor %}		            			            
+          </div>
+        </div>
+        
+        <div class="form-group" id="subDomain_div" style="display:none">
+          <label class="col-lg-2 control-label">
+            SubDomain
+          </label>
+          <div class="col-lg-6">
+            <div class="input-group">
+              <input type="text" class="form-control" name="subdomain" id="subDomain"  >
+              <span class="input-group-addon">
+                .2gbvp.com
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" id="price_div" style="display:none">
+          <label for="inputPassword" class="col-lg-2 control-label">
+            Price
+          </label>
+          <div class="col-lg-4">
+          	<div class="input-group">
+              <span class="input-group-addon ">
+                EGP
+              </span>
+              <input type="text" class="form-control" id="price_input" disabled>
+              <span class="input-group-addon">
+                .00
+              </span>
+	        </div>
+          </div>
+        </div>
+        
+        
+      </div>
+      
+      <div class="control-group">
+        <!-- Button -->
+        <div class="controls">
+          <button class="btn btn-success" id="send" disabled>
+            Send Order
+          </button>
+        </div>
+      </div>
+      
+      
+      
+    </fieldset>
+  </form>
+  <div id="example_plan" style="display: none;float:right">
+    <ul class="act-plans act-plans-biz clearfix" id="example_show">
+      <li class="act-plan act-plan-biz plan month">
+        <header class="act-plan-header act-plan-biz-header">
+          <div class="price">
+            <span class="symbol">
+              EGP
+            </span>
+            <span class="amount" id="ex_amount">
+              
+            </span>
+            <span class="duration">
+              /
+              <strong id="ex_duartion">
+                
+              </strong>
+            </span>
+          </div>
+          <span id="ex_flavor_name">
+          </span>
+        </header>
+        <div class="act-plan-repos act-plan-biz-repos" >
+          <strong id="ex_ram">
+            
+          </strong>
+          MB RAM
+        </div>
+        <div class="act-plan-repos act-plan-biz-repos" >
+          <strong id="ex_month">
+            
+          </strong>
+          Month
+        </div>
+        <div class="act-plan-description">
+          <ul class="act-plan-points">
+            <ul class="info-list">
+              <li>
+                <span>
+                  {% trans "Disk space" %}
+                </span>
+                {% trans "Unlimited" %}
+              </li>
+              <li>
+                <span>
+                  {% trans "Bandwidth" %}
+                </span>
+                {% trans "Unlimited" %}
+              </li>
+              <li>
+                <span>
+                  {% trans "Free IPV4" %}
+                </span>
+                <div  style="color: #468847;">
+                  ✔
+                </div>
+              </li>
+              <li>
+                <span>
+                  {% trans "Free SubDomain" %}
+                </span>
+                <div  style="color: #468847;">
+                  ✔
+                </div>
+              </li>
+              <li>
+                <span>
+                  {% trans "Free Email" %}
+                </span>
+                <div  style="color: #468847;">
+                  ✔
+                </li>
+                <li>
+                  <span>
+                    {% trans "Control Portal" %}
+                  </span>
+                  <div  style="color: #468847;">
+                    ✔
+                  </div>
+              </li>
+            </ul>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+{% addtoblock "js" %}
+<script type="text/javascript">
+  $("input:radio[name=flavor]").click(function() {
+  	$('.flavor_radio').parent().removeClass(" active");
+  	$(this).parent().addClass(" active");
+	$('#main_offer_div').show();
+    $('.flavor_plans').hide();
+    $('#flavor_plans'+$(this).val()).fadeIn();
+  }
+                                     )
+    
+    $("input:radio[name=plans]").click(function() {
+      $("#ex_amount").text($(this).attr('data-amount') +"");
+      $("#ex_duartion").text($(this).attr('data-months') +"mo");
+      $("#ex_month").text($(this).attr('data-months') +"");
+      $("#ex_flavor_name").text($(this).attr('data-flavorname') +"");
+      $("#ex_ram").text($(this).attr('data-ram') +"");
+      $("#send").removeAttr("disabled");
+      $('#subDomain_div').fadeIn()
+      $('#example_plan').fadeIn();
+      $('.plan').fadeIn();
+      $('#price_div').fadeIn();
+      $('#price_input').val($(this).attr('data-amount'));
+    })
+
+{% if choosen %}
+$(function() {
+	$('#flavor{{choosen.flavor.id}}').click();
+	});
+	setTimeout(function() {$('#plan{{choosen.flavor.id}}_{{choosen.id}}').click();},1000)
+
+function choosen_flavor(){
+	$('#flavor1').click();
+}
+function choosen_plan(){
+	$('#plan1_1').click();
+}
+{% endif %}
+
+
+</script>
+
+{% endaddtoblock %}
 {% endblock %}
