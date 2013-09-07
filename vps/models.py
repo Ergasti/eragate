@@ -70,6 +70,7 @@ class Order(models.Model):
                 nics=params['nics'],
                 security_groups=params['security_groups'])
             vps.instance_uuid = server.id
+            vps.subdomain = order.subdomain
             vps.save()
 
         if not vps.ip:
@@ -91,7 +92,7 @@ class VPS(models.Model):
     plan = models.ForeignKey(Plan)
     instance_uuid = models.CharField(max_length=36)
     ip = models.CharField(max_length=15, null=True, blank=True)
-    subdomain =models.CharField(max_length=20, unique=True, null=True, blank=True)
+    subdomain = models.CharField(max_length=20, unique=True, null=True, blank=True)
     order = models.OneToOneField(Order, null=True, blank=True)
 
     def __unicode__(self):
