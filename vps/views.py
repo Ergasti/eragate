@@ -1,6 +1,140 @@
 from vps.models import *
 from django.shortcuts import render
+from vps.forms import *
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
+from django.shortcuts import render_to_response
+from django.http import HttpResponseRedirect, HttpResponse
+from django.template import RequestContext
+from django.contrib.auth import login as django_login
+import random 
+import string
+import datetime
+from datetime import datetime, timedelta
+from django.contrib.auth.decorators import login_required
+
 
 def index(request):
-	plans = Plan.objects.all()
-	return render(request, 'main.html', {'plans': plans})
+    plans = Plan.objects.all()
+    return render(request, 'main.html', {'plans': plans})
+
+
+def login(request):
+    
+    if request.method == 'GET':
+        return render_to_response ('login.html',context_instance=RequestContext(request))
+    if request.method == 'POST':
+        print request.POST  
+        user = authenticate(username=request.POST['username'], password=request.POST['password'])
+        print user
+        if user is not None:
+            # the password verified for the user
+            if user.is_active:
+                django_login(request, user)
+                return HttpResponse ("User is valid, active and authenticated")
+            else:
+                return HttpResponse ("The password is valid, but the account has been disabled!")
+        else:
+            # the authentication system was unable to verify the username and password
+            return HttpResponse ("The username and password were incorrect.")
+
+
+def UserRegistration(request):    
+    if request.method == 'POST':
+        data =  request.POST.copy()
+        print request.POST
+        form1 = UserCreateForm(data, prefix="form1") 
+        form2 = RegistrationForm(data, prefix="form2") 
+        if form1.is_valid() and form2.is_valid(): 
+                user = User(
+                  username=form1.cleaned_data['username'],
+                 is_active=True, email=form1.cleaned_data['email'], 
+                 first_name=form1.cleaned_data['first_name'], 
+                 last_name=form1.cleaned_data['last_name'])
+                user.save()
+                user.set_password(form1.cleaned_data['password1'])
+                user.save()
+                userprofile = UserProfile.objects.get(user=user)
+                userprofile.gender=form2.cleaned_data['gender']
+                userprofile.date_Of_birth=form2.cleaned_data['date_Of_birth']
+                userprofile.phone_number=form2.cleaned_data['phone_number']
+                userprofile.activation_key= ''.join(random.choice(string.ascii_uppercase + string.digits+ user.username) for x in range(10))
+                userprofile.save()
+                 # this creates the user
+                # user.activation_key = ''.join(random.choice(string.ascii_uppercase + string.digits+ user.email) for x in range(20))
+                created = datetime.now()
+                print userprofile
+                # title = "email verfication"
+                # content = "http://127.0.0.1:8000/confirm_email/?vc=" + str(user.activation_key) 
+                # send_mail(title, content, 'mai.zaied17@gmail.com.', [user.email], fail_silently=False)
+                return HttpResponseRedirect('/thankyou/')
+        else:
+            print form1.errors
+            print form2.errors
+            form1 = UserCreateForm(prefix="form1")
+            form2 = RegistrationForm(prefix="form2")
+            return render_to_response('register.html', {'form1': form1,'form2':form2}, context_instance=RequestContext(request))
+    elif request.method == 'GET':
+        form1 = UserCreateForm(prefix="form1")
+        form2 = RegistrationForm(prefix="form2")
+        return render_to_response('register.html', {'form1': form1,'form2':form2}, context_instance=RequestContext(request))
+
+@login_required
+def order(request):
+    if request.method == 'GET':
+        # print request.GET['plan']
+        flavors = Flavor.objects.all()
+        plans = Plan.objects.all()
+        return render_to_response ('order.html',{'plans': plans,'flavors':flavors},context_instance=RequestContext(request))
+    if request.method == 'POST':
+        print request.POST["subdomain"]
+        print request.user
+        print request.POST["plans"]
+        order = Order(
+            user = request.user, 
+            plan = Plan.objects.get(pk=request.POST["plans"]), 
+            subdomain=request.POST["subdomain"]
+            )
+        order.save()
+        print order
+        flavors = Flavor.objects.all()
+        plans = Plan.objects.all()
+        print request.POST
+        return render_to_response ('order.html',{'plans': plans,'flavors':flavors},context_instance=RequestContext(request))
+
+@login_required
+def order_withplan(request,plan):
+    choosen = Plan.objects.get(pk=plan)
+    flavors = Flavor.objects.all()
+    plans = Plan.objects.all()
+    return render_to_response ('order.html',{'plans': plans,'flavors':flavors,'choosen':choosen},context_instance=RequestContext(request))
+
+@login_required
+def dashboard(request):
+    vps = VPS.objects.get(owner=request.user)
+    return render_to_response ('dashboard.html',{'vps': vps},context_instance=RequestContext(request))
+
+@login_required
+def suspend_instance(request):
+    vps = VPS.objects.get(owner=request.user)
+    return render_to_response ('dashboard.html',{'vps': vps},context_instance=RequestContext(request))
+
+@login_required
+def resume_instance(request):
+    vps = VPS.objects.get(owner=request.user)
+    return render_to_response ('dashboard.html',{'vps': vps},context_instance=RequestContext(request))
+
+@login_required
+def start_instance(request):
+    vps = VPS.objects.get(owner=request.user)
+    return render_to_response ('dashboard.html',{'vps': vps},context_instance=RequestContext(request))
+
+@login_required
+def reboot_instance(request):
+    vps = VPS.objects.get(owner=request.user)
+    return render_to_response ('dashboard.html',{'vps': vps},context_instance=RequestContext(request))
+
+@login_required
+def force_reboot_instance(request):
+    vps = VPS.objects.get(owner=request.user)
+    return render_to_response ('dashboard.html',{'vps': vps},context_instance=RequestContext(request))

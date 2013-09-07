@@ -2,118 +2,101 @@
 
 
 {% block content %}
-<script type="text/javascript">
-(function() {
-    if (typeof window.janrain !== 'object') window.janrain = {};
-    if (typeof window.janrain.settings !== 'object') window.janrain.settings = {};
+
+<div class="login-wrapper">
+  <div class="well-white bottom20px" style="width:300px; margin:0 auto;margin-top: 50px;">
     
-    janrain.settings.tokenUrl = 'http://localhost:8000/social_login/';
-
-    function isReady() { janrain.ready = true; };
-    if (document.addEventListener) {
-      document.addEventListener("DOMContentLoaded", isReady, false);
-    } else {
-      window.attachEvent('onload', isReady);
-    }
-
-    var e = document.createElement('script');
-    e.type = 'text/javascript';
-    e.id = 'janrainAuthWidget';
-
-    if (document.location.protocol === 'https:') {
-      e.src = 'https://rpxnow.com/js/lib/tager/engage.js';
-    } else {
-      e.src = 'http://widget-cdn.rpxnow.com/js/lib/tager/engage.js';
-    }
-
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(e, s);
-})();
-</script>
-
-    <div class="login-wrapper">
-    <div class="well-white bottom20px" style="width:300px; margin:0 auto;">
-        <div class="page-header">
-            <center><h1>Log in</h1></center>
-        </div>
-        {% if LoginError %}
-            <center><div class="alert alert-error">
-                <!-- <button type="button" class="close" data-dismiss="alert">&times;</button> -->
-                <strong>Oh Snap !</strong> wrong e-mail or password.
-        </div></center>
-        {% endif %}
-<center>
-        <div class="padding20px form">
-            <form form  method="POST" id="form" class="kissmetrics-login">
-                {% csrf_token %}
-                <div class="control-group">
-                    <label class="control-label" for="inputEmail">Email:</label>
-                    <div class="controls">
-                        <input type="email" name="email" id="inputEmail" placeholder="Email address" autofocus =""/>
-                    </div>
-                </div>
-
-                <div class="control-group">
-                    <label class="control-label" for="inputPassword">Password:</label>
-                    <div class="controls">
-                        <input type="password" name="password" id="inputPassword" placeholder="Password"/>
-                    </div>
-                </div>
-                <div class="cf">
-                    <div class="left">
-                        <input type="submit" class="btn btn-success" value="Login">
-                    </div>
-        <div class="intermission">
-
-                    <div class="right">
-                        <a href="//app.gathercontent.com/forgotten" class="link-option">Forgot your password?</a>
-                        <br>
-                        <p class="h4" style="display:inline">Don't have an account ?</p>
-                        <p class="h4" style="display:inline"><a href="" id="signupshow" data-toggle="modal" >Sign Up</a></p> </div>
-                        <script type="text/javascript">
-                        $("#signupshow").click(function () {
-                        $("#hiddenPanel").fadeIn(500);
-                        });
-                        </script>
-                    </div>
-                </div>
-            </form>
-        </div>
-</center>
-
+    
+    {% if LoginError %}
+    <center>
+      <div class="alert alert-error">
+        <!-- 
+<button type="button" class="close" data-dismiss="alert">
+&times;
+</button>
+-->
+  <strong>
+    Oh Snap !
+  </strong>
+  wrong e-mail or password.
+              </div>
+      </center>
+      {% endif %}
+      
+      <div class="container">
+        <form class="form-signin" method="POST" id="form">
+          {% csrf_token %}
+          <div class="page-header">
+            <h2 class="form-signin-heading">
+              Please sign in
+              </h2
+              >
+            </div>
+            
+            <div class="control-group">
+              <label class="control-label"  for="username">
+                User Name
+              </label>
+              <div class="controls">
+                <input type="text" class="form-control" name="username" placeholder="User Name" autofocus>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label"  for="username">
+                Password
+              </label>
+              <div class="controls">
+                <input type="password" class="form-control" name="password" placeholder="Password">
+              </div>
+            </div>
+            <br>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">
+              Sign in
+            </button>
+          </form>
+      </div>
+      </div>
+</div>
+<div id="hiddenPanel" >
+  <center>
+    {% if user.is_authenticated == False %}
+    <div id="janrainEngageEmbed">
+    </div>
+    {% endif %}
+    <br>
+    <div class="intermission">
+      <div id = "user_buttons_sign" class ="signup">
+        <p class="h5" style="display:inline">
+            Don't Have an account ?
+          <a href="../register/" data-toggle="modal" >
+            Signup
+          </a>
+        </p>
+      </div>
     </div>
 </div>
-    <div id="hiddenPanel" style="display:none;">
-        <center>
-        {% if user.is_authenticated == False %}
-        <div id="janrainEngageEmbed"></div>
-        {% endif %}
-        <br>
-        <div class="intermission">
-        <div id = "user_buttons_sign" class ="signup">
-            <p class="h4" style="display:inline"><a href="../register/" data-toggle="modal" >Sign Up With Email</a></p> </div>
-    </div>
-        </div>
-
-
+      
+      
 </center>
-        {% block script %}
-    <script type="text/javascript">
-
-       $(document).ready(function() {
-            $('input:text, input:password').keyup(function() {
-                if ($(this).val() !== "") {
-                $('input:submit').removeAttr('disabled');
-                    } else {
-                $('input:submit').attr('disabled', 'true');
-                }
-    });
-});
-    </script>
-    {% endblock%}
+{% block script %}
+<script type="text/javascript">
+  
+  $(document).ready(function() {
+    $('input:text, input:password').keyup(function() {
+      if ($(this).val() !== "") {
+        $('button:submit').removeAttr('disabled');
+      }
+      else {
+        $('button:submit').attr('disabled', 'true');
+      }
+    }
+                                                 );
+       }
+                        );
+</script>
+{% endblock%}
 
 
 {% endblock %}
-
 
 

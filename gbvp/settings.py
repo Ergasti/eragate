@@ -129,6 +129,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     #'django.contrib.admindocs',
+    'captcha',
     'sekizai',
     'vps',
 )
@@ -183,3 +184,10 @@ OS_VM_CREATION_SETTINGS = {
     'floating_ip_pool': None
 }
 
+# Recaptcha Info
+RECAPTCHA_PUBLIC_KEY = '6Ld8ct8SAAAAAJTUMgacSavqcnzqRVPT2M7Ht5i6'
+RECAPTCHA_PRIVATE_KEY = '6Ld8ct8SAAAAAH6kJ8dcBhqG438D9IwCcAP1whEM'
+RECAPTCHA_USE_SSL = True
+
+#login_required
+LOGIN_URL = '/login/'
