@@ -18,10 +18,11 @@ def index(request):
     plans = Plan.objects.all()
     return render(request, 'main.html', {'plans': plans})
 
-
+next="/"
 def login(request):
-    
+    global next
     if request.method == 'GET':
+        next = request.GET['next'] 
         return render_to_response ('login.html',context_instance=RequestContext(request))
     if request.method == 'POST':
         print request.POST  
@@ -31,7 +32,8 @@ def login(request):
             # the password verified for the user
             if user.is_active:
                 django_login(request, user)
-                return HttpResponse ("User is valid, active and authenticated")
+                print "User is valid, active and authenticated"
+                return HttpResponseRedirect(next)
             else:
                 return HttpResponse ("The password is valid, but the account has been disabled!")
         else:
@@ -39,7 +41,7 @@ def login(request):
             return HttpResponse ("The username and password were incorrect.")
 
 
-def UserRegistration(request):    
+def UserRegistration(request):
     if request.method == 'POST':
         data =  request.POST.copy()
         print request.POST
@@ -75,6 +77,7 @@ def UserRegistration(request):
             form2 = RegistrationForm(prefix="form2")
             return render_to_response('register.html', {'form1': form1,'form2':form2}, context_instance=RequestContext(request))
     elif request.method == 'GET':
+
         form1 = UserCreateForm(prefix="form1")
         form2 = RegistrationForm(prefix="form2")
         return render_to_response('register.html', {'form1': form1,'form2':form2}, context_instance=RequestContext(request))
