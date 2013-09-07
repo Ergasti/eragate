@@ -191,3 +191,10 @@ RECAPTCHA_USE_SSL = True
 
 #login_required
 LOGIN_URL = '/login/'
+
+
+###################### DO NOT EDIT ###############################
+
+# Import local settings
+# NOTE: this MUST be the last line
+from local_settings import *
