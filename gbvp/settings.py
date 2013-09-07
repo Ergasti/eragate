@@ -167,21 +167,21 @@ LOGGING = {
 
 # Openstack Authentication Info
 
-OS_USERNAME = ""
-OS_TENANT_NAME = ""
-OS_PASSWORD = ""
-OS_AUTH_URL = ""
+OS_USERNAME = "2gbvp"
+OS_TENANT_NAME = "2gbvp"
+OS_PASSWORD = "e0e224d32dbaee090e0248fc5bd6d9ef"
+OS_AUTH_URL = "http://144.76.128.126:5000/v2.0/"
 
 OS_VNC_TYPE = "novnc"
 
 # Openstack Server Creation Settings
 
 OS_VM_CREATION_SETTINGS = {
-    'key_name': None,
+    'key_name': "default",
     'availability_zone': None,
     'nics': [],
     'security_groups': ['default'],
-    'floating_ip_pool': None
+    'floating_ip_pool': "",
 }
 
 # Recaptcha Info
@@ -191,3 +191,5 @@ RECAPTCHA_USE_SSL = True
 
 #login_required
 LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/dashboard/'
+LOGOUT_URL = '/logout/'
