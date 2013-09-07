@@ -1,4 +1,5 @@
 Django==1.5.2
+MySQL-python==1.2.4
 django-classy-tags==0.4
 django-money==0.3.3
 django-sekizai==0.7
