@@ -191,10 +191,8 @@ RECAPTCHA_USE_SSL = True
 
 #login_required
 LOGIN_URL = '/login/'
-<<<<<<< HEAD
 LOGIN_REDIRECT_URL = '/dashboard/'
 LOGOUT_URL = '/logout/'
-=======
 
 
 ###################### DO NOT EDIT ###############################
@@ -202,4 +200,3 @@ LOGOUT_URL = '/logout/'
 # Import local settings
 # NOTE: this MUST be the last line
 from local_settings import *
->>>>>>> 0603b27e8f3f86e2c8a01e6bcfeee7bce1080a3f
