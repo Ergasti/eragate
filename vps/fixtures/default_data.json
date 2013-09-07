@@ -1,0 +1,179 @@
+[
+{
+  "pk": 1, 
+  "model": "vps.flavor", 
+  "fields": {
+    "flavor_uuid": "\t7152ca1a-023e-42b3-8eb8-fa4a7a6c389", 
+    "name_en": "Bronze", 
+    "ram_mb": 1024, 
+    "name_ar": "", 
+    "disk_gb": 20
+  }
+},
+{
+  "pk": 2, 
+  "model": "vps.flavor", 
+  "fields": {
+    "flavor_uuid": "bb449dff-0718-4ea2-9322-3f5265eed5d2", 
+    "name_en": "Silver", 
+    "ram_mb": 2048, 
+    "name_ar": "", 
+    "disk_gb": 50
+  }
+},
+{
+  "pk": 3, 
+  "model": "vps.flavor", 
+  "fields": {
+    "flavor_uuid": "7bd1315d-e9b7-4876-b386-3ce5b420ecf2", 
+    "name_en": "Gold", 
+    "ram_mb": 4096, 
+    "name_ar": "", 
+    "disk_gb": 100
+  }
+},
+{
+  "pk": 4, 
+  "model": "vps.flavor", 
+  "fields": {
+    "flavor_uuid": "f2766065-cd4b-4b2e-885b-aaf47ee2a3cd", 
+    "name_en": "Platinum", 
+    "ram_mb": 8192, 
+    "name_ar": "", 
+    "disk_gb": 200
+  }
+},
+{
+  "pk": 1, 
+  "model": "vps.plan", 
+  "fields": {
+    "amount_currency": "EGP", 
+    "flavor": 1, 
+    "months": 1, 
+    "amount": "85.00"
+  }
+},
+{
+  "pk": 2, 
+  "model": "vps.plan", 
+  "fields": {
+    "amount_currency": "EGP", 
+    "flavor": 2, 
+    "months": 1, 
+    "amount": "125.00"
+  }
+},
+{
+  "pk": 3, 
+  "model": "vps.plan", 
+  "fields": {
+    "amount_currency": "EGP", 
+    "flavor": 3, 
+    "months": 1, 
+    "amount": "230.00"
+  }
+},
+{
+  "pk": 4, 
+  "model": "vps.plan", 
+  "fields": {
+    "amount_currency": "EGP", 
+    "flavor": 4, 
+    "months": 1, 
+    "amount": "370.00"
+  }
+},
+{
+  "pk": 5, 
+  "model": "vps.plan", 
+  "fields": {
+    "amount_currency": "EGP", 
+    "flavor": 1, 
+    "months": 3, 
+    "amount": "222.00"
+  }
+},
+{
+  "pk": 6, 
+  "model": "vps.plan", 
+  "fields": {
+    "amount_currency": "EGP", 
+    "flavor": 2, 
+    "months": 3, 
+    "amount": "310.00"
+  }
+},
+{
+  "pk": 7, 
+  "model": "vps.plan", 
+  "fields": {
+    "amount_currency": "EGP", 
+    "flavor": 3, 
+    "months": 3, 
+    "amount": "555.00"
+  }
+},
+{
+  "pk": 8, 
+  "model": "vps.plan", 
+  "fields": {
+    "amount_currency": "EGP", 
+    "flavor": 4, 
+    "months": 3, 
+    "amount": "888.00"
+  }
+},
+{
+  "pk": "01d80bd7-712d-40e2-8c53-ac90302c68a9", 
+  "model": "vps.osimage", 
+  "fields": {
+    "name": "Ubuntu Server 12.04"
+  }
+},
+{
+  "pk": "3daaad54-f3a5-4042-be17-2e6a7c81", 
+  "model": "vps.osimage", 
+  "fields": {
+    "name": "Ubuntu Server 12.10"
+  }
+},
+{
+  "pk": "67711753-5f97-47ab-86e8-77ad8a2a805f", 
+  "model": "vps.osimage", 
+  "fields": {
+    "name": "Windows Server 2008 Enterprise - Plain"
+  }
+},
+{
+  "pk": "a5d85af0-a813-497d-92ee-c283b443b5c0", 
+  "model": "vps.osimage", 
+  "fields": {
+    "name": "CirrOS"
+  }
+},
+{
+  "pk": "cfeb8617-d8d8-4f47-a3eb-02454cbd", 
+  "model": "vps.osimage", 
+  "fields": {
+    "name": "Ubuntu Server 13.04"
+  }
+},
+{
+  "pk": 1, 
+  "model": "vps.userprofile", 
+  "fields": {
+    "phone_number": null, 
+    "is_premium": false, 
+    "activation_key": null, 
+    "rating": 0.0, 
+    "gender": null, 
+    "is_active": true, 
+    "is_verfied": false, 
+    "sms_code": null, 
+    "date_Of_birth": null, 
+    "status": null, 
+    "user": 1, 
+    "phone_is_verified": false
+  }
+}
+]

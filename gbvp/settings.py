@@ -29,7 +29,7 @@ ALLOWED_HOSTS = []
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
 # In a Windows environment this must be set to your system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'Africa/Cairo'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -167,10 +167,10 @@ LOGGING = {
 
 # Openstack Authentication Info
 
-OS_USERNAME = "2gbvp"
-OS_TENANT_NAME = "2gbvp"
-OS_PASSWORD = "e0e224d32dbaee090e0248fc5bd6d9ef"
-OS_AUTH_URL = "http://144.76.128.126:5000/v2.0/"
+OS_USERNAME = ""
+OS_TENANT_NAME = ""
+OS_PASSWORD = ""
+OS_AUTH_URL = ""
 
 OS_VNC_TYPE = "novnc"
 
@@ -191,5 +191,15 @@ RECAPTCHA_USE_SSL = True
 
 #login_required
 LOGIN_URL = '/login/'
+<<<<<<< HEAD
 LOGIN_REDIRECT_URL = '/dashboard/'
 LOGOUT_URL = '/logout/'
+=======
+
+
+###################### DO NOT EDIT ###############################
+
+# Import local settings
+# NOTE: this MUST be the last line
+from local_settings import *
+>>>>>>> 0603b27e8f3f86e2c8a01e6bcfeee7bce1080a3f
