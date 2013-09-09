@@ -62,7 +62,7 @@
               </ul>
             </li>
           </ul>
-
+          {% if user.is_authenticated == False %}
           <form class="navbar-form navbar-right" action="/login/" method="POST">
             {% csrf_token %}
             <div class="form-group">
@@ -73,7 +73,12 @@
             </div>
             <button type="submit" class="btn btn-success">Sign in</button>
           </form>
-          
+          {% else %}
+                  <div class="navbar-header navbar-form navbar-right" >
+                    <span style="color: #eee;font-size: 18px;font-weight: bold;line-height: 20px;">Welcome {{user}} ,</span> <a style="color: #999;padding: 15px 15px;font-size: 18px;font-weight: bold; line-height: 20px;"href="/dashboard">Go to Dashboard</a>
+                  </div>
+          {% endif %}
+
         </div><!--/.navbar-collapse -->
       </div>
     </div>
