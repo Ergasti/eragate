@@ -67,6 +67,26 @@
             {% endfor %}		            			            
           </div>
         </div>
+
+        <div id="main_os_div" style="margin-bottom: 15px;display: none;">
+          <label class="control-label" >
+            <h4>
+              Operating System
+            </h4>
+          </label>
+          <div class="controls">
+            <div class="btn-group btn-group-lg btn-group-justified os_image " data-toggle="buttons" style="width:100%;"  id="os_image">
+            {% for os in os_images %}
+              <label class="btn btn-primary os_label" id="{{os.id}}"   data-osname="{{os.name}}">
+                <input type="radio" name="os_image" value="{{os.uuid}}" >
+                <span style="font-weight: bold;font-size: 14px">
+                  {{os.name}}
+                </span>
+              </label>
+              {% endfor %}
+            </div>                                
+          </div>
+        </div>
         
         <div class="form-group" id="subDomain_div" style="display:none">
           <label class="col-lg-2 control-label">
@@ -219,13 +239,20 @@
 	$("#ex_month").text($(this).attr('data-months') +"");
 	$("#ex_flavor_name").text($(this).attr('data-flavorname') +"");
 	$("#ex_ram").text($(this).attr('data-ram') +"");
-	$("#send").removeAttr("disabled");
 	$('#subDomain_div').fadeIn()
 	$('#example_plan').fadeIn();
 	$('.plan').fadeIn();
 	$('#price_div').fadeIn();
 	$('#price_input').val($(this).attr('data-amount'));
+  $('#main_os_div').fadeIn();
 	})
+  $(".os_label").click(function() {
+  $("#send").removeAttr("disabled");
+  })
+
+
+
+
 
 {% if choosen %}
 	$(function() {

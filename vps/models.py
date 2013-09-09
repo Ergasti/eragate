@@ -48,6 +48,7 @@ class Order(models.Model):
     user = models.ForeignKey(User)
     plan = models.ForeignKey(Plan)
     os_image = models.ForeignKey(OSImage, null=True, blank=True)
+    confirmed = models.BooleanField(blank=True, default=False)
 
     def __unicode__(self):
         return "Order: %s ordering %s" % (self.user, self.plan)
