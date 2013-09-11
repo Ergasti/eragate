@@ -4,6 +4,7 @@
 <script>
   $(function () {
     $('.month3').fadeIn();
+    $('#tabOne').addClass("active");
     $('#tabOne').click(function(e) {
       $('.tab').removeClass("active");
       $('#tabOne').addClass("active");
@@ -36,23 +37,28 @@
 <!-- 
 <link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.css">
 -->
-<ul class="nav nav-pills nav-justified">
-  <li class="active tab" id="tabOne">
-    <a href="#">
-      3 Month
-    </a>
-  </li>
-  <li class="tab" id="tabTwo">
-    <a href="#"  >
-      2 Month
-    </a>
-  </li>
-  <li class="tab" id="tabThree">
-    <a href="#"  >
-      1 Month
-    </a>
-  </li>
-</ul>
+
+<style>
+.sellectorheader{
+    font-size: 18px;
+    font-weight: bold;
+  }
+</style>
+<div style="width: 990;">
+  <h4 style="font-weight: bold">Check our Offers</h4>
+<div class="btn-group btn-group-justified" data-toggle="buttons">
+  <label class="btn btn-default tab" id="tabOne" >
+    <input type="radio"  name="options" ><span class="sellectorheader">Buy 3 Month Offer</span>
+  </label>
+  <label class="btn btn-default tab" id="tabTwo">
+    <input type="radio"  name="options"><span class="sellectorheader">Buy 2 Month Offer</span>
+  </label>
+  <label class="btn btn-default tab" id="tabThree">
+    <input type="radio"  name="options"><span class="sellectorheader">1 Month</span>
+  </label>
+</div>
+</div>
+
 
 
 
