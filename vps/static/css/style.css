@@ -1103,21 +1103,22 @@ a {
     background-color: #eeeeee;
   }
 
-  .hgroup {
-  	vertical-align: baseline;
-  	margin: 0 auto;
-  	margin-top:15px;
-  	height: 31px;
-  	width: 170px;
-  font-family: 'MerriweatherBold',Serif;
-  background: url(../images/logo2.png) no-repeat;
-  
-  }
-  body{
-    font-family: Georgia, Serif;
-    font-size: 16px;
-    line-height: 25px;
-    color: #3B3B3B;
-    background: /* url(../images/25-pixel-baseline.png) left top repeat, */ url(../images/bg.png) left top repeat;
-    
-  }
+
+   .hgroup {
+  	  vertical-align: baseline;
+  	 margin: 0 auto;
+  	 margin-top:15px;
+  	 height: 31px;
+   	width: 170px;
+   font-family: 'MerriweatherBold',Serif;
+   background: url(../images/logo2.png) no-repeat;
+
+   }
+   body{
+     font-family: Georgia, Serif;
+     font-size: 16px;
+     line-height: 25px;
+     color: #3B3B3B;
+     background: /* url(../images/25-pixel-baseline.png) left top repeat, */ url(../images/bg.png) left top repeat;
+     
+   }
