@@ -18,10 +18,11 @@ def index(request):
     plans = Plan.objects.all()
     return render(request, 'main.html', {'plans': plans})
 
-
+next="/"
 def login(request):
-    
+    global next
     if request.method == 'GET':
+        next = request.GET['next'] 
         return render_to_response ('login.html',context_instance=RequestContext(request))
     if request.method == 'POST':
         print request.POST  
@@ -31,7 +32,8 @@ def login(request):
             # the password verified for the user
             if user.is_active:
                 django_login(request, user)
-                return HttpResponse ("User is valid, active and authenticated")
+                print "User is valid, active and authenticated"
+                return HttpResponseRedirect(next)
             else:
                 return HttpResponse ("The password is valid, but the account has been disabled!")
         else:
@@ -39,7 +41,7 @@ def login(request):
             return HttpResponse ("The username and password were incorrect.")
 
 
-def UserRegistration(request):    
+def UserRegistration(request):
     if request.method == 'POST':
         data =  request.POST.copy()
         print request.POST
@@ -75,6 +77,7 @@ def UserRegistration(request):
             form2 = RegistrationForm(prefix="form2")
             return render_to_response('register.html', {'form1': form1,'form2':form2}, context_instance=RequestContext(request))
     elif request.method == 'GET':
+
         form1 = UserCreateForm(prefix="form1")
         form2 = RegistrationForm(prefix="form2")
         return render_to_response('register.html', {'form1': form1,'form2':form2}, context_instance=RequestContext(request))
@@ -82,36 +85,40 @@ def UserRegistration(request):
 @login_required
 def order(request):
     if request.method == 'GET':
-        # print request.GET['plan']
         flavors = Flavor.objects.all()
         plans = Plan.objects.all()
-        return render_to_response ('order.html',{'plans': plans,'flavors':flavors},context_instance=RequestContext(request))
+        plans = Plan.objects.all()
+        os_images=OSImage.objects.all()
+        return render_to_response ('order.html',{'os_images':os_images,'plans': plans,'flavors':flavors},context_instance=RequestContext(request))
     if request.method == 'POST':
-        print request.POST["subdomain"]
-        print request.user
-        print request.POST["plans"]
         order = Order(
             user = request.user, 
             plan = Plan.objects.get(pk=request.POST["plans"]), 
-            subdomain=request.POST["subdomain"]
+            subdomain=request.POST["subdomain"],
+            os_image = OSImage.objects.get(pk=request.POST["os_image"]), 
             )
         order.save()
-        print order
-        flavors = Flavor.objects.all()
-        plans = Plan.objects.all()
-        print request.POST
-        return render_to_response ('order.html',{'plans': plans,'flavors':flavors},context_instance=RequestContext(request))
+        return render_to_response ('order_confirm.html',{'order': order},context_instance=RequestContext(request))
 
 @login_required
 def order_withplan(request,plan):
     choosen = Plan.objects.get(pk=plan)
     flavors = Flavor.objects.all()
     plans = Plan.objects.all()
-    return render_to_response ('order.html',{'plans': plans,'flavors':flavors,'choosen':choosen},context_instance=RequestContext(request))
+    os_images=OSImage.objects.all()
+    return render_to_response ('order.html',{'os_images':os_images,'plans': plans,'flavors':flavors,'choosen':choosen},context_instance=RequestContext(request))
+
+@login_required
+def confirm_order(request):
+    print request.POST
+    order = Order.objects.get(pk=request.POST["order"])
+    order.confirmed=True
+    order.save();
+    return HttpResponseRedirect('/dashboard/')
 
 @login_required
 def dashboard(request):
-    vps = VPS.objects.get(owner=request.user)
+    vps = VPS.objects.filter(owner=request.user)
     return render_to_response ('dashboard.html',{'vps': vps},context_instance=RequestContext(request))
 
 @login_required

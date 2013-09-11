@@ -733,7 +733,7 @@ aside .line-ver4 {
 }
 #faded1 {
 	width:990px;
-	height:350px;
+	height:340px;
 	margin:7px 0;
 	background:url(../images/slider-bg.jpg) no-repeat 25px 5px;
 }
@@ -747,7 +747,7 @@ aside .line-ver4 {
 	padding:0;
 	margin:-1px;
 	width:246px;
-	height:350px;
+	height:340px;
 	/*background:url(../images/pagination1-bg.jpg) no-repeat left top;*/
 }
 #faded1 ul.pagination1 li {
@@ -1101,4 +1101,22 @@ a {
   .nav > li > a:hover, .nav > li > a:focus {
     text-decoration: none;
     background-color: #eeeeee;
+  }
+
+  .hgroup {
+  	vertical-align: baseline;
+  	margin: 0 auto;
+  	margin-top:15px;
+  	height: 31px;
+  	width: 170px;
+  font-family: 'MerriweatherBold',Serif;
+  background: url(../images/logo2.png) no-repeat;
+  }
+  body{
+    font-family: Georgia, Serif;
+    font-size: 16px;
+    line-height: 25px;
+    color: #3B3B3B;
+    background: /* url(../images/25-pixel-baseline.png) left top repeat, */ url(../images/bg.png) left top repeat;
+    
   }

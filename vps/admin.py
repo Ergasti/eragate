@@ -13,7 +13,7 @@ admin.site.register(Plan)
 admin.site.register(OSImage)
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('placed_at', 'user', 'plan', 'fulfilled')
+    list_display = ('placed_at', 'user', 'plan', 'fulfilled' , 'confirmed')
     actions = ['fulfill_orders']
 
     def get_readonly_fields(self, request, obj=None):

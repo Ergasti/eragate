@@ -177,11 +177,11 @@ OS_VNC_TYPE = "novnc"
 # Openstack Server Creation Settings
 
 OS_VM_CREATION_SETTINGS = {
-    'key_name': None,
+    'key_name': "default",
     'availability_zone': None,
     'nics': [],
     'security_groups': ['default'],
-    'floating_ip_pool': None
+    'floating_ip_pool': "",
 }
 
 # Recaptcha Info
@@ -191,6 +191,8 @@ RECAPTCHA_USE_SSL = True
 
 #login_required
 LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/dashboard/'
+LOGOUT_URL = '/logout/'
 
 
 ###################### DO NOT EDIT ###############################
