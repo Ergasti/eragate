@@ -42,13 +42,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand hgroup" href="index.html"></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
 <!--             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
               <ul class="dropdown-menu">
@@ -71,14 +71,26 @@
             <div class="form-group">
               <input type="password" placeholder="Password" name="password" class="form-control">
             </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
+            <button type="submit" class="btn btn-default">Sign in</button>
           </form>
           {% else %}
-                  <div class="navbar-header navbar-form navbar-right" >
-                    <span style="color: #eee;font-size: 18px;font-weight: bold;line-height: 20px;">Welcome {{user}} ,</span> <a style="color: #999;padding: 15px 15px;font-size: 18px;font-weight: bold; line-height: 20px;"href="/dashboard">Go to Dashboard</a>
-                  </div>
-          {% endif %}
 
+                
+                  <div class="navbar-header navbar-form navbar-right">
+                <form action="/logout/" method="POST">
+                    <div class="btn-group">
+                      <a class="btn btn-success btn-group-sm" href="/dashboard"><span class="glyphicon glyphicon-cog"></span>Go to Dashboard </a> 
+                       <button type="submit" class="btn btn-danger btn-group-sm">
+                         <span class="glyphicon glyphicon-off">
+                         </span>logout
+                       </button>
+                </form>
+                    </div>
+                   </div>
+                   <div class="navbar-header navbar-form navbar-right" >
+                     <span style="color: #eee;font-size: 18px;font-weight: bold;line-height: 20px;">Welcome {{user}} </span> 
+                     </div>
+          {% endif %}
         </div><!--/.navbar-collapse -->
       </div>
     </div>
