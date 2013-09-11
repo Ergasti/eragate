@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load i18n  sekizai_tags staticfiles %}
+
+
+{% block content %}
+ {% if user == order.user %}
+ <style>
+.right_info{
+	float: right;
+}
+ </style>
+ <div class="container" style="margin-top:60px;font-size: 18px;font-weight: bold">
+	<div class="panel panel-success">
+	  <!-- Default panel contents -->
+	  <div class="panel-heading">Order Info</div>
+	  <!-- List group -->
+	  <ul class="list-group">
+	    <li class="list-group-item">User Name
+	    <span class="right_info">{{order.user}}</span></li>
+	    <li class="list-group-item">Plan
+	    <span class="right_info">{{order.plan}}</span></li>
+	    <li class="list-group-item">Operating Sysytem
+	    <span class="right_info">{{order.os_image.name}}</span></li>
+	    <li class="list-group-item">Sub Domain
+	    <span class="right_info">{{order.subdomain}}.2gbvb.com</span></li>
+	    <li class="list-group-item">Cost
+	    <span class="right_info">{{order.plan.amount}}</span></li>
+	  </ul>
+	</div>
+
+	  <form class="form-horizontal" action="/confirm_order/" method="POST">
+	    {% csrf_token %}
+	      <input type="hidden" name="order" value="{{order.id}}">
+	    <button style="" type="submit" class="btn btn-success">Confirm Order</button>
+	  </form>
+	</div>
+ {% endif %}
+{% endblock %}
