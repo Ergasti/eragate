@@ -7,6 +7,7 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
 from django.template import RequestContext
 from django.contrib.auth import login as django_login
+from django.contrib.auth import logout 
 import random 
 import string
 import datetime
@@ -122,26 +123,28 @@ def dashboard(request):
     return render_to_response ('dashboard.html',{'vps': vps},context_instance=RequestContext(request))
 
 @login_required
-def suspend_instance(request):
-    vps = VPS.objects.get(owner=request.user)
-    return render_to_response ('dashboard.html',{'vps': vps},context_instance=RequestContext(request))
+def vps_action(request,action,vps):
+    print request.POST
+    print action
+    print vps
+    vps_obj = VPS.objects.get(pk=vps)
+    if vps.owner == request.user:
+        if action == "status":
+            vps.get_instance_status
+        elif action == "reboot":
+            vps.reboot
+        elif action == "freboot":
+            vps.force_reboot_instance
+        elif action == "resume":
+            vps.resume_instance
+        elif action == "start":
+            vps.start_instance
+        elif action == "stop":
+            vps.stop_instance
+        elif action =="vnc":
+            vps.generate_vnc_console_link
+        elif action == "suspend":
+            vps.suspend_instance
 
-@login_required
-def resume_instance(request):
-    vps = VPS.objects.get(owner=request.user)
-    return render_to_response ('dashboard.html',{'vps': vps},context_instance=RequestContext(request))
-
-@login_required
-def start_instance(request):
-    vps = VPS.objects.get(owner=request.user)
-    return render_to_response ('dashboard.html',{'vps': vps},context_instance=RequestContext(request))
-
-@login_required
-def reboot_instance(request):
-    vps = VPS.objects.get(owner=request.user)
-    return render_to_response ('dashboard.html',{'vps': vps},context_instance=RequestContext(request))
-
-@login_required
-def force_reboot_instance(request):
-    vps = VPS.objects.get(owner=request.user)
-    return render_to_response ('dashboard.html',{'vps': vps},context_instance=RequestContext(request))
+def logout_view(request):
+    logout(request)
