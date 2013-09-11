@@ -8,6 +8,7 @@ urlpatterns = patterns('',
     url(r'^login/*', login),
     url(r'^order/*', order),
     url(r'^plan_order/(?P<plan>\w+)', order_withplan),
+    url(r'^confirm_order/*', confirm_order),
     url(r'^dashboard/*', dashboard),
 
     url(r'^suspend_instance/*', suspend_instance),

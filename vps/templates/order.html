@@ -51,13 +51,13 @@
           </label>
           <div class="controls">
             {% for flavor in flavors %}
-            <div class="btn-group btn-group-lg btn-group-justified flavor_plans " data-toggle="buttons" style="width:100%;display:none" id="flavor_plans{{flavor.id}}">
+            <div class="btn-group btn-group-lg btn-group-justified flavor_plans " data-toggle="buttons" style="width:100%;display:none"  id="flavor_plans{{flavor.id}}">
               {% for plan in flavor.plan_set.all %}
-              <label class="btn btn-primary" >
-                <input type="radio" name="plans" id="plan{{flavor.id}}_{{plan.id}}" class="plan_radio" data-flavor="{{flavor.id}}" data-flavorname="{{flavor.name_en}}" 
+              <label class="btn btn-primary plan_label" id="plan{{flavor.id}}_{{plan.id}}" class="plan_radio" data-flavor="{{flavor.id}}" data-flavorname="{{flavor.name_en}}" 
                 data-amount="{{plan.amount.amount}}" 
-                data-months="{{plan.months}}" data-ram="{{plan.flavor.ram_mb}}"
-                value="{{plan.id}}" onchange="plan_Changer()">
+                data-months="{{plan.months}}" data-ram="{{plan.flavor.ram_mb}}" >
+                <input type="radio" name="plans" 
+                value="{{plan.id}}" >
                 <span style="font-weight: bold;font-size: 14px">
                   {{plan.getinfo}}
                 </span>
@@ -65,6 +65,26 @@
               {% endfor %}
             </div>
             {% endfor %}		            			            
+          </div>
+        </div>
+
+        <div id="main_os_div" style="margin-bottom: 15px;display: none;">
+          <label class="control-label" >
+            <h4>
+              Operating System
+            </h4>
+          </label>
+          <div class="controls">
+            <div class="btn-group btn-group-lg btn-group-justified os_image " data-toggle="buttons" style="width:100%;"  id="os_image">
+            {% for os in os_images %}
+              <label class="btn btn-primary os_label" id="{{os.id}}"   data-osname="{{os.name}}">
+                <input type="radio" name="os_image" value="{{os.uuid}}" >
+                <span style="font-weight: bold;font-size: 14px">
+                  {{os.name}}
+                </span>
+              </label>
+              {% endfor %}
+            </div>                                
           </div>
         </div>
         
@@ -204,45 +224,49 @@
 
 {% addtoblock "js" %}
 <script type="text/javascript">
-  $("input:radio[name=flavor]").click(function() {
+
+  	$("input:radio[name=flavor]").click(function() {
   	$('.flavor_radio').parent().removeClass(" active");
   	$(this).parent().addClass(" active");
 	$('#main_offer_div').show();
     $('.flavor_plans').hide();
     $('#flavor_plans'+$(this).val()).fadeIn();
-  }
-                                     )
-    
-    $("input:radio[name=plans]").click(function() {
-      $("#ex_amount").text($(this).attr('data-amount') +"");
-      $("#ex_duartion").text($(this).attr('data-months') +"mo");
-      $("#ex_month").text($(this).attr('data-months') +"");
-      $("#ex_flavor_name").text($(this).attr('data-flavorname') +"");
-      $("#ex_ram").text($(this).attr('data-ram') +"");
-      $("#send").removeAttr("disabled");
-      $('#subDomain_div').fadeIn()
-      $('#example_plan').fadeIn();
-      $('.plan').fadeIn();
-      $('#price_div').fadeIn();
-      $('#price_input').val($(this).attr('data-amount'));
-    })
+  	})
+
+	$(".plan_label").click(function() {
+	$("#ex_amount").text($(this).attr('data-amount') +"");
+	$("#ex_duartion").text($(this).attr('data-months') +"mo");
+	$("#ex_month").text($(this).attr('data-months') +"");
+	$("#ex_flavor_name").text($(this).attr('data-flavorname') +"");
+	$("#ex_ram").text($(this).attr('data-ram') +"");
+	$('#subDomain_div').fadeIn()
+	$('#example_plan').fadeIn();
+	$('.plan').fadeIn();
+	$('#price_div').fadeIn();
+	$('#price_input').val($(this).attr('data-amount'));
+  $('#main_os_div').fadeIn();
+	})
+  $(".os_label").click(function() {
+  $("#send").removeAttr("disabled");
+  })
+
+
+
+
 
 {% if choosen %}
-$(function() {
-	$('#flavor{{choosen.flavor.id}}').click();
-	});
-	setTimeout(function() {$('#plan{{choosen.flavor.id}}_{{choosen.id}}').click();},1000)
+	$(function() {
+		$('#flavor{{choosen.flavor.id}}').click();
+		});
+		setTimeout(function() {$('#plan{{choosen.flavor.id}}_{{choosen.id}}').click();},1000)
 
-function choosen_flavor(){
-	$('#flavor1').click();
-}
-function choosen_plan(){
-	$('#plan1_1').click();
-}
+	function choosen_flavor(){
+		$('#flavor1').click();
+	}
+	function choosen_plan(){
+		$('#plan1_1').click();
+	}
 {% endif %}
-
-
 </script>
-
 {% endaddtoblock %}
 {% endblock %}
