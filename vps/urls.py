@@ -10,10 +10,6 @@ urlpatterns = patterns('',
     url(r'^plan_order/(?P<plan>\w+)', order_withplan),
     url(r'^confirm_order/*', confirm_order),
     url(r'^dashboard/*', dashboard),
-
-    url(r'^suspend_instance/*', suspend_instance),
-    url(r'^resume_instance/*', resume_instance),
-    url(r'^start_instance/*', start_instance),
-    url(r'^reboot_instance/*', reboot_instance),
-    url(r'^force_reboot_instance/*', force_reboot_instance),
+    url(r'^vps_action/(?P<action>\w{0,50})/(?P<vps>\w{0,50})/$', vps_action),
+    url(r'^logout/*', logout_view),
 )
