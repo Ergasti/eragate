@@ -71,14 +71,17 @@
             <div class="form-group">
               <input type="password" placeholder="Password" name="password" class="form-control">
             </div>
-            <button type="submit" class="btn btn-default">Sign in</button>
-          <a  href="/register" class="btn btn-link" style="color: #fff;"><span style="font-size: 16.5px;font-weight: bold;">Register</span></a>
+            <div class="btn-group" >
+            <button type="submit" class="btn btn-default" style="font-weight: bold">Sign in</button>
+          <a  href="/register" class="btn btn-default" style="font-weight: bold"><span style="">Register</span></a>
+          </div>
           </form>
           {% else %}
 
                 
                   <div class="navbar-header navbar-form navbar-right">
                 <form action="/logout/" method="POST">
+                  {% csrf_token %}
                     <div class="btn-group">
                       <a class="btn btn-success btn-group-sm" href="/dashboard"><span class="glyphicon glyphicon-cog"></span>Go to Dashboard </a> 
                        <button type="submit" class="btn btn-danger btn-group-sm">
