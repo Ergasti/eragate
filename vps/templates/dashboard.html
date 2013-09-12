@@ -59,29 +59,30 @@
                      Suspend
                      </button>
                   </form> -->
-                  <a class="btn btn-default" href="vps_action/suspend/{{vps.id}}"><span class="glyphicon glyphicon-pause"></span>Suspend</a>
-                  <form action="vps_action/resume/{{vps.id}}" method="POST">
-                     <button type="button" class="btn btn-success btn-group-sm">
+                  <a class="btn btn-default btn-group-sm" href="vps_action/suspend/{{vp.id}}"><span class="glyphicon glyphicon-pause"></span>Suspend</a>
+
+                  <form action="vps_action/resume/{{vp.id}}" method="POST">
+                     <button type="button" class="btn btn-success ">
                      <span class="glyphicon glyphicon-play">
                      </span>
                      Resume
                      </button>
                   </form>
-                  <form action="vps_action/start/{{vps.id}}" method="POST">
+                  <form action="vps_action/start/{{vp.id}}" method="POST">
                      <button type="button" class="btn btn-success btn-group-sm">
                      <span class="glyphicon glyphicon-off">
                      </span>
                      Start
                      </button>
                   </form>
-                  <form action="vps_action/reboot/{{vps.id}}" method="POST">
+                  <form action="vps_action/reboot/{{vp.id}}" method="POST">
                      <button type="button" class="btn btn-warning btn-group-sm ">
                      <span class="glyphicon  glyphicon-refresh">
                      </span>
                      Reboot
                      </button>
                   </form>
-                  <form action="vps_action/freboot/{{vps.id}}" method="POST">
+                  <form action="vps_action/freboot/{{vp.id}}" method="POST">
                      <button type="button" class="btn btn-warning btn-group-sm">
                      <span class="glyphicon glyphicon-refresh">
                      </span>
