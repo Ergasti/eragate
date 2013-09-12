@@ -74,8 +74,8 @@ def UserRegistration(request):
         else:
             print form1.errors
             print form2.errors
-            form1 = UserCreateForm(prefix="form1")
-            form2 = RegistrationForm(prefix="form2")
+            # form1 = UserCreateForm(prefix="form1")
+            # form2 = RegistrationForm(prefix="form2")
             return render_to_response('register.html', {'form1': form1,'form2':form2}, context_instance=RequestContext(request))
     elif request.method == 'GET':
 
