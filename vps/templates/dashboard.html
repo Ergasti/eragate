@@ -7,11 +7,12 @@
    }
 </style>
 <div class="container" style="margin-top:60px">
+	{% if vps%}
    <table class="table table-hover">
       <thead>
          <tr>
             <th>
-               #
+               ID
             </th>
             <th>
                Subdomain
@@ -43,27 +44,22 @@
                {{vp.ip}}
             </td>
             <td>
-               {{vp.get_instance_status}}
+               {{vp.get_instance_status[0]}}
             </td>
             <td>
-               {{vp.generate_vnc_console_link}}
+               <a class="btn btn-default" href="{{vp.generate_vnc_console_link}}">
+               	<span class="glyphicon glyphicon-fullscreen"></span>
+               	View VPS</a>
             </td>
             <td>
                <div class="btn-group btn-group-justified">
-                  <form action="vps_action/vnc/{{vps.id}}" method="POST">
+<!--                   <form action="vps_action/suspend/{{vps.id}}" method="POST">
                      <button type="button" class="btn btn-default btn-group-sm">
-                     <span class="glyphicon glyphicon-fullscreen">
-                     </span>
-                     View VPS
-                     </button>
-                  </form>
-                  <form action="vps_action/suspend/{{vps.id}}" method="POST">
-                     <button type="button" class="btn btn-default btn-group-sm">
-                     <span class="glyphicon glyphicon-pause">
-                     </span>
+                     <span class="glyphicon glyphicon-pause"></span>
                      Suspend
                      </button>
-                  </form>
+                  </form> -->
+                  <a class="btn btn-default" href="vps_action/suspend/{{vps.id}}"><span class="glyphicon glyphicon-pause"></span>Suspend</a>
                   <form action="vps_action/resume/{{vps.id}}" method="POST">
                      <button type="button" class="btn btn-success btn-group-sm">
                      <span class="glyphicon glyphicon-play">
@@ -98,5 +94,8 @@
          {% endfor %}
       </tbody>
    </table>
+   {% else %}
+   <div class="alert alert-warning"><strong>You don't have any VPSes!</strong>Want to order one?,<a href="/"> Order Now</a></div>
+   {% endif%}
 </div>
 {% endblock %}
