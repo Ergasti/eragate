@@ -70,7 +70,7 @@ def UserRegistration(request):
                 # title = "email verfication"
                 # content = "http://127.0.0.1:8000/confirm_email/?vc=" + str(user.activation_key) 
                 # send_mail(title, content, 'mai.zaied17@gmail.com.', [user.email], fail_silently=False)
-                return HttpResponseRedirect('/thankyou/')
+                return HttpResponseRedirect('/')
         else:
             print form1.errors
             print form2.errors
@@ -148,3 +148,4 @@ def vps_action(request,action,vps):
 
 def logout_view(request):
     logout(request)
+    return HttpResponseRedirect('/')
