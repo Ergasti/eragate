@@ -128,23 +128,23 @@ def vps_action(request,action,vps):
     print action
     print vps
     vps_obj = VPS.objects.get(pk=vps)
-    if vps.owner == request.user:
+    if vps_obj.owner == request.user:
         if action == "status":
-            vps.get_instance_status()
+            vps_obj.get_instance_status()
         elif action == "reboot":
-            vps.reboot()
+            vps_obj.reboot()
         elif action == "freboot":
-            vps.force_reboot_instance()
+            vps_obj.force_reboot_instance()
         elif action == "resume":
-            vps.resume_instance()
+            vps_obj.resume_instance()
         elif action == "start":
-            vps.start_instance()
+            vps_obj.start_instance()
         elif action == "stop":
-            vps.stop_instance()
+            vps_obj.stop_instance()
         elif action =="vnc":
-            vps.generate_vnc_console_link()
+            vps_obj.generate_vnc_console_link()
         elif action == "suspend":
-            vps.suspend_instance()
+            vps_obj.suspend_instance()
 
 def logout_view(request):
     logout(request)
