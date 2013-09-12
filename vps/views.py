@@ -88,7 +88,6 @@ def order(request):
     if request.method == 'GET':
         flavors = Flavor.objects.all()
         plans = Plan.objects.all()
-        plans = Plan.objects.all()
         os_images=OSImage.objects.all()
         return render_to_response ('order.html',{'os_images':os_images,'plans': plans,'flavors':flavors},context_instance=RequestContext(request))
     if request.method == 'POST':
@@ -120,6 +119,7 @@ def confirm_order(request):
 @login_required
 def dashboard(request):
     vps = VPS.objects.filter(owner=request.user)
+
     return render_to_response ('dashboard.html',{'vps': vps},context_instance=RequestContext(request))
 
 @login_required

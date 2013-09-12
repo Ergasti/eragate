@@ -909,7 +909,7 @@ a {
     margin-left: 5px;
   }
   .act-plan-biz {
-    width: 239px;
+    width: 245px;
   }
   d header, hgroup, main, nav, section, summary {
     display: block;
@@ -922,7 +922,8 @@ a {
   }
   .act-plan-header {
     color: #fff;
-    font-size: 24px;
+    font-size: 19px;
+    font-weight: bold;
     padding: 10px 10px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -1013,12 +1014,11 @@ a {
     font-size: 14px;
   }
   .act-plan-header {
-    color: #fff;
-    font-size: 24px;
-    padding: 10px 10px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    height: 2.3em;
+  	color: #fff;
+  	padding: 10px 10px;
+  	border-top-left-radius: 5px;
+  	border-top-right-radius: 5px;
+  	height: 2.9em;
   }
   .act-plan-header .price .symbol {
     opacity: 0.7;
