@@ -130,6 +130,7 @@
                         <div class="control-group">
                             <label class="control-label">Password</label>
                             <div class="controls">
+                                Password should be A Capital letter and a Small letter at least 8 characters
                                 {% if form1.password1.errors %}<p class="error">{{ form1.password1.errors }}</p>{% endif %}
                                 <p>{{ form1.password1 }}</p>
                             </div>    
@@ -151,7 +152,7 @@
                         <div class="control-group">
                             <label class="control-label"></label>
                             <div class="controls">
-                                <script type="text/javascript" src="http://api.recaptcha.net/challenge?k=6LdSucISAAAAADc_huFvVv0fCCEfcVJNvbqeY-TN">
+                                <script type="text/javascript" src="http://api.recaptcha.net/challenge?k=6Ld9WucSAAAAAA3rJKkysLxux8RZavsZy9Nntkk5">
                                 </script> 
                                    {% if form2.captcha.errors %}<p class="error">{{ form2.captcha.errors }}</p>{% endif %}
                                     <p>{{ form2.captcha }}</p>
