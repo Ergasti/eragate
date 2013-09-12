@@ -3,7 +3,7 @@
   "pk": 1, 
   "model": "vps.flavor", 
   "fields": {
-    "flavor_uuid": "\t7152ca1a-023e-42b3-8eb8-fa4a7a6c389", 
+    "flavor_uuid": "7152ca1a-023e-42b3-8eb8-fa4a7a6c3891", 
     "name_en": "Bronze", 
     "ram_mb": 1024, 
     "name_ar": "", 
@@ -131,7 +131,7 @@
   }
 },
 {
-  "pk": "3daaad54-f3a5-4042-be17-2e6a7c81", 
+  "pk": "3daaad54-f3a5-4042-be17-2e6a7c811696", 
   "model": "vps.osimage", 
   "fields": {
     "name": "Ubuntu Server 12.10"
@@ -152,7 +152,7 @@
   }
 },
 {
-  "pk": "cfeb8617-d8d8-4f47-a3eb-02454cbd", 
+  "pk": "cfeb8617-d8d8-4f47-a3eb-02454cbd48f1", 
   "model": "vps.osimage", 
   "fields": {
     "name": "Ubuntu Server 13.04"
