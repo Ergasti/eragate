@@ -71,7 +71,7 @@ class Order(models.Model):
                 nics=params['nics'],
                 security_groups=params['security_groups'])
             vps.instance_uuid = server.id
-            vps.subdomain = order.subdomain
+            vps.subdomain = self.subdomain
             vps.save()
 
         if not vps.ip:
