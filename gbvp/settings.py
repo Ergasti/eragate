@@ -1,3 +1,6 @@
+import os
+import datetime
+gettext = lambda s: s
 # Django settings for gbvp project.
 
 DEBUG = True
@@ -21,9 +24,6 @@ DATABASES = {
     }
 }
 
-# Hosts/domain names that are valid for this site; required if DEBUG is False
-# See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = []
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -33,7 +33,18 @@ TIME_ZONE = 'Africa/Cairo'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
+
+LANGUAGES = (
+    ( 'ar', gettext( 'Arabic' ) ), 
+    ( 'en', gettext( 'English' ) ), 
+)
+
+LOCALE_PATHS = ( 
+    os.path.join( os.path.dirname( __file__ ), 'locale' ), 
+)
+
+LANGUAGES_BIDI = ( "ar", )
 
 SITE_ID = 1
 
@@ -95,6 +106,7 @@ TEMPLATE_LOADERS = (
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',

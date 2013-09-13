@@ -12,4 +12,5 @@ urlpatterns = patterns('',
     url(r'^dashboard/*', dashboard),
     url(r'^vps_action/(?P<action>\w{0,50})/(?P<vps>\w{0,50})/$', vps_action),
     url(r'^logout/*', logout_view),
+    url(r'^lang/$', switch_lang),
 )

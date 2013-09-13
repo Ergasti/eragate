@@ -13,7 +13,7 @@ import string
 import datetime
 from datetime import datetime, timedelta
 from django.contrib.auth.decorators import login_required
-
+from gbvp import settings
 
 def index(request):
     plans = Plan.objects.all()
@@ -125,10 +125,7 @@ def dashboard(request):
 
 @login_required
 def vps_action(request,action,vps):
-    print request.POST
-    print action
-    print vps
-    vps_obj = VPS.objects.get(pk=vps)
+    vps_obj = VPS.objects.get(pk=int(vps))
     if vps_obj.owner == request.user:
         if action == "status":
             vps_obj.get_instance_status()
@@ -153,4 +150,11 @@ def vps_action(request,action,vps):
 
 def logout_view(request):
     logout(request)
+    return HttpResponseRedirect('/')
+
+def switch_lang(request):
+    if request.LANGUAGE_CODE == 'en': 
+        request.session['django_language'] = 'ar'
+    else:
+        request.session['django_language'] = 'en'
     return HttpResponseRedirect('/')
