@@ -8,8 +8,8 @@
 </style>
 <div class="container" style="margin-top:60px">
     {% if vps%}
-    <h1>{{vps_obj}}</h1>
-    <h1>{{vps_obj.owner}}</h1>
+    <h1>{{vpsobj}}</h1>
+    <h1>{{vpsobj.owner}}</h1>
     <table class="table table-hover">
         <thead>
             <tr>
@@ -65,16 +65,16 @@
                         </button>
                         </form>
                         -->
-                    <a class="btn btn-default" href="vps_action/suspend/{{vp.id}}">
+                    <a class="btn btn-danger" href="vps_action/suspend/{{vp.id}}">
                     <span class="glyphicon glyphicon-pause">
                     </span>
-                    Suspend
+                    Shutdown
                     </a>
-                    <a class="btn btn-success " href="vps_action/resume/{{vp.id}}">
+<!--                     <a class="btn btn-success " href="vps_action/resume/{{vp.id}}">
                     <span class="glyphicon glyphicon-play">
                     </span>
                     Resume
-                    </a>
+                    </a> -->
                     <a  class="btn btn-success" href="vps_action/start/{{vp.id}}">
                     <span class="glyphicon glyphicon-off">
                     </span>
