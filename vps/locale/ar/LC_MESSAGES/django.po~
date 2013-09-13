@@ -1,0 +1,305 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-09-13 22:39+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: templates/navbar.html:49
+msgid "Home"
+msgstr "الرئيسية"
+
+#: templates/navbar.html:50
+msgid "About us"
+msgstr "من نحن"
+
+#: templates/navbar.html:51
+msgid "Contact"
+msgstr "اتصل بنا"
+
+#: templates/navbar.html:76
+msgid "Sign in"
+msgstr "الدخول"
+
+#: templates/navbar.html:77
+msgid "Register"
+msgstr "انشاء حساب جديد"
+
+#: templates/navbar.html:87
+msgid "Go to Dashboard"
+msgstr "لوحة التحكم"
+
+#: templates/navbar.html:90
+msgid "logout"
+msgstr "الخروج"
+
+#: templates/navbar.html:96
+msgid "Welcome"
+msgstr "اهلا ,"
+
+#: templates/order.html:16
+#, fuzzy
+msgid "Order"
+msgstr "اطلب الان"
+
+#: templates/order.html:21
+#, fuzzy
+msgid "Name"
+msgstr "اسم المستخدم"
+
+#: templates/order.html:31
+msgid "The Plans"
+msgstr "الخطط"
+
+#: templates/order.html:49
+#, fuzzy
+msgid "Offer"
+msgstr "عرض ال150%"
+
+#: templates/order.html:74
+msgid "Operating System"
+msgstr "نظان التشغيل"
+
+#: templates/order.html:93
+#, fuzzy
+msgid "SubDomain"
+msgstr "دومين فرعى مجانى"
+
+#: templates/order.html:106
+msgid "Price"
+msgstr "السعر"
+
+#: templates/order.html:111 templates/order.html.py:143
+msgid "EGP"
+msgstr "جنية مصرى"
+
+#: templates/order.html:128
+msgid "Send Order"
+msgstr "ارسال الطلب"
+
+#: templates/order.html:162
+msgid "MB RAM"
+msgstr "ميجابت رام"
+
+#: templates/order.html:168
+#, fuzzy
+msgid "Month"
+msgstr "شهر واحد"
+
+#: templates/order.html:175 templates/plans.html:95
+msgid "Disk space"
+msgstr "مساحة التخزين\t"
+
+#: templates/order.html:177 templates/order.html.py:183
+#: templates/plans.html:97 templates/plans.html.py:103
+msgid "Unlimited"
+msgstr "غير محدود"
+
+#: templates/order.html:181 templates/plans.html:101 templates/whyus.html:85
+msgid "Bandwidth"
+msgstr "ترافيك شهرى"
+
+#: templates/order.html:187 templates/plans.html:115
+msgid "Free IPV4"
+msgstr "مجانى ipv4"
+
+#: templates/order.html:195 templates/plans.html:123
+msgid "Free SubDomain"
+msgstr "دومين فرعى مجانى"
+
+#: templates/order.html:203 templates/plans.html:131
+msgid "Free Email"
+msgstr "ايميل مجانى"
+
+#: templates/order.html:210 templates/plans.html:138
+msgid "Control Portal"
+msgstr "لوحة التحكم"
+
+#: templates/plans.html:51
+msgid "Buy 3 Month Offer"
+msgstr "شراء عرض ال 3 شهور"
+
+#: templates/plans.html:54
+msgid "Buy 2 Month Offer"
+msgstr "شراء عرض الشهرين"
+
+#: templates/plans.html:57
+msgid "1 Month"
+msgstr "شهر واحد"
+
+#: templates/plans.html:107
+msgid "Ram"
+msgstr "الرام"
+
+#: templates/plans.html:150 templates/slider.html:8
+#: templates/slider.html.py:12 templates/slider.html:14
+#: templates/slider.html.py:16
+msgid "Order Now"
+msgstr "اطلب الان"
+
+#: templates/register.html:14 templates/register.html.py:156
+msgid "Create Account"
+msgstr "انشاء حساب"
+
+#: templates/register.html:26
+msgid "Username"
+msgstr "اسم المستخدم"
+
+#: templates/register.html:54
+msgid "Please correct the following fields:"
+msgstr "الرجاء تصحيح المدخلات الاتية"
+
+#: templates/register.html:58
+msgid "First Name"
+msgstr "الاسم الاول"
+
+#: templates/register.html:62
+msgid "Last Name"
+msgstr "الاسم العائلة"
+
+#: templates/register.html:68
+msgid "UserName"
+msgstr "اسم المستخدم"
+
+#: templates/register.html:78
+msgid "Email"
+msgstr "ايميل"
+
+#: templates/register.html:89
+msgid "Mobile"
+msgstr "رقم الموبايل"
+
+#: templates/register.html:99
+msgid "Gender"
+msgstr "النوع"
+
+#: templates/register.html:109
+msgid "date_Of_birth"
+msgstr "تاريخ الميلاد"
+
+#: templates/register.html:123
+msgid "Password"
+msgstr "كلمة المرور"
+
+#: templates/register.html:125
+msgid ""
+" Password should be A Capital letter and a Small letter at least 8 characters"
+msgstr "8 حروف"
+
+#: templates/register.html:130
+msgid "Password strength "
+msgstr "قوة كلمة المرور"
+
+#: templates/register.html:131
+msgid "Password not entered"
+msgstr "لم يتم ادخال كلمة المرور"
+
+#: templates/register.html:135
+msgid "Password Confirmation"
+msgstr "تاكيد كلمة المرور"
+
+#: templates/slider.html:11
+msgid "6 Month 2GB VPS [Silver Plan]- ONLY 555 EGP"
+msgstr " [الخطة الفضية] - فقط 555 جنية مصرى  VPS 6 شهور 2 جيجابايت "
+
+#: templates/slider.html:13
+msgid "2 Month 3GB VPS,Yes 3GB VPS - 2 Month 250 EGP ONLY"
+msgstr ""
+
+#: templates/slider.html:15
+msgid "1 Month 2GB VPS [Silver] 85 EGP"
+msgstr " 2 جيجابايت [الفضى ] 85 جنية مصرى VPS شهر واحد من "
+
+#: templates/slider.html:19
+msgid "3 Month Offers"
+msgstr "عروض 3 شهور"
+
+#: templates/slider.html:19
+msgid "Check This Awesome Offer"
+msgstr "تفحص هذا العرض الرائع"
+
+#: templates/slider.html:20
+msgid "6 Month Offers"
+msgstr "عروض 6 شهور"
+
+#: templates/slider.html:20
+msgid "More Awesome Offers"
+msgstr "المزيد من العروض الرائعة"
+
+#: templates/slider.html:21
+#, fuzzy, python-format
+msgid "150%% Offer"
+msgstr "عرض150%"
+
+#: templates/slider.html:21
+msgid "2GB RAM Gone Crazy"
+msgstr "2 جيجابت رام خرج عن السيطرة"
+
+#: templates/slider.html:22
+msgid "2GB VPS"
+msgstr "VPS 2 جيجا بايت"
+
+#: templates/slider.html:22
+msgid "2GB VPS 1 Month for .."
+msgstr ".. شهر واحد ب  VPS 2 جيجابايت "
+
+#: templates/whyus.html:80
+msgid "Location"
+msgstr "الموقع"
+
+#: templates/whyus.html:82
+msgid ""
+"All our Servers is located in Europe and mostly Germany so you are "
+"guaranteed  a greater service with greater internet connection "
+msgstr ""
+
+#: templates/whyus.html:87
+msgid ""
+"Since we belive that Bandwidth souls never be a Limit to any user or VSP "
+"buyer we made it Unlimited"
+msgstr ""
+
+#: templates/whyus.html:91
+msgid "Network Speed"
+msgstr "سرعة الشبكة"
+
+#: templates/whyus.html:93
+msgid ""
+"We try our best to provide the users with there maxim speed so we offer all "
+"servers with speeds up to a Blazing 2000Mbit"
+msgstr ""
+"نحن نقوم بأقصى ما فى وسعنا لنعطى عملائنا اعلى سرعة اتصال بالانترنت لذلك نحن "
+"نمد جميع سيرفراتنا بسرعة مذهلة تصل الى 2000 ميجابايت"
+
+#: templates/whyus.html:100
+msgid "Hardware"
+msgstr "مساحة التخزين"
+
+#: templates/whyus.html:107
+msgid ""
+"We believe RAM shouldn't be an obstacle, that is why we at 2GB VPS.com give "
+"you 2GB enjoy. All  yours, dedicated 24/7."
+msgstr ""
+"نحن نؤمن ان الرام لا يجب ان تكون عائقا لذلك نحن فى شركتنا نفضل الرام 2 "
+"جيجابايت لكى تستمتع بكل  ما تريد "
+
+#: templates/whyus.html:111
+msgid "Happy Customers"
+msgstr "الزبائن السعداء"
+
+#~ msgid "At 2GB VPs we believe "
+#~ msgstr " نحن نؤمن 2GB-Vp فى"

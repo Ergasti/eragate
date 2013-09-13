@@ -1,5 +1,5 @@
 {% block base_content %}
-{% load staticfiles%}
+{% load i18n sekizai_tags staticfiles %}
 <!--   <header>
     <div class="container">
       <div class="header-box">
@@ -62,6 +62,10 @@
               </ul>
             </li> -->
           </ul>
+          <div class="navbar-form navbar-right"><a class="btn btn-default" href="/lang"> 
+            <span class="glyphicon glyphicon-globe"></span>
+          </a>
+          </div>
           {% if user.is_authenticated == False %}
           <form class="navbar-form navbar-right" action="/login/" method="POST">
             {% csrf_token %}

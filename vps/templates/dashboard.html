@@ -14,22 +14,22 @@
         <thead>
             <tr>
                 <th>
-                    {% trans " ID
+                    {% trans " ID" %}
                 </th>
                 <th>
-                    {% trans " Subdomain
+                    {% trans " Subdomain" %}
                 </th>
                 <th>
-                    {% trans " IP
+                    {% trans " IP" %}
                 </th>
                 <th>
-                    {% trans " Status
+                    {% trans " Status" %}
                 </th>
                 <th>
-                     {% trans "View VNC 
+                     {% trans "View VNC " %}
                 </th>
                 <th>
-                    {% trans " Actions
+                    {% trans " Actions" %}
                 </th>
             </tr>
         </thead>
@@ -64,7 +64,7 @@
                     <a class="btn btn-danger" href="vps_action/suspend/{{vp.id}}">
                     <span class="glyphicon glyphicon-pause">
                     </span>
-                    {% trans " Shutdown
+                    {% trans " Shutdown" %}
                     </a>
 <!--                     <a class="btn btn-success " href="vps_action/resume/{{vp.id}}">
                     <span class="glyphicon glyphicon-play">
@@ -74,17 +74,17 @@
                     <a  class="btn btn-success" href="vps_action/start/{{vp.id}}">
                     <span class="glyphicon glyphicon-off">
                     </span>
-                     {% trans "Start 
+                     {% trans "Start " %}
                     </a>
                     <a  class="btn btn-warning" href="vps_action/reboot/{{vp.id}}">
                     <span class="glyphicon  glyphicon-refresh">
                     </span>
-                     {% trans "Reboot
+                     {% trans "Reboot" %}
                     </a>
                     <a type="button" class="btn btn-warning" href="vps_action/freboot/{{vp.id}}">
                     <span class="glyphicon glyphicon-refresh">
                     </span>
-                     {% trans "Hard-Reboot
+                     {% trans "Hard-Reboot" %}
                     </a>
                 </td>
             </tr>
@@ -94,11 +94,11 @@
     {% else %}
     <div class="alert alert-warning">
         <strong>
-         {% trans "You don't have any VPSes!
+         {% trans "You don't have any VPSes!" %}
         </strong>
-         {% trans "Want to order one?,
+         {% trans "Want to order one?," %}
         <a href="/">
-         {% trans "Order Now
+         {% trans "Order Now" %}
         </a>
     </div>
     {% endif%}
