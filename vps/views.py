@@ -121,7 +121,7 @@ def dashboard(request):
     vps = VPS.objects.filter(owner=request.user)
     vps_obj = VPS.objects.get(id=3)
 
-    return render_to_response ('dashboard.html',{'vps': vps,'vps_obj':vps_obj},context_instance=RequestContext(request))
+    return render_to_response ('dashboard.html',{'vps': vps,'vpsobj':vpsobj},context_instance=RequestContext(request))
 
 @login_required
 def vps_action(request,action,vps):
@@ -143,7 +143,11 @@ def vps_action(request,action,vps):
         elif action == "stop":
             vps_obj.stop_instance()
         elif action =="vnc":
-            vps_obj.generate_vnc_console_link()
+            try:
+              url = vps_obj.generate_vnc_console_link()
+              return mark_safe('<a class="btn btn-default" href="%s"><span class="glyphicon glyphicon-fullscreen"></span>View VPS</a>' % (url))
+            except:
+              return "VNC Not Available"
         elif action == "suspend":
             vps_obj.suspend_instance()
 

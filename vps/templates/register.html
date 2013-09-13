@@ -1,13 +1,5 @@
  {% extends "base.html" %}
-
-
-
-       <!--      {% block mahmoud %}
-                
-
-            {% endblock %} -->
-
-
+{% load i18n sekizai_tags staticfiles %}
 {% block content %}
 <div class="container">
 <link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.css">
@@ -19,7 +11,7 @@
     <div class="modal-body" style="overflow-y: visible;">
         <div class="well">
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#create" data-toggle="tab" style="font-size: 15px;">Create Account</a></li>
+                <li class="active"><a href="#create" data-toggle="tab" style="font-size: 15px;">{% trans "Create Account" %}</a></li>
                 <li ><a href="#login" data-toggle="tab" style="font-size: 15px;">Login</a></li>
             </ul>
             <div id="myTabContent" class="tab-content">
@@ -31,7 +23,7 @@
                             </div>    
                             <div class="control-group">
                                 <!-- Username -->
-                                <label class="control-label"  for="username">Username</label>
+                                <label class="control-label"  for="username">{% trans "Username" %}</label>
                                 <div class="controls">
                                     <input type="text" id="username" name="username" placeholder="" class="input-xlarge">
                                 </div>
@@ -59,21 +51,21 @@
                     <form id="tab" class = "myform form-horizontal" action="" method="post">
                         {% csrf_token %}
 
-                        {% if form1.errors or form2.errors %}<p>Please correct the following fields:</p>{% endif %}
+                        {% if form1.errors or form2.errors %}<p>{% trans "Please correct the following fields:" %}</p>{% endif %}
                         <div class="control-group">
                             <!-- Username -->
                             <div class="register_div">
-                                <label class="control-label" >First Name</label>
+                                <label class="control-label" >{% trans "First Name" %}</label>
                                 <div class="controls">
                                     {% if form1.first_name.errors %}<p class="error">{{ form1.first_name.errors }}</p>{% endif %}
                                     <p>{{ form1.first_name}}</p>
-                                <label class="control-label" >Last Name</label>
+                                <label class="control-label" >{% trans "Last Name" %}</label>
                                 </div>
                                     <div class="controls">
                                     {% if form1.last_name.errors %}<p class="error">{{ form1.last_name.errors }}</p>{% endif %}
                                     <p>{{ form1.last_name}}</p>
                                 </div>
-                                <label class="control-label" >UserName</label>
+                                <label class="control-label" >{% trans "UserName" %}</label>
                                     <div class="controls">
                                     {% if form1.username.errors %}<p class="error">
                                     {{ form1.username.errors }}</p>{% endif %}
@@ -83,7 +75,7 @@
                             </div>
                         </div>
                         <div class="control-group">
-                        <label class="control-label">Email</label>
+                        <label class="control-label">{% trans "Email" %}</label>
                         <div class="register_div">
                             <div class="controls">
                                 {% if form1.email.errors %}<p class="error">{{ form1.email.errors }}</p>{% endif %}
@@ -94,7 +86,7 @@
                         <div class="control-group">
                             <!-- Username -->
                             <div class="register_div">
-                                <label class="control-label" >Mobile</label>
+                                <label class="control-label" >{% trans "Mobile" %}</label>
                                 <div class="controls">
                                     {% if form2.phone_number.errors %}<p class="error">{{ form2.phone_number.errors }}</p>{% endif %}
                                     <p>{{ form2.phone_number }}</p>
@@ -104,7 +96,7 @@
                         <div class="control-group">
                             <!-- Username -->
                             <div class="register_div">
-                                <label class="control-label" >Gender</label>
+                                <label class="control-label" >{% trans "Gender" %}</label>
                                 <div class="controls">
                                     {% if form2.gender.errors %}<p class="error">{{ form2.gender.errors }}</p>{% endif %}
                                     <p>{{ form2.gender }}</p>
@@ -114,7 +106,7 @@
                         <div class="control-group">
                             <!-- Username -->
                             <div class="register_div">
-                                <label class="control-label" >date_Of_birth</label>
+                                <label class="control-label" >{% trans "date_Of_birth" %}</label>
                                 <div class="controls">
                                     {% if form2.date_Of_birth.errors %}<p class="error">{{ form2.date_Of_birth.errors }}</p>{% endif %}
                                     <p>{{ form2.date_Of_birth }}</p>
@@ -128,19 +120,19 @@
                         
                         <!-- <input type="password" name="pass" id="pass" onkeyup="passwordStrength(this.value)" /></p> -->
                         <div class="control-group">
-                            <label class="control-label">Password</label>
+                            <label class="control-label">{% trans "Password" %}</label>
                             <div class="controls">
-                                Password should be A Capital letter and a Small letter at least 8 characters
+                               {% trans " Password should be A Capital letter and a Small letter at least 8 characters" %}
                                 {% if form1.password1.errors %}<p class="error">{{ form1.password1.errors }}</p>{% endif %}
                                 <p>{{ form1.password1 }}</p>
                             </div>    
                         </div>                       
-                        <label class ="hide " for="passwordStrength">Password strength </label>
-                        <div class = "hide" id="passwordDescription">Password not entered</div>
+                        <label class ="hide " for="passwordStrength">{% trans "Password strength " %}</label>
+                        <div class = "hide" id="passwordDescription">{% trans "Password not entered" %}</div>
                         <div class = "hide" id="passwordStrength" class="strength"></div>
 
                         <div class="control-group">
-                            <label class="control-label">Password Confirmation</label>
+                            <label class="control-label">{% trans "Password Confirmation" %}</label>
                             <div class="controls">
                         <div class="register_div">
                             {% if form1.password2.errors %}
@@ -161,7 +153,7 @@
                         <div class="control-group">
                             <label class="control-label"></label>
                             <div class="controls">
-                                <button class="btn btn-primary" type="submit" alt="register">Create Account</button>
+                                <button class="btn btn-primary" type="submit" alt="register">{% trans "Create Account" %}</button>
                             </div>
                     </form>
                 </div>
