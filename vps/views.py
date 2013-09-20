@@ -134,23 +134,23 @@ def switch_lang(request):
     return HttpResponseRedirect('/')
 
 def vps_action(request,action,vps):
-    vps_obj = VPS.objects.get(pk=int(vps))
-    if vps_obj.owner == request.user:
+    global vpsobj = VPS.objects.get(pk=int(vps))
+    if vpsobj.owner == request.user:
         if action == "status":
-            vps_obj.get_instance_status()
+            vpsobj.get_instance_status()
         elif action == "reboot":
-            vps_obj.reboot()
+            vpsobj.reboot()
         elif action == "freboot":
-            vps_obj.force_reboot_instance()
+            vpsobj.force_reboot_instance()
         elif action == "resume":
-            vps_obj.resume_instance()
+            vpsobj.resume_instance()
         elif action == "start":
-            vps_obj.start_instance()
+            vpsobj.start_instance()
         elif action == "stop":
             # vps_obj.stop_instance()
         elif action =="vnc":
             try:
-              url = vps_obj.generate_vnc_console_link()
+              url = vpsobj.generate_vnc_console_link()
               return mark_safe('<a class="btn btn-default" href="%s"><span class="glyphicon glyphicon-fullscreen"></span>View VPS</a>' % (url))
             except:
               return "VNC Not Available"
