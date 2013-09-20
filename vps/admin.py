@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.contrib import messages
 from django.utils.safestring import mark_safe
 from django.core import urlresolvers
+from django.db import transaction
 
 from vps.models import *
 from openstack import is_nova_exception
@@ -28,16 +29,19 @@ class OrderAdmin(admin.ModelAdmin):
     fulfillment_vps.short_description = "VPS"
 
     def fulfill_orders(self, request, queryset):
-        for order in queryset:
-            try:
-                order.fulfill()
-                self.message_user(request, "Successfully fulfilled: %s" % order)
-            except Exception as e:
-                if is_nova_exception(e):
-                    self.message_user(request, "Error fulfilling %s: %s" % (order, e),
-                                      level=messages.ERROR)
-                else:
-                    raise
+        with transaction.commit_manually():
+            for order in queryset.select_for_update():
+                try:
+                    order.fulfill()
+                    self.message_user(request, "Successfully fulfilled: %s" % order)
+                except Exception as e:
+                    if is_nova_exception(e):
+                        self.message_user(request, "Error fulfilling %s: %s" % (order, e),
+                                          level=messages.ERROR)
+                    else:
+                        transaction.commit()
+                        raise
+            transaction.commit()
     fulfill_orders.short_description = "Launch instances to fulfill selected orders"
 admin.site.register(Order, OrderAdmin)
 
