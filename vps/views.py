@@ -119,8 +119,7 @@ def confirm_order(request):
 @login_required
 def dashboard(request):
     vps = VPS.objects.filter(owner=request.user)
-    return render_to_response ('dashboard.html',{'vps': vps},context_instance=RequestContext(request))
-
+    return render_to_response ('dashboard.html',{'vps': vps})
 
 def logout_view(request):
     logout(request)
@@ -134,7 +133,7 @@ def switch_lang(request):
     return HttpResponseRedirect('/')
 
 def vps_action(request,action,vps):
-    global vpsobj = VPS.objects.get(pk=int(vps))
+    vpsobj = VPS.objects.get(pk=int(vps))
     if vpsobj.owner == request.user:
         if action == "status":
             vpsobj.get_instance_status()
