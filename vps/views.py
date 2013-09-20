@@ -119,7 +119,34 @@ def confirm_order(request):
 @login_required
 def dashboard(request):
     vps = VPS.objects.filter(owner=request.user)
-    return render_to_response ('dashboard.html',{'vps': vps})
+    return render_to_response ('dashboard.html',{'vps': vps},context_instance=RequestContext(request))
+
+@login_required
+def vps_action(request,action,vps):
+    vps_obj = VPS.objects.get(pk=int(vps))
+    if vps_obj.owner == request.user:
+        if action == "status":
+            vps_obj.get_instance_status()
+        elif action == "reboot":
+            vps_obj.reboot()
+        elif action == "freboot":
+            vps_obj.force_reboot_instance()
+        elif action == "resume":
+            vps_obj.resume_instance()
+        elif action == "start":
+            vps_obj.start_instance()
+        elif action == "stop":
+            print "diabled"
+            # vps_obj.stop_instance()
+        elif action =="vnc":
+            try:
+              url = vps_obj.generate_vnc_console_link()
+              return mark_safe('<a class="btn btn-default" href="%s"><span class="glyphicon glyphicon-fullscreen"></span>View VPS</a>' % (url))
+            except:
+              return "VNC Not Available"
+        elif action == "suspend":
+            print "diabled"
+            # vps_obj.suspend_instance()
 
 def logout_view(request):
     logout(request)
@@ -131,27 +158,3 @@ def switch_lang(request):
     else:
         request.session['django_language'] = 'en'
     return HttpResponseRedirect('/')
-
-def vps_action(request,action,vps):
-    vpsobj = VPS.objects.get(pk=int(vps))
-    if vpsobj.owner == request.user:
-        if action == "status":
-            vpsobj.get_instance_status()
-        elif action == "reboot":
-            vpsobj.reboot()
-        elif action == "freboot":
-            vpsobj.force_reboot_instance()
-        elif action == "resume":
-            vpsobj.resume_instance()
-        elif action == "start":
-            vpsobj.start_instance()
-        elif action == "stop":
-            # vps_obj.stop_instance()
-        elif action =="vnc":
-            try:
-              url = vpsobj.generate_vnc_console_link()
-              return mark_safe('<a class="btn btn-default" href="%s"><span class="glyphicon glyphicon-fullscreen"></span>View VPS</a>' % (url))
-            except:
-              return "VNC Not Available"
-        elif action == "suspend":
-            # vps_obj.suspend_instance()
