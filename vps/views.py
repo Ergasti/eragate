@@ -121,6 +121,18 @@ def dashboard(request):
     vps = VPS.objects.filter(owner=request.user)
     return render_to_response ('dashboard.html',{'vps': vps},context_instance=RequestContext(request))
 
+
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect('/')
+
+def switch_lang(request):
+    if request.LANGUAGE_CODE == 'en': 
+        request.session['django_language'] = 'ar'
+    else:
+        request.session['django_language'] = 'en'
+    return HttpResponseRedirect('/')
+
 def vps_action(request,action,vps):
     vps_obj = VPS.objects.get(pk=int(vps))
     if vps_obj.owner == request.user:
@@ -144,14 +156,3 @@ def vps_action(request,action,vps):
               return "VNC Not Available"
         elif action == "suspend":
             # vps_obj.suspend_instance()
-
-def logout_view(request):
-    logout(request)
-    return HttpResponseRedirect('/')
-
-def switch_lang(request):
-    if request.LANGUAGE_CODE == 'en': 
-        request.session['django_language'] = 'ar'
-    else:
-        request.session['django_language'] = 'en'
-    return HttpResponseRedirect('/')
