@@ -121,7 +121,6 @@ def dashboard(request):
     vps = VPS.objects.filter(owner=request.user)
     return render_to_response ('dashboard.html',{'vps': vps},context_instance=RequestContext(request))
 
-@login_required
 def vps_action(request,action,vps):
     vps_obj = VPS.objects.get(pk=int(vps))
     if vps_obj.owner == request.user:
