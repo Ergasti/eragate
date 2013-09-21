@@ -147,7 +147,7 @@ INSTALLED_APPS = (
     'django.contrib.admin', # Required for helpdesk admin/maintenance
     'django.contrib.markup', # Required for helpdesk text display
     'south', # Highly recommended to make database migrations simpler.
-    'helpdesk', # This is new!
+    # 'helpdesk', # This is new!
 )
 
 # A sample logging configuration. The only tangible logging

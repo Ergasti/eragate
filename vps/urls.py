@@ -15,6 +15,6 @@ urlpatterns = patterns('',
     url(r'^lang/$', switch_lang),
     url(r'^email/', sendemail),
     url(r'^contact/', contact_us),
-    (r'helpdesk/', include('helpdesk.urls')),
+    # (r'helpdesk/', include('helpdesk.urls')),
 
 )
