@@ -69,18 +69,8 @@ header .container {
 .tail-top3 {
 	background-image:url(../images/tail-top3.gif);
 }
-input, select, textarea {
-	font-family:Arial, Helvetica, sans-serif;
-	font-size:1em;
-	vertical-align:middle;
-	font-weight:normal;
-	color:#393939;
-	margin:0;
-	padding:0;
-}
-fieldset {
-	border:0;
-}
+
+
 .info-list {
 	padding-bottom:5px;
 }
@@ -703,7 +693,7 @@ aside .line-ver4 {
 	float:left;
 	width:94px;
 }
-#contacts-form input, #contacts-form textarea {
+#contacts-form  #contacts-form textarea {
 	border-radius:3px;
 	-moz-border-radius:3px;
 	-webkit-border-radius:3px;
@@ -714,7 +704,7 @@ aside .line-ver4 {
 	float:left;
 	color:#464646;
 }
-#contacts-form input {
+#contacts-form  {
 	width:300px;
 	padding:3px 3px;
 }

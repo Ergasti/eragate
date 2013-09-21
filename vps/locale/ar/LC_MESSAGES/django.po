@@ -107,7 +107,7 @@ msgstr "لا تمتلك حساب"
 
 #: templates/login.html:72
 msgid " Signup"
-msgstr "التسجيل "
+msgstr "التسجيل"
 
 #: templates/navbar.html:49
 msgid "Home"
@@ -124,7 +124,7 @@ msgstr "اتصل بنا"
 
 #: templates/navbar.html:77
 msgid "Register"
-msgstr "انشاء حساب جديد"
+msgstr "التسجيل"
 
 #: templates/navbar.html:87
 msgid "Go to Dashboard"

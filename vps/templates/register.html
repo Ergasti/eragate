@@ -1,127 +1,85 @@
  {% extends "base.html" %}
 {% load i18n sekizai_tags staticfiles %}
 {% block content %}
-<div class="container">
-<link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.css">
-<div class="" id="loginModal">
+<style type="text/css">
+.register {
+position: relative;
+margin-top: 20px;
+padding: 20px 20px 20px;
+background: rgba(255, 255, 255, 0.44);
+border-radius: 3px;
+-webkit-box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
+-moz-box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
+box-shadow: 0 0 4px rgb(255, 255, 255), 0 1px 2px rgb(255, 255, 255);
+}
+</style>
+<div class="container" style="margin-top: 30px;width:800">
+<div class="" id="loginModal" style="">
     <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3>Have an Account?</h3>
+        <h3>Have an Account?<a class="btn btn-link" href="/login" >{% trans "Login" %}</a>
+</h3>
     </div>
-    <div class="modal-body" style="overflow-y: visible;">
-        <div class="well">
-            <ul class="nav nav-tabs">
-                <li class="active"><a href="#create" data-toggle="tab" style="font-size: 15px;">{% trans "Create Account" %}</a></li>
-                <li ><a href="#login" data-toggle="tab" style="font-size: 15px;">Login</a></li>
-            </ul>
-            <div id="myTabContent" class="tab-content">
-                <div class="tab-pane fade" id="login">
-                    <form class="form-horizontal" action='' method="POST">
-                        <fieldset>
-                            <div id="legend">
-                                <legend class="">Login</legend>
-                            </div>    
-                            <div class="control-group">
-                                <!-- Username -->
-                                <label class="control-label"  for="username">{% trans "Username" %}</label>
-                                <div class="controls">
-                                    <input type="text" id="username" name="username" placeholder="" class="input-xlarge">
-                                </div>
-                            </div>
-                            
-                            <div class="control-group">
-                                <!-- Password-->
-                                <label class="control-label" for="password">Password</label>
-                                <div class="controls">
-                                    <input type="password" id="password" name="password" placeholder="" class="input-xlarge">
-                                </div>
-                            </div>
-                            
-                            
-                            <div class="control-group">
-                                <!-- Button -->
-                                <div class="controls">
-                                    <button class="btn btn-success">Login</button>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </form>                
-                </div>
-                <div class="tab-pane active in " id="create">
-                    <form id="tab" class = "myform form-horizontal" action="" method="post">
+                <div class="register " id="create">
+                    <form class="form-horizontal" action="" method="post">
                         {% csrf_token %}
-
                         {% if form1.errors or form2.errors %}<p>{% trans "Please correct the following fields:" %}</p>{% endif %}
-                        <div class="control-group">
+                        <div class="form-group">
                             <!-- Username -->
                             <div class="register_div">
-                                <label class="control-label" >{% trans "First Name" %}</label>
-                                <div class="controls">
+                                <label class="col-lg-2  control-label" >{% trans "First Name" %}</label>
+                                <div class="col-lg-10  controls">
                                     {% if form1.first_name.errors %}<p class="error">{{ form1.first_name.errors }}</p>{% endif %}
                                     <p>{{ form1.first_name}}</p>
-                                <label class="control-label" >{% trans "Last Name" %}</label>
                                 </div>
-                                    <div class="controls">
+                                <label class=" col-lg-2 control-label" >{% trans "Last Name" %}</label>
+                                    <div class="col-lg-10  controls">
                                     {% if form1.last_name.errors %}<p class="error">{{ form1.last_name.errors }}</p>{% endif %}
                                     <p>{{ form1.last_name}}</p>
                                 </div>
-                                <label class="control-label" >{% trans "UserName" %}</label>
-                                    <div class="controls">
+                                <label class="col-lg-2  control-label" >{% trans "UserName" %}</label>
+                                    <div class="col-lg-10 controls">
                                     {% if form1.username.errors %}<p class="error">
                                     {{ form1.username.errors }}</p>{% endif %}
                                     <p>{{ form1.username}}</p>
                                 </div>
-
                             </div>
-                        </div>
-                        <div class="control-group">
-                        <label class="control-label">{% trans "Email" %}</label>
+                        <label class="col-lg-2  control-label">{% trans "Email" %}</label>
                         <div class="register_div">
-                            <div class="controls">
+                            <div class="col-lg-10 controls">
                                 {% if form1.email.errors %}<p class="error">{{ form1.email.errors }}</p>{% endif %}
                                 <p>{{ form1.email }}</p>
                             </div>
                         </div>
-                        </div>
                         <div class="control-group">
-                            <!-- Username -->
                             <div class="register_div">
-                                <label class="control-label" >{% trans "Mobile" %}</label>
-                                <div class="controls">
+                                <label class="col-lg-2  control-label" >{% trans "Mobile" %}</label>
+                                <div class="col-lg-10 controls">
                                     {% if form2.phone_number.errors %}<p class="error">{{ form2.phone_number.errors }}</p>{% endif %}
                                     <p>{{ form2.phone_number }}</p>
                                 </div>
                             </div>
                         </div>
                         <div class="control-group">
-                            <!-- Username -->
                             <div class="register_div">
-                                <label class="control-label" >{% trans "Gender" %}</label>
-                                <div class="controls">
+                                <label class="col-lg-2  control-label" >{% trans "Gender" %}</label>
+                                <div class="col-lg-10 controls">
                                     {% if form2.gender.errors %}<p class="error">{{ form2.gender.errors }}</p>{% endif %}
                                     <p>{{ form2.gender }}</p>
                                 </div>
                             </div>
                         </div>
                         <div class="control-group">
-                            <!-- Username -->
                             <div class="register_div">
-                                <label class="control-label" >{% trans "date_Of_birth" %}</label>
-                                <div class="controls">
+                                <label class="col-lg-2 control-label" >{% trans "date_Of_birth" %}</label>
+                                <div class="col-lg-10 controls">
                                     {% if form2.date_Of_birth.errors %}<p class="error">{{ form2.date_Of_birth.errors }}</p>{% endif %}
                                     <p>{{ form2.date_Of_birth }}</p>
                                 </div>
                             </div>
                         </div>
-<!--                         <label>Address</label>
-                        <textarea value="Smith"  rows="3" class="input-xlarge control-label">
-                        </textarea> -->
-                        
-                        
-                        <!-- <input type="password" name="pass" id="pass" onkeyup="passwordStrength(this.value)" /></p> -->
                         <div class="control-group">
-                            <label class="control-label">{% trans "Password" %}</label>
-                            <div class="controls">
+                            <label class="col-lg-2  control-label">{% trans "Password" %}</label>
+                            <div class="col-lg-10 controls">
                                {% trans " Password should be A Capital letter and a Small letter at least 8 characters" %}
                                 {% if form1.password1.errors %}<p class="error">{{ form1.password1.errors }}</p>{% endif %}
                                 <p>{{ form1.password1 }}</p>
@@ -132,8 +90,8 @@
                         <div class = "hide" id="passwordStrength" class="strength"></div>
 
                         <div class="control-group">
-                            <label class="control-label">{% trans "Password Confirmation" %}</label>
-                            <div class="controls">
+                            <label class="col-lg-2  control-label">{% trans "Password Confirmation" %}</label>
+                            <div class="col-lg-10 controls">
                         <div class="register_div">
                             {% if form1.password2.errors %}
                             <p class="error">{{ form1.password1.errors }}</p>
@@ -142,24 +100,24 @@
                             </div> 
                         </div >
                         <div class="control-group">
-                            <label class="control-label"></label>
-                            <div class="controls">
+                            <label class="col-lg-2 control-label"></label>
+                            <div class="col-lg-2 controls">
                                 <script type="text/javascript" src="http://api.recaptcha.net/challenge?k=6Ld9WucSAAAAAA3rJKkysLxux8RZavsZy9Nntkk5">
                                 </script> 
                                    {% if form2.captcha.errors %}<p class="error">{{ form2.captcha.errors }}</p>{% endif %}
                                     <p>{{ form2.captcha }}</p>
                             </div>    
                         </div> 
+                        <br>
                         <div class="control-group">
-                            <label class="control-label"></label>
-                            <div class="controls">
-                                <button class="btn btn-primary" type="submit" alt="register">{% trans "Create Account" %}</button>
+                            <div class="col-lg-offset-2 col-lg-10  controls">
+                                <button class="btn btn-success btn-lg btn-block" type="submit" alt="register">{% trans "Create Account" %}</button>
                             </div>
+                        </div>
+
                     </form>
                 </div>
-            </div>
-        </div>
-    </div>
+
 
 <script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script class="cssdeck" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
