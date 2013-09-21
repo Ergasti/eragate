@@ -23,7 +23,10 @@ next="/"
 def login(request):
     global next
     if request.method == 'GET':
-        next = request.GET['next'] 
+        try:
+            next = request.GET['next']
+        except:
+            next = "/"
         return render_to_response ('login.html',context_instance=RequestContext(request))
     if request.method == 'POST':
         print request.POST  

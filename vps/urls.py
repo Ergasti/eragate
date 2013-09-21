@@ -1,4 +1,4 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import patterns, url ,include
 
 from vps.views import *
 
@@ -15,5 +15,6 @@ urlpatterns = patterns('',
     url(r'^lang/$', switch_lang),
     url(r'^email/', sendemail),
     url(r'^contact/', contact_us),
+    (r'helpdesk/', include('helpdesk.urls')),
 
 )

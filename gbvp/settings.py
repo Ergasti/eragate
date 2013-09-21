@@ -144,6 +144,10 @@ INSTALLED_APPS = (
     'captcha',
     'sekizai',
     'vps',
+    'django.contrib.admin', # Required for helpdesk admin/maintenance
+    'django.contrib.markup', # Required for helpdesk text display
+    'south', # Highly recommended to make database migrations simpler.
+    'helpdesk', # This is new!
 )
 
 # A sample logging configuration. The only tangible logging
@@ -212,3 +216,9 @@ LOGOUT_URL = '/logout/'
 # Import local settings
 # NOTE: this MUST be the last line
 from local_settings import *
+
+EMAIL_HOST =  "smtp.gmail.com"
+EMAIL_HOST_USER = '2gbvps@gmail.com'
+EMAIL_HOST_PASSWORD = '0123456764'
+
+AKISMET_API_KEY='edf10192801e'
