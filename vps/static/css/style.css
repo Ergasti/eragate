@@ -25,10 +25,7 @@ header .container {
 	overflow:hidden;
 	position:relative;
 }
-aside {
-	background:url(../images/aside-tail.gif) repeat-x left top #131313;
-	min-width:980px;
-}
+
 .fleft {
 	float:left;
 }

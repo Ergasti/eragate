@@ -3,36 +3,172 @@
 
 
 {% block content %}
- {% if user == order.user %}
- <style>
-.right_info{
+{% if user == order.user %}
+<style>
+  .right_info{
 	float: right;
-}
- </style>
- <div class="container" style="margin-top:60px;font-size: 18px;font-weight: bold">
-	<div class="panel panel-success">
-	  <!-- Default panel contents -->
-	  <div class="panel-heading">Order Info</div>
-	  <!-- List group -->
-	  <ul class="list-group">
-	    <li class="list-group-item">User Name
-	    <span class="right_info">{{order.user}}</span></li>
-	    <li class="list-group-item">Plan
-	    <span class="right_info">{{order.plan}}</span></li>
-	    <li class="list-group-item">Operating Sysytem
-	    <span class="right_info">{{order.os_image.name}}</span></li>
-	    <li class="list-group-item">Sub Domain
-	    <span class="right_info">{{order.subdomain}}.2gbvb.com</span></li>
-	    <li class="list-group-item">Cost
-	    <span class="right_info">{{order.plan.amount}}</span></li>
+   }
+</style>
+<div class="container" style="margin-top:60px;font-size: 18px;font-weight: bold">
+  <div class="panel panel-success">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+      Order Info
+    </div>
+    <!-- List group -->
+    <ul class="list-group">
+      <li class="list-group-item">
+        User Name
+	    <span class="right_info">
+          {{order.user}}
+          </span>
+        </li>
+	    <li class="list-group-item">
+          Plan
+          <span class="right_info">
+            {{order.plan}}
+          </span>
+        </li>
+	    <li class="list-group-item">
+          Operating Sysytem
+          <span class="right_info">
+            {{order.os_image.name}}
+          </span>
+        </li>
+	    <li class="list-group-item">
+          Sub Domain
+          <span class="right_info">
+            {{order.subdomain}}.2gbvb.com
+          </span>
+        </li>
+	    <li class="list-group-item">
+          Cost
+          <span class="right_info">
+            {{order.plan.amount}}
+          </span>
+        </li>
 	  </ul>
-	</div>
+   </div>
+   <!-- Button trigger modal -->
+   <a data-toggle="modal" href="#myModal" class="btn btn-link">
+     Terms of use
+   </a>
+   
+   <!-- Modal -->
+   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+     <div class="modal-dialog">
+       <div class="modal-content">
+         <div class="modal-header">
+           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+             &times;
+           </button>
+           <h4 class="modal-title">
+             Modal title
+           </h4>
+         </div>
+         <div class="modal-body">
+           <blockquote>
+             <small>
+               The use of services from 2GBVP.com  constitutes agreement to these terms. 
+               <br>
+               You may view our Privacy Policy here.
+               <br>
+               1.) Cancellations and Refunds
+               Any abuse of our staff in any medium or format will result in the suspension or termination of your services.
+               Customers may cancel at any time via a cancellation form. 2GBVP gives you an unconditional 45 day money back guarantee on Virtual Private Servers for any customer who paid the first invoice with a credit card or with Paypal.
+               Only first-time accounts are eligible for a refund. For example, if you've had an account with us before, canceled and signed up again, you will not be eligible for a refund or if you have opened a second account with us.
+               The following methods of payments are non-refundable, and refunds will be posted as credit to the hosting account:
+               Bank Wire Transfers
+               Western Union Payments
+               Checks
+               Money orders
+               <br>
+               2.) Resource Usage Limits
+               VPS accounts may not:
+               a) exceed a 15 minute load average greater than two (2) times the amount of CPU cores given.
+               b) run public IRCd's or malicious bots.
+               c) run any type of BitTorrent client or tracker that links to or downloads illegal content.
+               d) use an Open/Public proxy, or utilize a proxy to access illegal/malicious content.
+               e) use I/O intensive applications which adversely affect normal server operations.
+               <br>
+               3.) Inodes
+               VPS accounts come with a default inode limit of 1,000,000 to better protect the file system. The limit can be increased if there is a legitimate reason to have it increased. To make a request, please email our support team.
+               <br>
+               4.) Mail Policy
+               VPS accounts will be governed by our dedicated server mail policy, which is available at Dedicated server mail policy.
+               <br>
+               5.) Backup and Data Loss
+               Your use of this service is at your sole risk. Our backup service is provided to you as a courtesy. 2GBVP is not responsible for files and/or data residing on your account. You agree to take full responsibility for files and data transferred and to maintain all appropriate backup of files and data stored on 2GBVP servers.
+               <p>Another Main Terms if use</p> 
+               1 - prevents the use of the site or any of the services in damaging the provider ( server) or other sites on the provider
+               Or any other sites
+               <br>
+               2 - do not assume responsibility for damages suffered by your site as a result of errors committed by .
+               <br>
+               
 
-	  <form class="form-horizontal" action="/confirm_order/" method="POST">
-	    {% csrf_token %}
-	      <input type="hidden" name="order" value="{{order.id}}">
-	    <button style="" type="submit" class="btn btn-success">Confirm Order</button>
-	  </form>
-	</div>
- {% endif %}
+               3 - Do not publish everything that is contrary to public morals , literature religions
+               <br>
+
+               4 - pledge to save all your personal and financial information is in the area of confidentiality and encrypted and will be reserved completely confidential , and will not be disclosed to anyone .
+               <br>
+
+               5 - prevents the use of mailing lists ( collective -dumping ) or the so - called Spam internationally to prevent them first ... Because they cause significant damage to the server ... And use may cause shut down your site without retrieving value .
+               <br>
+
+               6 - You are entitled to your members correspondent (Times) every week. It must be time messaging during off - peak time and the pressure on the server * and you should wait between half a minute to a minute between each batch is sent . ( Any breach of these conditions may cause off site ) .
+               <br>
+
+               7 - will be taking the backup weekly and monthly basis but we are not responsible for damage that might get them or abnormality , God forbid, the customer is entitled to request retrieval of backup at any time , but with that there is a complete system for backup we have the responsibility to save the data is the responsibility of the client first and foremost .
+               <br>
+
+               8 - forums or unlicensed software " demilitarized code " in the case of a complaint regarding the existence of an unauthorized program will be alerting the client even licensed or remove the program .
+               <br>
+
+               9 - We check periodically servers in case there are files used to the detriment of the server , such as scarves is that the site and download a fine on the owner of the site .
+               <br>
+
+               10 - In case of giving the client a word passing of a person or theft of the password as a result of poor protection of the client machine not be liable for any damage to the Active but are committed to return the backup copy for the client to change his password .
+               <br>
+
+               11 - committed to supporting your site for free in the case of the problem from the server but if there were combinations or other support there is a fee for it.
+               <br>
+
+               12 - In case the end of the involvement of the client , it is informed of this by our system , and in the case of non-payment in a timely manner is off site, and when you are prompted to re- activate the service after its completion the payment of the amount your plan its own or back up of the site are paid (25 ) dollars fine.
+               <br>
+
+               13 - in the case of the transfer of his client to the other will be hosting its removal from the server after confirming the transfer is finished completely , but not taken calculating the remaining period of the host.
+               <br>
+
+               14 - The site is owned by the applicant and we can not negotiate with someone else , but power of attorney from the owner of the site by adding a new ticket and let us know .
+               <br>
+
+               15 - in the case of breach of one of the terms of this agreement , we will have to stop the wedge our account without any prior notice or justification with not bear any liability arising therefrom , as he is entitled to ÇÓÊÖÇÝÊß at any time to change these items or one of these items .. The customer must see it first hand .
+               <br>
+
+               16 - In case of exceeding limits of client or insulting words or insults will stop the site without warning and will be opened only in the case of transport or an official apology to the employee and does not have any remaining amount of the residual duration . 
+	         </small>
+            </blockquote>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">
+              Close
+            </button>
+	      </div>
+	    </div>
+        <!-- /.modal-content -->
+	  </div>
+      <!-- /.modal-dialog -->
+   </div>
+   <!-- /.modal -->
+   
+   <form class="form-horizontal" action="/confirm_order/" method="POST">
+     {% csrf_token %}
+     <input type="hidden" name="order" value="{{order.id}}">
+     <button style="" type="submit" class="btn btn-success">
+       Accept and Confirm
+     </button>
+   </form>
+</div>
+{% endif %}
 {% endblock %}

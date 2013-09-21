@@ -1,0 +1,204 @@
+{% extends 'base.html' %}
+{% load sekizai_tags staticfiles%}
+
+
+
+{% block content %}
+{% addtoblock "css" %}
+  <link href="{% static "css/contactus.css" %}" rel="stylesheet" media="screen">
+{% endaddtoblock %}
+<style type="text/css">
+  .loading{
+  position:fixed;
+  top:290px;
+  right:516px;
+  background:white url('http://i.stack.imgur.com/FhHRx.gif')  no-repeat 10px 50%;
+  padding:15px 40px 15px 60px;
+  -moz-box-shadow:0px 0px 2px #000;
+  -webkit-box-shadow:0px 0px 2px #000;
+  box-shadow:0px 0px 2px #000;
+  opacity:0.6;
+  filter:progid:DXImageTransform.Microsoft.Alpha(opacity=60);
+}
+.loading_label{
+  font-size: 20pt;
+  color: black;
+}
+</style>
+
+<div class="container">
+<div id="contact" class="contact">
+
+      <!-- src="{% static "my_app/myexample.jpg" %}" -->
+      <div id='wait' class="loading"><span><label class='loading_label'>Loading...</label></span></div>
+
+<div id="sitecontent">
+
+<div class="wrapper">
+      <aside id="contact-info">
+    <dl>
+      <dt>Email</dt>
+      <dd><label>gbvps@hotmail.com</label>
+      <label>2gbvps@gmail.com</label>
+      <label>gbvps@gmail.com</label></dd>
+
+      
+      <dt>Telephone</dt>
+      <dd><label>01278350399</label>
+          <label>01013445882</label>
+          <label>01115673558</label></dd>
+          <dt>Credit Transfare</dt>
+          <dd><label>01060368591</label></dd>
+
+      <dt>Skype</dt>
+      <dd><label>gbvps</label></dd>
+      <dd class="social-links">
+        <a class="fb" href="http://www.facebook.com/pages/2GBVP/167057283484352" title="Find us on Facebook">Facebook</a>
+        <a class="tt" href="http://www.facebook.com/pages/2GBVP/167057283484352" title="Find us on Twitter">Twitter</a>
+      </dd>
+    </dl>
+  </aside>  
+  <form id="contact-form" class="styled-form" action="" method="post" accept-charset="utf-8">
+    <div style="display:none"><input type="hidden" name="csrfmiddlewaretoken" value="e036b55c9b43f156dba010295f076004" /></div>    
+    <h1 style="color: #204a65; font-size: 35px; line-height: 40px; margin-bottom: 30px; font-weight: 300;"class="pagetitle">Contact us</h1>
+    
+    <div class="note">
+      <p>We are here to answer any questions you may have about our offers.
+       Reach out to us and we'll respond as soon as we can.</p>
+      <p>Even if there is something you have always wanted to experience and
+        can't find it on the site, let us know and we promise we'll do our
+        best to find it for you and send you there.</p>
+
+    </div>
+    
+    <p class="row half first">
+      <label id='name' for="id_name">Name: <span class="required">*</span></label>
+      <span class="field"><input type="text" name="name" id="id_name" /><label id='name_error' style="display:none">Can not be blank</label></span>
+    </p>
+    
+    
+    <p class="row half">
+      <label id='email' for="id_email">Email: <span class="required">*</span></label>
+      <span class="field"><input type="text" name="email" id="id_email" /><label style="display:none" id='email_error'>Please enter a valid email</label></span>
+
+    </p>
+
+    <p class="row" style="margin-left:-1px" >
+      <label id='message' for="id_message">Message: <span class="required">*</span></label>
+      <span class="field"><textarea cols="40" rows="10" name="message" id="id_message"></textarea><label id='message_error' style="display:none">Can not be blank</label></span>
+    </p>
+
+    <p class="submit-row">
+      <a class='button1' onClick="send_email();">Send</a>
+    </p>
+
+    
+
+  </form>
+</div>
+
+</div>
+
+</div>
+
+ 
+</div></div>
+ {% addtoblock "js" %}
+ 
+<script type="text/javascript">
+$('#wait').hide();
+valid_email = false;
+valid_name = false;
+valid_message = false;
+function send_email(){
+  if( valid_message && valid_name && valid_email){
+  $.ajax({
+    url: "/email/",
+    type: 'POST',
+    data: {
+        "name" : name,
+        "email": email,
+        "message": message,
+    }, 
+    beforeSend: function() { $('#sitecontent').css('opacity','0.1');$('#wait').show(); },
+    complete: function() {
+     $('#id_email').val('');
+     $('#id_message').val('');
+     $('#id_name').val('');
+     $(window).scrollTop( $('#contact').offset().top);
+     $('#wait').hide();
+     $('#sitecontent').css('opacity','1');
+     alert('Your message has been sent');
+
+  },
+    });
+  // $('#wait').hide();
+  }
+  else{
+    if (! valid_email){
+      $(window).scrollTop($('#email').offset().top);
+      $('#email_error').text('correct the following field');
+    }
+    if (! valid_name){
+      $(window).scrollTop($('#name').offset().top);
+      $('#name_error').text('correct the following field');
+    }
+    if (! valid_message) {
+      $(window).scrollTop($('#message').offset().top);
+      $('#message_error').text('correct the following field');
+    };
+  }
+}
+
+
+$("#id_email").blur(
+            function (event) {
+                email_regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
+                email = $('#id_email').val();
+                if (!(email.match(email_regex))){
+                  valid_email = false;
+                  $('#email_error').css('display','block');
+                }
+                else{
+                 $('#email_error').css('display','none'); 
+                 valid_email = true;
+                }
+              }
+        );
+
+$("#id_message").blur(
+            function (event) {
+                message_regex = /^[0-9a-zA-Z][0-9a-zA-Z '-]*$/
+                message = $('#id_message').val();
+                if (!(message.match(message_regex))){
+                  valid_message = false;
+                  $('#message_error').css('display','block');
+                }
+                else{
+                  valid_message = true;
+                 $('#message_error').css('display','none'); 
+                }
+              }
+        );
+$("#id_name").blur(
+            function (event) {
+                name_regex = /^[0-9a-zA-Z][0-9a-zA-Z '-]*$/
+                name = $('#id_name').val();
+                if (!(name.match(name_regex))){
+                  valid_name = false;
+                  $('#name_error').css('display','block');
+                }
+                else{
+                  valid_name = true;
+                 $('#name_error').css('display','none'); 
+                }
+              }
+        );
+
+  </script>
+{% endaddtoblock %}
+
+
+{% endblock %}
+
+

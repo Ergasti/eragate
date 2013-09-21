@@ -158,3 +158,9 @@ def switch_lang(request):
     else:
         request.session['django_language'] = 'en'
     return HttpResponseRedirect('/')
+
+def contact_us(request):
+    return render_to_response('contactus.html',context_instance=RequestContext(request))    
+
+def sendemail(request):
+    return HttpResponseRedirect('/confirm_send/',context_instance=RequestContext(request))

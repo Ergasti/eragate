@@ -13,4 +13,7 @@ urlpatterns = patterns('',
     url(r'^vps_action/(?P<action>\w{0,50})/(?P<vps>\w{0,50})/$', vps_action),
     url(r'^logout/*', logout_view),
     url(r'^lang/$', switch_lang),
+    url(r'^email/', sendemail),
+    url(r'^contact/', contact_us),
+
 )
