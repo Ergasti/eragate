@@ -122,8 +122,9 @@ def confirm_order(request):
 @login_required
 def dashboard(request):
     vps = VPS.objects.filter(owner=request.user)
+    orders = Order.objects.filter(user=request.user)
+
     try:
-        orders = Order.objects.filter(user=request.user)
         return render_to_response ('dashboard.html',{'vps': vps,'orders':orders},context_instance=RequestContext(request))
     except:
         return render_to_response ('dashboard.html',{'vps': vps},context_instance=RequestContext(request))
@@ -135,7 +136,7 @@ def vps_action(request,action,vps):
         if action == "status":
             vps_obj.get_instance_status()
         elif action == "reboot":
-            vps_obj.reboot()
+            vps_obj.reboot_instance()
         elif action == "freboot":
             vps_obj.force_reboot_instance()
         elif action == "resume":
