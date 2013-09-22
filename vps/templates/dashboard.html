@@ -125,6 +125,7 @@
                   <td>{{order.plan.flavor.ram_mb}}</td>
                   <td>{{order.os_image}}</td>
                   <td>{{order.plan.amount}}</td>
+                  {% endfor %}
                 </tr>
               </tbody>
             </table>
@@ -135,7 +136,6 @@
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-    {% endif %}
     {% else %}
     <div class="alert alert-warning">
         <strong>
