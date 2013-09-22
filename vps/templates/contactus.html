@@ -4,24 +4,9 @@
 
 
 {% block content %}
-  <link href="{% static "css/contactus.css" %}" rel="stylesheet" media="screen">
+
 <style type="text/css">
-  .loading{
-  position:fixed;
-  top:290px;
-  right:516px;
-  background:white url('http://i.stack.imgur.com/FhHRx.gif')  no-repeat 10px 50%;
-  padding:15px 40px 15px 60px;
-  -moz-box-shadow:0px 0px 2px #000;
-  -webkit-box-shadow:0px 0px 2px #000;
-  box-shadow:0px 0px 2px #000;
-  opacity:0.6;
-  filter:progid:DXImageTransform.Microsoft.Alpha(opacity=60);
-}
-.loading_label{
-  font-size: 20pt;
-  color: black;
-}
+.loading{position:fixed;top:290px;right:516px;background:white url('http://i.stack.imgur.com/FhHRx.gif') no-repeat 10px 50%;padding:15px 40px 15px 60px;-moz-box-shadow:0 0 2px #000;-webkit-box-shadow:0 0 2px #000;box-shadow:0 0 2px #000;opacity:.6;filter:alpha(opacity=60)}.loading_label{font-size:20pt;color:black}.wrapper{font-size:13px;line-height:20px;color:#4e4e4d;cursor:default;font-family:"museo-slab",Georgia,serif;font-weight:300;width:978px;margin:0 auto;text-align:left}.social-links a{text-indent:-119988px;overflow:hidden;text-align:left;background-repeat:no-repeat;background-position:50% 50%;display:-moz-inline-stack;display:inline-block;vertical-align:middle;*vertical-align:auto;zoom:1;*display:inline;width:32px;height:48px;margin-right:5px}.social-links a.fb{background-position:-592px -72px}.social-links a.tt{background-position:-592px -8px}.required{text-transform:uppercase;font-family:"brandon-grotesque",Helvetica,Arial,sans-serif;font-weight:700;letter-spacing:1px;position:relative;top:7px;font-size:20px;font-style:normal;line-height:1px;color:#e8554e}.share{background-color:#e0e5e2;position:relative;width:36px;height:132px;*zoom:1}.share:after{content:"";display:table;clear:both}.share strong{text-indent:-119988px;overflow:hidden;text-align:left;background-repeat:no-repeat;background-position:50% 50%;background-position:-206px -66px;display:block;width:36px;height:60px;position:absolute;bottom:0;left:0}.share .share-fb,.share .share-tt{text-indent:-119988px;overflow:hidden;text-align:left;background-repeat:no-repeat;background-position:50% 50%;display:inline;float:left;width:36px;height:36px}.share .share-tt{background-position:-270px -14px}.share .share-tt:hover{background-position:-270px -78px}.share .share-fb{background-position:-334px -14px}.share .share-fb:hover{background-position:-334px -78px}.button1{white-space:nowrap;position:relative;display:-moz-inline-stack;display:inline-block;vertical-align:middle;*vertical-align:auto;zoom:1;*display:inline;font-family:"brandon-grotesque",Helvetica,Arial,sans-serif;font-weight:700;letter-spacing:2px;font-size:14px;line-height:14px;text-transform:uppercase;color:white;background-color:#e8554e;cursor:pointer;border-bottom:5px solid #9a3834;-webkit-border-radius:4px;-moz-border-radius:4px;-ms-border-radius:4px;-o-border-radius:4px;border-radius:4px;-webkit-transition:none 125ms ease-out;-webkit-transition-delay:0;-moz-transition:none 125ms ease-out 0;-o-transition:none 125ms ease-out 0;transition:none 125ms ease-out 0;-webkit-transition-property:background-color,color;-moz-transition-property:background-color,color;-o-transition-property:background-color,color;transition-property:background-color,color;padding:10px 55px}.button:hover{background-color:#fa5c54;text-decoration:none}[disabled]{filter:alpha(opacity=70);opacity:.7}#contact #sitecontent .wrapper{float:left;margin-left:50px;position:relative;background-color:white;-webkit-box-shadow:0 1px 3px 0 rgba(0,0,0,0.2);-moz-box-shadow:0 1px 3px 0 rgba(0,0,0,0.2);box-shadow:0 1px 3px 0 rgba(0,0,0,0.2);*zoom:1;margin-top:80px;margin-bottom:140px;padding-top:0;margin-top:25px}#contact #sitecontent .wrapper:after{content:"";display:table;clear:both}#contact #sitecontent #register-link{position:absolute;right:0;top:-30px}#contact #sitecontent #contact-form{position:relative;display:inline;float:left;width:622px;padding:25px 30px}#contact #sitecontent #contact-form .submit-row{text-align:right}#contact #sitecontent #contact-info{position:absolute;right:0;top:100;height:100%;border:10px solid white;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;width:306px;padding:30px 25px;background:rgba(172,151,151,0) repeat}#contact #sitecontent #contact-info dt{text-transform:uppercase;font-family:"brandon-grotesque",Helvetica,Arial,sans-serif;font-weight:700;letter-spacing:1px;font-size:12px;color:#e8554e}#contact #sitecontent #contact-info dd{margin-bottom:25px}#contact #sitecontent #contact-info dd,#contact #sitecontent #contact-info dd a{color:#204a65}#contact #sitecontent #contact-info .social-links a{text-indent:-119988px;overflow:hidden;text-align:left;background-image:url('{% static "images/icons.png" %}');background-repeat:no-repeat;background-position:50% 50%;display:-moz-inline-stack;display:inline-block;vertical-align:middle;zoom:1;width:32px;height:48px;margin-right:5px}#contact #sitecontent #contact-info .social-links a.fb{background-position:-592px -72px}#contact #sitecontent #contact-info .social-links a.tt{background-position:-592px -8px}.competition-modal .modal-content{width:840px;height:302px;min-height:300px;top:50%;margin-top:-151px}.styled-form .pagetitle{margin-bottom:5px}.styled-form .note{margin-bottom:40px}.styled-form input[type=text],.styled-form input[type=password],.styled-form textarea{background-color:#e1e1db;width:100%;padding:12px 14px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;-webkit-border-radius:3px;-moz-border-radius:3px;-ms-border-radius:3px;-o-border-radius:3px;border-radius:3px;font-family:"museo-slab",Georgia,serif}.styled-form input[type=text]:focus,.styled-form input[type=password]:focus,.styled-form textarea:focus{background-color:#fff9b2}.styled-form label{display:block;font-family:"brandon-grotesque",Helvetica,Arial,sans-serif;font-weight:700;letter-spacing:1px;font-size:11px;line-height:20px;text-transform:uppercase;color:#4e4e4d}.styled-form label.checkbox{font-family:"museo-slab",Georgia,serif;font-weight:300;color:#787876;text-transform:none;font-size:13px;letter-spacing:0}.styled-form .field{display:block}.styled-form .error{color:red;font-size:12px;margin-top:2px;display:block}.styled-form .row{display:inline;float:left;*zoom:1;width:100%}.styled-form .row:after{content:"";display:table;clear:both}.styled-form .row.half{width:46%;margin-left:8%}.styled-form .row.half.first{margin-left:0;clear:left}.styled-form .submit-row{clear:both}*{border:0;margin:0;padding:0;outline:0;font-size:100%}
 </style>
 
 <div class="container">
@@ -57,8 +42,8 @@
     </dl>
   </aside>  
   <form id="contact-form" class="styled-form" action="" method="post" accept-charset="utf-8">
-    <div style="display:none"><input type="hidden" name="csrfmiddlewaretoken" value="e036b55c9b43f156dba010295f076004" /></div>    
-    <h1 style="color: #204a65; font-size: 35px; line-height: 40px; margin-bottom: 30px; font-weight: 300;"class="pagetitle">Contact us</h1>
+          {% csrf_token %}
+    <h1 class="pagetitle">Contact us</h1>
     
     <div class="note">
       <p>We are here to answer any questions you may have about our offers.
