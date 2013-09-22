@@ -92,7 +92,6 @@
             {% endfor %}
         </tbody>
     </table>
-    {% if orders%}
     <!-- Button trigger modal -->
     <a data-toggle="modal" href="#myModal" class="btn btn-primary ">{% trans "Your Orders" %}</a>
     <!-- Modal -->
@@ -126,7 +125,6 @@
                   <td>{{order.plan.flavor.ram_mb}}</td>
                   <td>{{order.os_image}}</td>
                   <td>{{order.plan.amount}}</td>
-                  {% endfor %}
                 </tr>
               </tbody>
             </table>
