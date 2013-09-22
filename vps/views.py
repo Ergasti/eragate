@@ -122,9 +122,9 @@ def confirm_order(request):
 @login_required
 def dashboard(request):
     user = request.user
-    vps = VPS.objects.filter(owner=user)
     orders = Order.objects.filter(user=user)
-    return render_to_response ('dashboard.html',{'orders':orders,'vps': vps},context_instance=RequestContext(request))
+    vps = VPS.objects.filter(owner=user)
+    return render_to_response ('dashboard.html',{'user':user,'orders':orders,'vps': vps},context_instance=RequestContext(request))
 
 @login_required
 def vps_action(request,action,vps):
