@@ -44,7 +44,7 @@
     font-weight: bold;
   }
 </style>
-<div style="width: 990;">
+<div style="width: 990;margin: auto;">
   <h4 style="font-weight: bold">{% trans "Check our Offers" %}</h4>
 <div class="btn-group btn-group-justified" data-toggle="buttons">
   <label class="btn btn-default tab" id="tabOne" >
@@ -62,7 +62,8 @@
 
 
 
-<ul class="act-plans act-plans-biz clearfix">
+<ul class="act-plans act-plans-biz clearfix" style="margin: auto;
+width: 1000;">
   {% for plan in plans%}
   <li class="act-plan act-plan-biz plan month{{plan.months}}">
     <header class="act-plan-header act-plan-biz-header">

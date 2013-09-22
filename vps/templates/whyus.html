@@ -4,77 +4,12 @@
       <link rel="stylesheet" href="{{ STATIC_URL }}css/nivo-slider.css" type="text/css" />
       {% endaddtoblock %}
       <style type="text/css" media="screen">
-      .content-wrap section {
-      position: relative;
-      padding: 125px 0 25px 0;
-      background: url(../images/section-sep.png) repeat-x left 25px;
-      }
-      .content-wrap section .no-bottom-margin {
-      margin-bottom: 0;
-      }
-      index.htmlmedia="screen"
-      .content-wrap section .row {
-      clear: both;
-      overflow: hidden;
-      margin-bottom: 25px;
-      }
-      .content-wrap section .row .col {
-      float: left;
-      margin: 0;
-      padding: 0;
-      width: 290px;
-      }
-      .content-wrap section section {
-      background: none;
-      margin: 0;
-      }
-      .content-wrap section {
-      position: relative;
-      padding: 125px 0 25px 0;
-      background: url(../images/section-sep.png) repeat-x left 25px;
-      }
-      .content-wrap section .row .col {
-      float: left;
-      margin: 0;
-      padding: 0;
-      width: 290px;
-      }
-      .h2{
-      	font-size: 22px;
-      	line-height: 25px;
-      	margin-top: 10px;
-      	margin-bottom: 15px;
-      }
-
-      .content-wrap section .row .mid {
-      margin-left: 35px;
-      margin-right: 35px;
-      }
-      .row .col {
-        margin-left: 20px;
-      float: left;
-      margin: 0;
-      padding: 0;
-      width: 300px;
-      }
-      section#services .row .col img.align-left {
-      margin-top: 13px;
-      margin-right: 12px;
-      float: left;
-      }
-      index.htmlmedia="screen"
-      .align-left {
-      float: left;
-      }
-
-      .col p{
-        font-size: 14px;
-      }
-
+.content-wrap section{position:relative;padding:125px 0 25px 0;background:url(../images/section-sep.png) repeat-x left 25px}.content-wrap section .no-bottom-margin{margin-bottom:0}index.htmlmedia="screen" .content-wrap section .row{clear:both;overflow:hidden;margin-bottom:25px}.content-wrap section .row .col{float:left;margin:0;padding:0;width:290px}.content-wrap section section{background:0;margin:0}.content-wrap section{position:relative;padding:125px 0 25px 0;background:url(../images/section-sep.png) repeat-x left 25px}.content-wrap section .row .col{float:left;margin:0;padding:0;width:290px}.h2{font-size:22px;line-height:25px;margin-top:10px;margin-bottom:15px}.content-wrap section .row .mid{margin-left:35px;margin-right:35px}.row .col{margin-left:20px;float:left;margin:0;padding:0;width:300px}section#services .row .col img.align-left{margin-top:13px;margin-right:12px;float:left}index.htmlmedia="screen" .align-left{float:left}.col p{font-size:14px}
       </style>
       <div class="container">
       <!-- services -->
-      <section id="services" >
+      <section id="services" style="width: 1000;
+margin: auto;">
              <div class="row no-bottom-margin">
                 <section class="col">
                     <h2 class="h2">{% trans "Location" %}</h2>
@@ -111,7 +46,6 @@
                                        <h2 class="h2">{% trans "Happy Customers" %}</h2>
 
                                        <p><img class="align-left" alt="" src="{% static "images/services/newsletter.png" %}" />{% blocktrans %}At 2GB VPs we believe "There is only one boss. The customer. And he can fire everybody in the company from the chairman on down, simply by spending his money somewhere else.{% endblocktrans %}</p>
-
                 </section>
             </div>
       </section>
