@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-13 23:28+0200\n"
+"POT-Creation-Date: 2013-09-22 13:04+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,31 +45,72 @@ msgstr "تحكم فى ال vps"
 msgid " Actions"
 msgstr "الموقع"
 
-#: templates/dashboard.html:67
+#: templates/dashboard.html:52
+#, fuzzy
+msgid "View VPS"
+msgstr "تحكم فى ال vps"
+
+#: templates/dashboard.html:68
 msgid " Shutdown"
 msgstr "ايقاف التشغيل"
 
-#: templates/dashboard.html:77
+#: templates/dashboard.html:78
 msgid "Start "
 msgstr "تشغيل"
 
-#: templates/dashboard.html:82
+#: templates/dashboard.html:83
 msgid "Reboot"
 msgstr "اعادة تشغيل"
 
-#: templates/dashboard.html:87
+#: templates/dashboard.html:88
 msgid "Hard-Reboot"
 msgstr "اعادة تشغيل طوارئ"
 
-#: templates/dashboard.html:97
+#: templates/dashboard.html:96
+#, fuzzy
+msgid "Your Orders"
+msgstr "اطلب الان"
+
+#: templates/dashboard.html:103
+#, fuzzy
+msgid "The Orders of "
+msgstr "اطلب الان"
+
+#: templates/dashboard.html:110
+msgid "Username"
+msgstr "اسم المستخدم"
+
+#: templates/dashboard.html:111
+#, fuzzy
+msgid "Plan"
+msgstr "الخطط"
+
+#: templates/dashboard.html:112
+#, fuzzy
+msgid "Start on"
+msgstr "تشغيل"
+
+#: templates/dashboard.html:114 templates/order.html:74
+msgid "Operating System"
+msgstr "نظان التشغيل"
+
+#: templates/dashboard.html:115
+msgid "Paid"
+msgstr "مدفوع"
+
+#: templates/dashboard.html:135
+msgid "Close"
+msgstr "مغلق"
+
+#: templates/dashboard.html:143
 msgid "You don't have any VPSes!"
 msgstr "انت لا تملك اى vps"
 
-#: templates/dashboard.html:99
+#: templates/dashboard.html:145
 msgid "Want to order one?,"
 msgstr "تريد الطلب الان ؟"
 
-#: templates/dashboard.html:101 templates/plans.html:150
+#: templates/dashboard.html:147 templates/plans.html:151
 #: templates/slider.html:8 templates/slider.html.py:12
 #: templates/slider.html:14 templates/slider.html.py:16
 msgid "Order Now"
@@ -97,7 +138,7 @@ msgstr "اسم المستخدم"
 msgid " Password"
 msgstr "كلمة المرور"
 
-#: templates/login.html:54 templates/navbar.html:76
+#: templates/login.html:54 templates/navbar.html:78
 msgid "Sign in"
 msgstr "الدخول"
 
@@ -109,32 +150,32 @@ msgstr "لا تمتلك حساب"
 msgid " Signup"
 msgstr "التسجيل"
 
-#: templates/navbar.html:49
+#: templates/navbar.html:48
 msgid "Home"
 msgstr "الرئيسية"
 
-#: templates/navbar.html:50
+#: templates/navbar.html:49
 #, fuzzy
 msgid "About"
 msgstr "من نحن"
 
-#: templates/navbar.html:51
+#: templates/navbar.html:50
 msgid "Contact"
 msgstr "اتصل بنا"
 
-#: templates/navbar.html:77
+#: templates/navbar.html:79
 msgid "Register"
 msgstr "التسجيل"
 
-#: templates/navbar.html:87
+#: templates/navbar.html:89
 msgid "Go to Dashboard"
 msgstr "لوحة التحكم"
 
-#: templates/navbar.html:90
+#: templates/navbar.html:92
 msgid "logout"
 msgstr "الخروج"
 
-#: templates/navbar.html:96
+#: templates/navbar.html:98
 msgid "Welcome"
 msgstr "اهلا "
 
@@ -155,11 +196,7 @@ msgstr "الخطط"
 #: templates/order.html:49
 #, fuzzy
 msgid "Offer"
-msgstr "عرض ال150%"
-
-#: templates/order.html:74
-msgid "Operating System"
-msgstr "نظان التشغيل"
+msgstr "عرض "
 
 #: templates/order.html:93
 #, fuzzy
@@ -187,32 +224,32 @@ msgstr "ميجابت رام"
 msgid "Month"
 msgstr "شهر واحد"
 
-#: templates/order.html:175 templates/plans.html:95
+#: templates/order.html:175 templates/plans.html:96
 msgid "Disk space"
 msgstr "مساحة التخزين\t"
 
 #: templates/order.html:177 templates/order.html.py:183
-#: templates/plans.html:97 templates/plans.html.py:103
+#: templates/plans.html:98 templates/plans.html.py:104
 msgid "Unlimited"
 msgstr "غير محدود"
 
-#: templates/order.html:181 templates/plans.html:101 templates/whyus.html:85
+#: templates/order.html:181 templates/plans.html:102 templates/whyus.html:21
 msgid "Bandwidth"
 msgstr "ترافيك شهرى"
 
-#: templates/order.html:187 templates/plans.html:115
+#: templates/order.html:187 templates/plans.html:116
 msgid "Free IPV4"
 msgstr "مجانى ipv4"
 
-#: templates/order.html:195 templates/plans.html:123
+#: templates/order.html:195 templates/plans.html:124
 msgid "Free SubDomain"
 msgstr "دومين فرعى مجانى"
 
-#: templates/order.html:203 templates/plans.html:131
+#: templates/order.html:203 templates/plans.html:132
 msgid "Free Email"
 msgstr "ايميل مجانى"
 
-#: templates/order.html:210 templates/plans.html:138
+#: templates/order.html:210 templates/plans.html:139
 msgid "Control Portal"
 msgstr "لوحة التحكم"
 
@@ -233,70 +270,75 @@ msgstr "شراء عرض الشهرين"
 msgid "1 Month"
 msgstr "شهر واحد"
 
-#: templates/plans.html:107
+#: templates/plans.html:108
 msgid "Ram"
 msgstr "الرام"
 
-#: templates/register.html:14 templates/register.html.py:156
-msgid "Create Account"
-msgstr "انشاء حساب"
+#: templates/register.html:19
+msgid "Login"
+msgstr "تسجيل الدخول"
 
-#: templates/register.html:26
-msgid "Username"
-msgstr "اسم المستخدم"
-
-#: templates/register.html:54
+#: templates/register.html:25
 msgid "Please correct the following fields:"
 msgstr "الرجاء تصحيح المدخلات الاتية"
 
-#: templates/register.html:58
+#: templates/register.html:29
 msgid "First Name"
 msgstr "الاسم الاول"
 
-#: templates/register.html:62
+#: templates/register.html:34
 msgid "Last Name"
 msgstr "الاسم العائلة"
 
-#: templates/register.html:68
+#: templates/register.html:39
 msgid "UserName"
 msgstr "اسم المستخدم"
 
-#: templates/register.html:78
+#: templates/register.html:46
 msgid "Email"
 msgstr "ايميل"
 
-#: templates/register.html:89
+#: templates/register.html:55
 msgid "Mobile"
 msgstr "رقم الموبايل"
 
-#: templates/register.html:99
+#: templates/register.html:64
 msgid "Gender"
 msgstr "النوع"
 
-#: templates/register.html:109
+#: templates/register.html:73
 msgid "date_Of_birth"
 msgstr "تاريخ الميلاد"
 
-#: templates/register.html:123
+#: templates/register.html:81
 msgid "Password"
 msgstr "كلمة المرور"
 
-#: templates/register.html:125
+#: templates/register.html:83
 msgid ""
 " Password should be A Capital letter and a Small letter at least 8 characters"
-msgstr "8 حروف"
+msgstr "كلمة المرور يجب ان تحتوى على حروف كبيرة و صغيرة و على الاقل 8 حروف"
 
-#: templates/register.html:130
+#: templates/register.html:88
 msgid "Password strength "
 msgstr "قوة كلمة المرور"
 
-#: templates/register.html:131
+#: templates/register.html:89
 msgid "Password not entered"
 msgstr "لم يتم ادخال كلمة المرور"
 
-#: templates/register.html:135
+#: templates/register.html:93
 msgid "Password Confirmation"
 msgstr "تاكيد كلمة المرور"
+
+#: templates/register.html:114
+msgid "Create Account"
+msgstr "انشاء حساب"
+
+#: templates/slider.html:7
+#, fuzzy
+msgid "3 Month 2GB VPS [Silver Plan] - ONLY 310 EGP"
+msgstr " [الخطة الفضية] - فقط 555 جنية مصرى  VPS 6 شهور 2 جيجابايت "
 
 #: templates/slider.html:11
 msgid "6 Month 2GB VPS [Silver Plan]- ONLY 555 EGP"
@@ -304,7 +346,7 @@ msgstr " [الخطة الفضية] - فقط 555 جنية مصرى  VPS 6 شهو�
 
 #: templates/slider.html:13
 msgid "2 Month 3GB VPS,Yes 3GB VPS - 2 Month 250 EGP ONLY"
-msgstr ""
+msgstr "شهرين 3 جيجابت رام ,نعم 3 جيجا بت ,فقط 250 جنية مصرى"
 
 #: templates/slider.html:15
 msgid "1 Month 2GB VPS [Silver] 85 EGP"
@@ -343,11 +385,11 @@ msgstr "VPS 2 جيجا بايت"
 msgid "2GB VPS 1 Month for .."
 msgstr ".. شهر واحد ب  VPS 2 جيجابايت "
 
-#: templates/whyus.html:80
+#: templates/whyus.html:16
 msgid "Location"
 msgstr "الموقع"
 
-#: templates/whyus.html:82
+#: templates/whyus.html:18
 #, fuzzy
 msgid ""
 "All our Servers is located in Europe and mostly Germany so you are "
@@ -356,7 +398,7 @@ msgstr ""
 "جميع خدماتنا موقعها فى اوروبا و خاصة فى المانيا لذلك انت مضمون لك خدمة رائعة "
 "بسرعة اتصال بالانترنيت رائعة"
 
-#: templates/whyus.html:87
+#: templates/whyus.html:23
 msgid ""
 "Since we belive that Bandwidth souls never be a Limit to any user or VSP "
 "buyer we made it Unlimited"
@@ -364,11 +406,11 @@ msgstr ""
 "لأننا نؤمن بأن سعة التحميل الشهرية لا يجب ان تكون محدودة لأى مستخدم لذلك "
 "قمنا بحعلها غير محدودة "
 
-#: templates/whyus.html:91
+#: templates/whyus.html:27
 msgid "Network Speed"
 msgstr "سرعة الشبكة"
 
-#: templates/whyus.html:93
+#: templates/whyus.html:29
 msgid ""
 "We try our best to provide the users with there maxim speed so we offer all "
 "servers with speeds up to a Blazing 2000Mbit"
@@ -376,18 +418,18 @@ msgstr ""
 "نحن نقوم بأقصى ما فى وسعنا لنعطى عملائنا اعلى سرعة اتصال بالانترنت لذلك نحن "
 "نمد جميع سيرفراتنا بسرعة مذهلة تصل الى 2000 ميجابايت"
 
-#: templates/whyus.html:100
+#: templates/whyus.html:36
 msgid "Hardware"
 msgstr "مساحة التخزين"
 
-#: templates/whyus.html:102
+#: templates/whyus.html:38
 msgid ""
 "At 2GB-VPs we Offered the best hardware and we provided a fully dedicated "
 "ram all the vps plans.Your VPS also comes with  RAID10 HDD redundant "
 "performance storage."
 msgstr ""
 
-#: templates/whyus.html:107
+#: templates/whyus.html:43
 msgid ""
 "We believe RAM shouldn't be an obstacle, that is why we at 2GB VPS.com give "
 "you 2GB enjoy. All  yours, dedicated 24/7."
@@ -395,16 +437,16 @@ msgstr ""
 "نحن نؤمن ان الرام لا يجب ان تكون عائقا لذلك نحن فى شركتنا نفضل الرام 2 "
 "جيجابايت لكى تستمتع بكل  ما تريد "
 
-#: templates/whyus.html:111
+#: templates/whyus.html:47
 msgid "Happy Customers"
 msgstr "الزبائن السعداء"
 
-#: templates/whyus.html:113
+#: templates/whyus.html:49
 msgid ""
 "At 2GB VPs we believe \"There is only one boss. The customer. And he can "
 "fire everybody in the company from the chairman on down, simply by spending "
 "his money somewhere else."
-msgstr""
+msgstr ""
 
 #~ msgid "At 2GB VPs we believe "
 #~ msgstr " نحن نؤمن 2GB-Vp فى"
