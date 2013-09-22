@@ -21,7 +21,7 @@ class RegistrationForm(forms.ModelForm):
             # 'email': forms.TextInput(attrs = {'placeholder': 'Email example@example.com','type':'email'}),
             # 'name' : forms.TextInput(attrs = {'placeholder': 'Full Name'}),
             'phone_number' : forms.TextInput(attrs = {'placeholder': 'Mobile ','type': 'number','class':'form-control'}),
-            'gender' : forms.Select(choices=gender_choices),
+            'gender' : forms.Select(choices=gender_choices,attrs = {'class':'form-control'}),
             'date_Of_birth' : forms.DateInput(attrs = {'type': 'date','class':'form-control'}),
         }
 
