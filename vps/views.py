@@ -123,11 +123,8 @@ def confirm_order(request):
 def dashboard(request):
     vps = VPS.objects.filter(owner=request.user)
     orders = Order.objects.filter(user=request.user)
+    return render_to_response ('dashboard.html',{'vps': vps,'orders':orders},context_instance=RequestContext(request))
 
-    try:
-        return render_to_response ('dashboard.html',{'vps': vps,'orders':orders},context_instance=RequestContext(request))
-    except:
-        return render_to_response ('dashboard.html',{'vps': vps},context_instance=RequestContext(request))
 
 @login_required
 def vps_action(request,action,vps):
@@ -145,7 +142,6 @@ def vps_action(request,action,vps):
             vps_obj.start_instance()
         elif action == "stop":
             print "diabled"
-            HttpResponseRedirect('/dashboard')
         elif action =="vnc":
             try:
               url = vps_obj.generate_vnc_console_link()
@@ -154,7 +150,8 @@ def vps_action(request,action,vps):
               return "VNC Not Available"
         elif action == "suspend":
             print "diabled"
-            HttpResponseRedirect('/dashboard')
+        HttpResponseRedirect('/dashboard')
+
 
 def logout_view(request):
     logout(request)

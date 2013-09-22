@@ -92,9 +92,9 @@
             {% endfor %}
         </tbody>
     </table>
+    {% if orders%}
     <!-- Button trigger modal -->
     <a data-toggle="modal" href="#myModal" class="btn btn-primary ">{% trans "Your Orders" %}</a>
-
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -118,7 +118,7 @@
               </thead>
               <tbody>
                 <tr>
-                  {% for order in orders  %}
+                  {%for order in orders%}
                   <td>{{order.id}}</td>
                   <td>{{order.user}}</td>
                   <td>{{order.plan.flavor.name_en}}</td>
@@ -137,6 +137,7 @@
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+    {% endif %}
     {% else %}
     <div class="alert alert-warning">
         <strong>
