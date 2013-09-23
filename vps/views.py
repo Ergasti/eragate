@@ -124,6 +124,9 @@ def dashboard(request):
     user = request.user
     orders = Order.objects.filter(user=user)
     vps = VPS.objects.filter(owner=user)
+    for v in vps:
+        try: v.vnc_link = v.generate_vnc_console_link
+        except: v.vnc_link = None
     return render_to_response ('dashboard.html',{'user':user,'orders':orders,'vps': vps},context_instance=RequestContext(request))
 
 @login_required

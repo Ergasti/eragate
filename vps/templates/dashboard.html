@@ -49,8 +49,11 @@
                     {{vp.get_instance_status}}
                 </td>
                 <td>
-                    <a class="btn btn-default" href="{{vp.generate_vnc_console_link}}" target="_blank"><span class="glyphicon glyphicon-fullscreen"></span>{% trans "View VPS" %}</a>
-                    
+                {% if vp.vnc_link %}
+                    <a class="btn btn-default" href="{{vp.vnc_link}}" target="_blank"><span class="glyphicon glyphicon-fullscreen"></span>{% trans "View VPS" %}</a>
+                {% else %}
+                    VPS Console not available!
+                {% endif %}
                 </td>
                 <td>
                     <!--                   
