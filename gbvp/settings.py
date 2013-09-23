@@ -220,4 +220,5 @@ AKISMET_API_KEY='edf10192801e'
 
 # Import local settings
 # NOTE: this MUST be the last line
-from local_settings import *
+try: from local_settings import *
+except ImportError: pass
