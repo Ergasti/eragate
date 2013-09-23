@@ -14,9 +14,6 @@
         <thead>
             <tr>
                 <th>
-                    {% trans " ID" %}
-                </th>
-                <th>
                     {% trans " Subdomain" %}
                 </th>
                 <th>
@@ -37,9 +34,6 @@
             {% for vp in vps%}
             <tr>
                 <td>
-                    {{vp.id}}
-                </td>
-                <td>
                     {{vp.subdomain}}
                 </td>
                 <td>
@@ -54,7 +48,10 @@
                 </td>
                 <td>
                 {% if vp.vnc_link and vp.status and vp.status.0 == 'active' %}
-                    <a class="btn btn-default" href="{{vp.vnc_link}}" target="_blank"><span class="glyphicon glyphicon-fullscreen"></span>{% trans "View VPS" %}</a>
+                    <a class="btn btn-default" href="{{vp.vnc_link}}" target="_blank">
+                      <span class="glyphicon glyphicon-fullscreen"></span>
+                      {% trans "View VPS" %}
+                    </a>
                 {% else %}
                     VNC not available!
                 {% endif %}
