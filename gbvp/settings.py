@@ -210,15 +210,14 @@ LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/dashboard/'
 LOGOUT_URL = '/logout/'
 
+EMAIL_HOST =  "smtp.gmail.com"
+EMAIL_HOST_USER = '2gbvps@gmail.com'
+EMAIL_HOST_PASSWORD = '0123456764'
+
+AKISMET_API_KEY='edf10192801e'
 
 ###################### DO NOT EDIT ###############################
 
 # Import local settings
 # NOTE: this MUST be the last line
 from local_settings import *
-
-EMAIL_HOST =  "smtp.gmail.com"
-EMAIL_HOST_USER = '2gbvps@gmail.com'
-EMAIL_HOST_PASSWORD = '0123456764'
-
-AKISMET_API_KEY='edf10192801e'
