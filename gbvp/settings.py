@@ -217,6 +217,7 @@ EMAIL_HOST_PASSWORD = '0123456764'
 AKISMET_API_KEY='edf10192801e'
 
 SUBDOMAIN_SUFFIX = ".2gbvp.com."
+RESTRICTED_SUBDOMAINS = ['www', 'ns1', 'ns2', 'mail', 'ftp', 'm', 'localhost', 'webmail', 'admin', 'webhost1']
 ZONE_FILE = "2gbvp.com.hosts"
 ZONE_FILE_RELOAD_CMD = "sudo service bind9 reload &"
 

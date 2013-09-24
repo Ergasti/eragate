@@ -3,6 +3,7 @@ import datetime, time, os
 from django.conf import settings
 from django.utils.timezone import utc
 from django.core.validators import RegexValidator
+from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext as _
 
 from django.db import models
@@ -44,12 +45,15 @@ class OSImage(models.Model):
 subdomain_validator = RegexValidator(
                         regex='^[a-z0-9][-a-z0-9]*[a-z0-9]$',
                         message=_('Subdomain should consist of only a-z 0-9 and -'))
+def subdomain_restriction(subdomain):
+    if subdomain in settings.RESTRICTED_SUBDOMAINS:
+        raise ValidationError(u'%s is not allowed' % subdomain)
 
 class Order(models.Model):
     placed_at = models.DateTimeField(auto_now_add=True)
     fulfilled_at = models.DateTimeField(editable=False, default=None, null=True)
     fulfilled = models.BooleanField(editable=False, default=False)
-    subdomain = models.CharField(max_length=20, unique=True, validators=[subdomain_validator])
+    subdomain = models.CharField(max_length=20, unique=True, validators=[subdomain_validator, subdomain_restriction])
     user = models.ForeignKey(User)
     plan = models.ForeignKey(Plan)
     os_image = models.ForeignKey(OSImage, null=True, blank=True)
@@ -99,7 +103,7 @@ class VPS(models.Model):
     plan = models.ForeignKey(Plan)
     instance_uuid = models.CharField(max_length=36)
     ip = models.CharField(max_length=15, null=True, blank=True)
-    subdomain = models.CharField(max_length=20, unique=True, null=True, blank=True)
+    subdomain = models.CharField(max_length=20, unique=True, null=True, blank=True, validators=[subdomain_validator, subdomain_restriction])
     order = models.OneToOneField(Order, null=True, blank=True)
 
     def __unicode__(self):
