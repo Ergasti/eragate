@@ -216,6 +216,10 @@ EMAIL_HOST_PASSWORD = '0123456764'
 
 AKISMET_API_KEY='edf10192801e'
 
+SUBDOMAIN_SUFFIX = ".2gbvp.com."
+ZONE_FILE = "2gbvp.com.hosts"
+ZONE_FILE_RELOAD_CMD = "sudo service bind9 reload &"
+
 ###################### DO NOT EDIT ###############################
 
 # Import local settings
