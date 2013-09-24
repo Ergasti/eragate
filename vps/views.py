@@ -87,6 +87,7 @@ def UserRegistration(request):
 
 @login_required
 def order(request):
+    # FIXME use a ModelForm
     if request.method == 'GET':
         flavors = Flavor.objects.all()
         plans = Plan.objects.all()
@@ -99,6 +100,7 @@ def order(request):
             subdomain=request.POST["subdomain"],
             os_image = OSImage.objects.get(pk=request.POST["os_image"]), 
             )
+        order.clean_fields()
         order.save()
         return render_to_response ('order_confirm.html',{'order': order},context_instance=RequestContext(request))
 
