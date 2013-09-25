@@ -91,7 +91,7 @@ def order(request):
     if request.method == 'GET':
         flavors = Flavor.objects.all()
         plans = Plan.objects.all()
-        os_images=OSImage.objects.all()
+        os_images=OSImage.objects.all(active=True)
         return render_to_response ('order.html',{'os_images':os_images,'plans': plans,'flavors':flavors},context_instance=RequestContext(request))
     if request.method == 'POST':
         order = Order(

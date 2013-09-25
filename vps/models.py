@@ -38,6 +38,7 @@ class Plan(models.Model):
 class OSImage(models.Model):
     uuid = models.CharField(max_length=36, primary_key=True)
     name = models.CharField(max_length=200)
+    active = models.BooleanField(default=True)
 
     def __unicode__(self):
         return self.name
