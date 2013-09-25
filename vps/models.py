@@ -39,9 +39,10 @@ class OSImage(models.Model):
     uuid = models.CharField(max_length=36, primary_key=True)
     name = models.CharField(max_length=200)
     active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):
-        return self.name
+        return "%s, %s" % (self.name, self.created_at)
 
 subdomain_validator = RegexValidator(
                         regex='^[a-z0-9][-a-z0-9]*[a-z0-9]$',
