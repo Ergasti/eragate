@@ -129,7 +129,11 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.messages.context_processors.messages',
     'sekizai.context_processors.sekizai',
 )
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 
+TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+    'django.core.context_processors.request',
+)
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -138,6 +142,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
+    'suit',
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     #'django.contrib.admindocs',
