@@ -129,11 +129,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.messages.context_processors.messages',
     'sekizai.context_processors.sekizai',
 )
-from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 
-TEMPLATE_CONTEXT_PROCESSORS = TCP + (
-    'django.core.context_processors.request',
-)
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -142,7 +138,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
-    'suit',
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     #'django.contrib.admindocs',
@@ -215,20 +210,15 @@ LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/dashboard/'
 LOGOUT_URL = '/logout/'
 
-EMAIL_HOST =  "smtp.gmail.com"
-EMAIL_HOST_USER = '2gbvps@gmail.com'
-EMAIL_HOST_PASSWORD = '0123456764'
-
-AKISMET_API_KEY='edf10192801e'
-
-SUBDOMAIN_SUFFIX = ".2gbvp.com."
-RESTRICTED_SUBDOMAINS = ['www', 'ns1', 'ns2', 'mail', 'ftp', 'm', 'localhost', 'webmail', 'admin', 'webhost1']
-ZONE_FILE = "2gbvp.com.hosts"
-ZONE_FILE_RELOAD_CMD = "sudo service bind9 reload &"
 
 ###################### DO NOT EDIT ###############################
 
 # Import local settings
 # NOTE: this MUST be the last line
-try: from local_settings import *
-except ImportError: pass
+from local_settings import *
+
+EMAIL_HOST =  "smtp.gmail.com"
+EMAIL_HOST_USER = '2gbvps@gmail.com'
+EMAIL_HOST_PASSWORD = '0123456764'
+
+AKISMET_API_KEY='edf10192801e'

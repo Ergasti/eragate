@@ -58,3 +58,10 @@ class VPSAdmin(admin.ModelAdmin):
     vnc_link.short_description = "VNC Console"
 
 admin.site.register(VPS, VPSAdmin)
+
+class UserProfileAdmin(admin.ModelAdmin):
+    list_display = ('user', 'phone_number')
+
+
+
+admin.site.register(UserProfile, UserProfileAdmin)
