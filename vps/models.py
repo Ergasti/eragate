@@ -1,13 +1,15 @@
-import datetime, time
+import datetime, time, os
 
 from django.conf import settings
 from django.utils.timezone import utc
+from django.core.validators import RegexValidator
+from django.core.exceptions import ValidationError
+from django.utils.translation import ugettext as _
 
 from django.db import models
 from django.contrib.auth.models import User
 from djmoney.models.fields import MoneyField
 from django.db.models import signals
-from django.db.models.signals import post_save
 
 from openstack import nova_api, OS_VM_CREATION_SETTINGS_DEFAULTS
 
@@ -36,15 +38,24 @@ class Plan(models.Model):
 class OSImage(models.Model):
     uuid = models.CharField(max_length=36, primary_key=True)
     name = models.CharField(max_length=200)
+    active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):
-        return self.name
+        return "%s, %s" % (self.name, self.created_at)
+
+subdomain_validator = RegexValidator(
+                        regex='^[a-z0-9][-a-z0-9]*[a-z0-9]$',
+                        message=_('Subdomain should consist of only a-z 0-9 and -'))
+def subdomain_restriction(subdomain):
+    if subdomain in settings.RESTRICTED_SUBDOMAINS:
+        raise ValidationError(u'%s is not allowed' % subdomain)
 
 class Order(models.Model):
     placed_at = models.DateTimeField(auto_now_add=True)
     fulfilled_at = models.DateTimeField(editable=False, default=None, null=True)
     fulfilled = models.BooleanField(editable=False, default=False)
-    subdomain =models.CharField(max_length=20, unique=True)
+    subdomain = models.CharField(max_length=20, unique=True, validators=[subdomain_validator, subdomain_restriction])
     user = models.ForeignKey(User)
     plan = models.ForeignKey(Plan)
     os_image = models.ForeignKey(OSImage, null=True, blank=True)
@@ -82,6 +93,7 @@ class Order(models.Model):
                 floating_ip = nova_api().floating_ips.create(params['floating_ip_pool'])
             nova_api().servers.add_floating_ip(vps.instance_uuid, floating_ip)
             vps.ip = floating_ip.ip
+            vps.register_subdomain()
             vps.save()
 
         self.fulfilled = True
@@ -93,7 +105,7 @@ class VPS(models.Model):
     plan = models.ForeignKey(Plan)
     instance_uuid = models.CharField(max_length=36)
     ip = models.CharField(max_length=15, null=True, blank=True)
-    subdomain = models.CharField(max_length=20, unique=True, null=True, blank=True)
+    subdomain = models.CharField(max_length=20, unique=True, null=True, blank=True, validators=[subdomain_validator, subdomain_restriction])
     order = models.OneToOneField(Order, null=True, blank=True)
 
     def __unicode__(self):
@@ -126,6 +138,34 @@ class VPS(models.Model):
 
     def force_reboot_instance(self):
         return nova_api().servers.reboot(self.instance_uuid, 'HARD')
+
+    ZONE_FILE_MARKER = "VPS#"
+    def __save_zone_data(self, zone_data):
+        with open(settings.ZONE_FILE, "w") as zone_file:
+            zone_file.writelines(zone_data)
+        os.system(settings.ZONE_FILE_RELOAD_CMD)
+
+    def register_subdomain(self):
+        if not self.ip or not self.subdomain or not self.id:
+            return
+        zone_data = self.unregister_subdomain(False)
+        zone_data.append("%s%s\tIN\tA\t%s ; %s%s\n" % (self.subdomain, settings.SUBDOMAIN_SUFFIX, self.ip, self.ZONE_FILE_MARKER, self.id))
+        self.__save_zone_data(zone_data)
+
+    def unregister_subdomain(self, save_and_reload=True):
+        zone_data = open(settings.ZONE_FILE, "r").readlines()
+        zone_data = [zone for zone in zone_data if zone.find("%s%s" % (self.ZONE_FILE_MARKER, self.id)) < 0]
+        if save_and_reload:
+            self.__save_zone_data(zone_data)
+        else:
+            return zone_data
+
+def vps_save_callback(sender, instance, created, **kwargs):
+    instance.register_subdomain()
+def vps_delete_callback(sender, instance, using, **kwargs):
+    instance.unregister_subdomain()
+signals.post_save.connect(vps_save_callback, sender=VPS)
+signals.pre_delete.connect(vps_delete_callback, sender=VPS)
 
 class UserProfile(models.Model):
     user = models.ForeignKey(User, unique=True,related_name='profile')

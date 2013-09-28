@@ -1,9 +1,8 @@
 from vps.models import *
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, render_to_response
 from vps.forms import *
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
-from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
 from django.template import RequestContext
 from django.contrib.auth import login as django_login
@@ -88,10 +87,11 @@ def UserRegistration(request):
 
 @login_required
 def order(request):
+    # FIXME use a ModelForm
     if request.method == 'GET':
         flavors = Flavor.objects.all()
         plans = Plan.objects.all()
-        os_images=OSImage.objects.all()
+        os_images=OSImage.objects.filter(active=True)
         return render_to_response ('order.html',{'os_images':os_images,'plans': plans,'flavors':flavors},context_instance=RequestContext(request))
     if request.method == 'POST':
         order = Order(
@@ -100,6 +100,7 @@ def order(request):
             subdomain=request.POST["subdomain"],
             os_image = OSImage.objects.get(pk=request.POST["os_image"]), 
             )
+        order.clean_fields()
         order.save()
         return render_to_response ('order_confirm.html',{'order': order},context_instance=RequestContext(request))
 
@@ -108,7 +109,7 @@ def order_withplan(request,plan):
     choosen = Plan.objects.get(pk=plan)
     flavors = Flavor.objects.all()
     plans = Plan.objects.all()
-    os_images=OSImage.objects.all()
+    os_images=OSImage.objects.filter(active=True)
     return render_to_response ('order.html',{'os_images':os_images,'plans': plans,'flavors':flavors,'choosen':choosen},context_instance=RequestContext(request))
 
 @login_required
@@ -124,15 +125,21 @@ def dashboard(request):
     user = request.user
     orders = Order.objects.filter(user=user)
     vps = VPS.objects.filter(owner=user)
+    for v in vps:
+        try: v.vnc_link = v.generate_vnc_console_link()
+        except: v.vnc_link = None
+        try: v.status = v.get_instance_status()
+        except: v.status = None
     return render_to_response ('dashboard.html',{'user':user,'orders':orders,'vps': vps},context_instance=RequestContext(request))
 
 @login_required
 def vps_action(request,action,vps):
-    vps_obj = VPS.objects.get(pk=int(vps))
-    if vps_obj.owner == request.user:
-        if action == "status":
-            vps_obj.get_instance_status()
-        elif action == "reboot":
+    vps_obj = get_object_or_404(VPS, pk=int(vps))
+    if vps_obj.owner != request.user:
+        return HttpResponseNotFound()
+
+    try:
+        if action == "reboot":
             vps_obj.reboot_instance()
         elif action == "freboot":
             vps_obj.force_reboot_instance()
@@ -141,17 +148,12 @@ def vps_action(request,action,vps):
         elif action == "start":
             vps_obj.start_instance()
         elif action == "stop":
-            print "diabled"
-        elif action =="vnc":
-            try:
-              url = vps_obj.generate_vnc_console_link()
-              return mark_safe('<a class="btn btn-default" href="%s"><span class="glyphicon glyphicon-fullscreen"></span>View VPS</a>' % (url))
-            except:
-              return "VNC Not Available"
+            vps_obj.stop_instance()
         elif action == "suspend":
-            print "diabled"
-        HttpResponseRedirect('/dashboard')
+           vps_obj.suspend_instance()
+    except: pass
 
+    return HttpResponseRedirect('/dashboard')
 
 def logout_view(request):
     logout(request)
