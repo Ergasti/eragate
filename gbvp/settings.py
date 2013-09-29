@@ -211,14 +211,22 @@ LOGIN_REDIRECT_URL = '/dashboard/'
 LOGOUT_URL = '/logout/'
 
 
-###################### DO NOT EDIT ###############################
-
-# Import local settings
-# NOTE: this MUST be the last line
-from local_settings import *
-
 EMAIL_HOST =  "smtp.gmail.com"
 EMAIL_HOST_USER = '2gbvps@gmail.com'
 EMAIL_HOST_PASSWORD = '0123456764'
 
 AKISMET_API_KEY='edf10192801e'
+
+SUBDOMAIN_SUFFIX = ".2gbvp.com."
+RESTRICTED_SUBDOMAINS = ['www', 'ns1', 'ns2', 'mail', 'ftp', 'm', 'localhost', 'webmail', 'admin', 'webhost1']
+ZONE_FILE = "2gbvp.com.hosts"
+ZONE_FILE_RELOAD_CMD = "sudo service bind9 reload &"
+
+###################### DO NOT EDIT ###############################
+
+# Import local settings
+# NOTE: this MUST be the last line
+try: from local_settings import *
+except: pass
+
+################### DO NOT ADD ANY SETTINGS BELOW ################
