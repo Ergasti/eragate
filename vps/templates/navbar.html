@@ -62,10 +62,19 @@
             </li> -->
       </ul>
       <div class="navbar-form navbar-right">
-        <a class="btn btn-default" href="/lang">
-          <span class="glyphicon glyphicon-globe"></span>
-          عربي
-        </a>
+        <form action="{% url 'set_language' %}" method="post">
+        {% csrf_token %}
+        <input name="next" type="hidden" value="{{ redirect_to }}" />
+        <select name="language" class="form-control"  onchange="this.form.submit()">
+        {% get_language_info_list for LANGUAGES as languages %}
+        {% for language in languages %}
+        <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
+            {{ language.name_local }} ({{ language.code }})
+        </option>
+        {% endfor %}
+        </select>
+        <input type="submit" value="Go" name="Go" style="display:none" />
+        </form>
       </div>
       {% if user.is_authenticated == False %}
         <form class="navbar-form navbar-right" action="/login/" method="POST">
