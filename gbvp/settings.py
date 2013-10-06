@@ -33,12 +33,13 @@ TIME_ZONE = 'Africa/Cairo'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'ar'
 
 LANGUAGES = (
     ( 'ar', gettext( 'Arabic' ) ), 
     ( 'en', gettext( 'English' ) ), 
 )
+DEFAULT_LANGUAGE = 1
 
 LOCALE_PATHS = ( 
     os.path.join( os.path.dirname( __file__ ), 'locale' ), 
@@ -128,6 +129,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     'django.contrib.messages.context_processors.messages',
     'sekizai.context_processors.sekizai',
+    'django.core.context_processors.i18n'
 )
 
 INSTALLED_APPS = (
@@ -141,6 +143,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     #'django.contrib.admindocs',
+    'django_twilio',
     'captcha',
     'sekizai',
     'vps',
