@@ -1,0 +1,81 @@
+{% load i18n sekizai_tags staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>
+      FlatHost - Responsive Onepage Hosting Template
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
+    <link href="{% static "css/bootstrap-responsive.css" %}" rel="stylesheet" media="screen">
+    
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    
+    <link href="{% static "css/hosting.css" %}" rel="stylesheet" media="all">
+    
+    <link rel="stylesheet" href="{% static "css/flexslider.css" %}"/>
+    <script src="{% static "js/jquery-1.9.0.min.js" %}">
+    </script>
+    <script src="{% static "js/jquery.flexslider.js" %}">
+    </script>
+    <script type="text/javascript">
+      $(window).load(function() {
+        $('.flexslider').flexslider({
+          animation: "slide"
+        }
+                                   );
+      }
+                    );
+    </script>
+    {% render_block "css" %}
+  </head>
+	<body>
+		<a id="home"></a>
+		<div class="jumbotron masthead">
+			{% block base_nav %}
+			    {% include "new_navbar.html" %}
+			{% endblock %}
+			{% block slider %}
+			    {% include "new_slider.html" %}
+			{% endblock %}
+			</div>
+			<div class="container">
+				{% block features %}
+				    {% include "new_features.html" %}
+				{% endblock %}
+				{% block more_features %}
+				    <!-- new_more_features.html -->
+				{% endblock %}
+				{% block plans %}
+				    {% include "new_plans.html" %}
+				{% endblock %}
+				{% block layout_features %}
+				    {% include "new_layout_features.html" %}
+				{% endblock %}
+				{% block testimonials %}
+				    <!-- new_testimonials.html -->
+				{% endblock %}
+			</div>
+			{% block domain %}
+			    {% include "new_domain.html" %}
+			{% endblock %}
+			{% block conatct %}
+			    {% include "new_contact.html" %}
+			{% endblock %}
+			{% block footer %}
+			    {% include "new_footer.html" %}
+			{% endblock %}
+
+	</body>
+	<!--Start of Zopim Live Chat Script-->
+	<script type="text/javascript">
+	window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+	d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+	_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
+	$.src='//v2.zopim.com/?1dQPa8W9C6uJEH7aszS9lgRM4CPHTG23';z.t=+new Date;$.
+	type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
+	</script>
+	<!--End of Zopim Live Chat Script-->
+</html>

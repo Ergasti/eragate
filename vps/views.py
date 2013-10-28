@@ -18,6 +18,10 @@ def index(request):
     plans = Plan.objects.all()
     return render(request, 'main.html', {'plans': plans})
 
+def new_index(request):
+    plans = Plan.objects.all()
+    return render(request, 'new_base.html', {'plans': plans})
+
 next="/"
 def login(request):
     global next
