@@ -1,23 +1,23 @@
-{% load staticfiles %}
+{% load i18n staticfiles %}
       <div class="container">     
         <div class="flexslider">
           <ul class="slides">
             <li>
               <div class="hero-unit">
                 <h1>
-                  One page Hosting Solution
+                  {% trans "Fast VPS Hosting Solution" %}
                 </h1>
                 <h3>
-                  Flathost is a bootstrap based responsive minimal, flat and afforable hosting template with easy customization and great support
+                  {% trans "2GBVP has the Fastes VPS and The VPS Price" %}
                 </h3>
                 <p class="hidden-phone">
                   
-                  <a href="#" class="btn btn-success btn-large">
-                    Explore Features 
+                  <a href="#pricing" class="btn btn-primary btn-large">
+                    {% trans "Plans and Price" %}
                   </a>
-                  
-                  <a href="#" class="btn btn-primary btn-large">
-                    Plans and Pricing 
+
+                  <a href="#features" class="btn btn-success btn-large">
+                    {% trans "Explore Features " %}
                   </a>
                   
                 </p>
@@ -29,7 +29,7 @@
                   <img src="{% static "images/server1.png" %}" alt="server">
                 </p>
                 <h1>
-                  Dedicated and VIP Hosting
+                  {% trans "Dedicated and VIP Hosting" %}
                 </h1>
               </div>
             </li>
@@ -39,10 +39,16 @@
                   <img src="{% static "images/server2.png" %}" alt="server">
                 </p>
                 <h1>
-                  Managed Hosting
+                  {% trans "Best Offers" %}
                 </h1>
                 <h3>
-                  Flathost is a bootstrap based responsive minimal, flat and afforable hosting template with easy customization and great support
+                  {% trans "2GBVP HAS the BEST Offers in Egypt " %}
+                  {% trans "2GB 70 > LE" %}
+                  <p class="hidden-phone">
+                    <a href="#pricing" class="btn btn-success btn-large">
+                      {% trans "Order Now " %}
+                    </a>                 
+                  </p>
                 </h3>
               </div>
             </li>

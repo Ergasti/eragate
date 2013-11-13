@@ -3,7 +3,7 @@ from django.conf.urls import patterns, url ,include
 from vps.views import *
 
 urlpatterns = patterns('',
-    url(r'^$', index),
+    url(r'^$', new_index),
     url(r'^register/*', UserRegistration),
     url(r'^login/*', login),
     url(r'^order/*', order),
@@ -16,6 +16,7 @@ urlpatterns = patterns('',
     url(r'^email/', sendemail),
     url(r'^contact/', contact_us),
     url(r'^new/', new_index),
+    url(r'^old/', index),
     # (r'helpdesk/', include('helpdesk.urls')),
 
 )
